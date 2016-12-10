@@ -208,4 +208,9 @@ if (YII_ENV_DEV) {
     ];
 }
 
+$localWebConfig = __DIR__ . '\web_local.php';
+if(file_exists($localWebConfig)){
+    $config = \yii\helpers\ArrayHelper::merge($config, require($localWebConfig));
+}
+
 return $config;
