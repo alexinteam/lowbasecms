@@ -155,6 +155,15 @@ $config = [
                 '/' => 'site/index',
             ],
         ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/restoweb',
+                'baseUrl' => '@web/themes/restoweb',
+                'pathMap' => [
+                    '@app/views' => '@app/themes/restoweb',
+                ],
+            ],
+        ],
         'i18n' => [
             'translations' => [
                 '*' => [
