@@ -10,7 +10,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'lowbase',
-    'name' => 'lowBase',
+    'name' => 'RESTOWEB',
     'sourceLanguage' => 'ru',
     'language' => 'ru',
     'basePath' => dirname(__DIR__),

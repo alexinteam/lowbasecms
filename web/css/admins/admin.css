@@ -1,0 +1,24 @@
+.main-header {
+    background-color: #222 !important;
+}
+.sidebar {
+    background-color: #222 !important;
+}
+.logo {
+    background-color: #222 !important;
+}
+.main-sidebar {
+    background-color: #222 !important;
+}
+.sidebar-menu>li.active>a {
+    background: transparent !important;
+    border-right: 5px solid #df8645 !important;
+    font-size: 15px !important;
+    border-left-color:#222 !important;
+}
+
+.sidebar-menu>li:hover>a {
+    border-left-color:#222 !important;
+    border-right: 5px solid #df8645 !important;
+}
+

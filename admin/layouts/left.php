@@ -17,7 +17,7 @@ use dmstr\widgets\Menu;
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Панель администрирования', 'options' => ['class' => 'header']],
+//                    ['label' => 'Панель администрирования', 'options' => ['class' => 'header']],
                     ['label' => 'Рабочий стол', 'icon' => 'glyphicon glyphicon-home', 'url' => ['/admin/index']],
                     ['label' => 'Документы', 'icon' => 'glyphicon glyphicon-file', 'url' => ['/admin-document/document/index']],
                     ['label' => 'Шаблоны', 'icon' => 'glyphicon glyphicon-book', 'url' => ['/admin-document/template/index']],

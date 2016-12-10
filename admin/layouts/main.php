@@ -15,8 +15,8 @@ $userAsset = UserAsset::register($this);
 
     $me = Yii::$app->user->identity;
 
-    if (class_exists('backend\assets\AppAsset')) {
-        backend\assets\AppAsset::register($this);
+    if (class_exists('app\admin\assets\AppAsset')) {
+        app\admin\assets\AppAsset::register($this);
     } else {
         app\assets\AppAsset::register($this);
     }
