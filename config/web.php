@@ -111,8 +111,13 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
+            //'enableStrictParsing' => true,
+            'enableStrictParsing' => false,
             'rules' => [
+
+                // sites
+                ['class' => 'app\modules\sites\components\SitesUrlRule', 'connectionID' => 'db'],
+
 
                 //СЛУЖЕБНЫЕ ФУНКЦИИ ДЛЯ КЛИЕНТСКОЙ И АДМИНИСТРАТИВНОЙ ЧАСТИ САЙТА
                 //Авторизация через социальные сети
@@ -153,6 +158,9 @@ $config = [
                 '<alias>' => 'document/show',
                 //Стартовая страница сайта
                 '/' => 'site/index',
+
+                // Sites
+
             ],
         ],
         'view' => [
@@ -177,6 +185,9 @@ $config = [
                 ],
             ],
         ],
+        'vhostsManager' => [
+            'class' => 'app\components\vhosts\Manager',
+        ],
     ],
     'controllerMap' => [
         'admin' => [
@@ -198,6 +209,10 @@ $config = [
         ],
         'admin-document' => [
             'class' => 'app\admin\modules\document\Module',
+        ],
+
+        'sites' => [
+            'class' => 'app\modules\sites\Module',
         ],
     ],
     'params' => $params,
