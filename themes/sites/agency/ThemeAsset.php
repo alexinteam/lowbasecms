@@ -12,8 +12,13 @@ use yii\web\AssetBundle;
 
 class ThemeAsset extends AssetBundle
 {
-    public $sourcePath = __DIR__ . '/assets';
     public $baseUrl = '@web/assets';
+
+    public function init()
+    {
+        $this->sourcePath =  __DIR__ . '/assets';
+        parent::init();
+    }
 
     public $css = [
         //'vendor/bootstrap/css/bootstrap.min.css',
