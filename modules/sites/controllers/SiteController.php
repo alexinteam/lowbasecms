@@ -3,17 +3,31 @@
 namespace app\modules\sites\controllers;
 
 use app\models\entities\Site;
-use app\modules\admin\components\BaseController;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
+    /**
+     * @param $siteId
+     * @return string
+     */
     public function actionIndex($siteId)
     {
         $site = $this->findModel($siteId);
-        return $site->id;
+        $this->setTheme($site->theme);
+        return $this->render('index');
+    }
+
+    /**
+     * @param $theme
+     */
+    protected function setTheme($theme){
+        $this->viewPath = '@app/themes/sites/' . $theme . '/views/site';
+        $this->layout = '@app/themes/sites/' . $theme . '/layouts/main';
+
+        Yii::$app->view->siteTheme = $theme;
     }
 
     /**

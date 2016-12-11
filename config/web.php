@@ -164,6 +164,7 @@ $config = [
             ],
         ],
         'view' => [
+            'class' => 'app\components\web\View',
             'theme' => [
                 'basePath' => '@app/themes/restoweb',
                 'baseUrl' => '@web/themes/restoweb',
