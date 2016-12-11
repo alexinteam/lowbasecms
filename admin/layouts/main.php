@@ -21,43 +21,43 @@ $userAsset = UserAsset::register($this);
         app\assets\AppAsset::register($this);
     }
 
-    dmstr\web\AdminLteAsset::register($this);
+    //dmstr\web\AdminLteAsset::register($this);
 
-    $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
+    //$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
     <?php $this->beginPage() ?>
     <!DOCTYPE html>
     <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
+        <?php //$this->head() ?>
+
+        <?php echo $this->render('headIncludes.php'); ?>
+
     </head>
-    <body class="hold-transition skin-blue sidebar-mini">
-    <?php $this->beginBody() ?>
-    <div class="wrapper">
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    
         <?php
             echo $this->render('header.php', [
-                    'directoryAsset' => $directoryAsset,
                     'userAsset' => $userAsset,
                     'me' => $me
                 ]
             );
-            echo $this->render('left.php', [
-                    'directoryAsset' => $directoryAsset,
-                ]
-            );
+            echo '<div class="page-container">';
+            echo $this->render('left.php');
             echo $this->render('content.php', [
-                    'content' => $content,
-                    'directoryAsset' => $directoryAsset
+                    'content' => $content
                 ]
             );
-        ?>
-    </div>
+            echo $this->render('quickSidebar.php');
+            echo '</div>';
 
-    <?php $this->endBody() ?>
+            echo $this->render('bottomIncludes.php');
+        ?>
+
     </body>
     </html>
     <?php $this->endPage() ?>
