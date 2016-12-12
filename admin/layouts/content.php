@@ -109,12 +109,17 @@ use dmstr\widgets\Alert;
                 <li>
                     <span>Dashboard</span>
                 </li>
+
             </ul>
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
-        <h3 class="page-title"> Dashboard
-        </h3>
+        <h3 class="page-title">TITLE</h3>
+
+        <section class="content">
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </section>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN DASHBOARD STATS 1-->
