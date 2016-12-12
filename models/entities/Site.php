@@ -3,6 +3,7 @@
 namespace app\models\entities;
 
 use Yii;
+use app\models\traits\details\ParentModel as DetailsParentModelTrait;
 
 /**
  * This is the model class for table "lb_sites".
@@ -13,6 +14,9 @@ use Yii;
  */
 class Site extends \yii\db\ActiveRecord
 {
+    use DetailsParentModelTrait;
+    protected $detailClass = '\app\models\entities\SiteDetail';
+
     /**
      * @inheritdoc
      */
@@ -43,5 +47,15 @@ class Site extends \yii\db\ActiveRecord
             'name' => 'Name',
             'domain' => 'Domain',
         ];
+    }
+
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+
+    public static function getIdField()
+    {
+        return 'site_id';
     }
 }
