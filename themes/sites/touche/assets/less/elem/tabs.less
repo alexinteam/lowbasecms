@@ -1,0 +1,51 @@
+/**
+ * Tabs
+ */
+
+.nav-tabs {
+    margin-bottom: 80px;
+    text-align: center;
+    border-bottom: 0;
+
+    > li {
+        display: inline-block;
+        float: none;
+
+        > a {
+            display: block;
+            margin-right: 0;
+            border: 0 !important;
+            font-family: @font-family-base;
+            font-weight: 900;
+            font-size: (@font-size-base - 3px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: @text-muted;
+
+            &:hover, &:focus {
+                background-color: transparent;
+                color: @text-color;
+                outline: none;
+            }
+        }
+        &.active {
+
+            > a {
+                position: relative;
+                color: @text-color;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    left: 15px;
+                    right: 17px;
+                    top: 100%;
+                    border-top: 2px solid @brand-primary;
+                }
+                &:hover, &:focus {
+                    color: @text-color;
+                }
+            }
+        }
+    }
+}

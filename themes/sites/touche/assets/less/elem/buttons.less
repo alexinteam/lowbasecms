@@ -1,0 +1,47 @@
+/**
+ * Buttons
+ */
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 0;
+    box-shadow: 0 !important;
+    outline: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+
+/*** Sizes ***/
+
+.btn, .btn-lg {
+    font-size: (@font-size-base - 3px);
+}
+
+
+/*** Contextual classes ***/
+
+.btn-default {
+    background-color: transparent;
+    border-color: @brand-primary;
+    color: @text-color;
+
+    &:hover, &:focus, &:active, &:active:focus {
+        background-color: transparent;
+        box-shadow: none;
+        border-color: @brand-primary !important;
+        color: @brand-primary !important;
+    }
+}
+.btn-primary {
+    border-color: transparent;
+    color: white;
+
+    &:hover, &:focus, &:active, &:active:focus {
+        background-color: transparent;
+        box-shadow: none;
+        border-color: @brand-primary !important;
+        color: @brand-primary !important;
+    }
+}

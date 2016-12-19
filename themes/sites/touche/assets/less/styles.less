@@ -1,0 +1,643 @@
+/**
+ * Custom Styles
+ */
+
+
+/*** Import ***/
+
+@import "../bootstrap/less/bootstrap";
+
+@import "elem/buttons";
+@import "elem/colors";
+@import "elem/components";
+@import "elem/forms";
+@import "elem/grid-system";
+@import "elem/lightbox";
+@import "elem/modal";
+@import "elem/navbar";
+@import "elem/preloader";
+@import "elem/tabs";
+@import "elem/typography";
+
+
+section, footer {
+    position: relative;
+    padding: 100px 0;
+    background-color: @body-bg;
+}
+
+
+/*** Section: Welcome ***/
+
+@navbar-total: (@navbar-height + @navbar-margin-bottom);
+
+.section_welcome {
+    height: 100vh; width: 100%;
+    padding: 0 0;
+    background-color: transparent;
+    text-align: center;
+
+    @media(max-width: @screen-xs-max) {
+        height: auto;   
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background-color: fade(black,60%);
+    }
+    .container.welcome__body {
+        height: auto;
+        padding-top: @navbar-total;
+
+        @media(min-width: @screen-sm-min) {
+            height: calc(~"100% -"@navbar-total);
+
+            > .row {
+                display: table;
+                height: 100%;
+
+                > [class*="col-"] {
+                    display: table-cell;
+                    vertical-align: middle;
+                    float: none;
+                }
+            }
+        }
+    }
+    .container.welcome__footer {
+        height: @navbar-total;
+        padding-top: @navbar-margin-bottom;
+
+        @media(max-width: @screen-xs-max) {
+            height: auto;
+        }
+    }
+}
+
+/* Background image */
+
+.welcome__bg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: black url(http://placehold.it/1920x1079) no-repeat center center / cover;
+    z-index: -999;
+}
+
+/* Content */
+
+.welcome__title {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: (@font-size-base - 3px);
+    font-weight: 700;
+    font-family: @font-family-base;
+    letter-spacing: .5px;
+    color: fade(white,70%);
+
+    > span {
+        color: @brand-primary;
+    }
+}
+.welcome__heading {
+    margin-bottom: 40px;
+    font-size: 80px;
+    font-weight: 700;
+    color: white;
+
+    @media(max-width: @screen-xs-max) {
+        font-size: 56px;
+    }
+}
+.welcome__info {
+    margin-bottom: 40px;
+    color: fade(white,70%);
+}
+.welcome__btn {
+
+    .btn {
+        color: white;
+    }
+    .fa {
+        margin-left: 5px;
+    }
+}
+
+/* Social icons */
+
+.welcome__social {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+
+    > li {
+        display: inline-block;
+
+        > a {
+            display: block;
+            font-size: @font-size-small;
+            padding: @navbar-padding-vertical @navbar-padding-horizontal;
+            color: fade(white,70%);
+
+            &:hover, &:focus {
+                color: @brand-primary;
+            }
+        }
+    }
+
+    @media(max-width: @screen-xs-max) {
+        text-align: center;
+
+        > li {
+
+            > a {
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Address */
+
+.welcome__address {
+    padding: @navbar-padding-vertical @navbar-padding-horizontal;
+    font-family: @headings-font-family;
+    text-align: right;
+    color: fade(white,70%);
+
+    > .fa {
+        margin-right: 10px;
+        color: @brand-primary;
+    }
+
+    @media(max-width: @screen-xs-max) {
+        text-align: center;
+    }
+}
+
+
+/*** Section: Discover ***/
+
+.section_discover {
+    
+    @media(min-width: @screen-sm-min) {
+
+        .container {
+            height: 100%;
+            
+            > .row {
+                height: 100%;
+                display: table;
+                table-layout: fixed;
+
+                > [class*="col-"] {
+                    display: table-cell;
+                    float: none;
+
+                    &.vertical-align-top {
+                        vertical-align: top;
+                    }
+                    &.vertical-align-middle {
+                        vertical-align: middle;
+                    }
+                    &.vertical-align-bottom {
+                        vertical-align: bottom;
+                    }
+                }
+            }
+        }
+    }
+    & + .section_discover {
+        padding-top: 50px;
+
+        @media(max-width: @screen-xs-max) {
+            padding-top: 0;
+            margin-top: -100px;
+        }
+    }
+}
+.discover__desc {
+    position: relative;
+    font-size: (@font-size-base + 2px);
+    color: @text-color;
+    z-index: 101;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 30px;
+        margin: 20px 0;
+        border-top: 3px solid @brand-primary;
+    }
+
+    @media(max-width: @screen-xs-max) {
+        padding-bottom: 20px;
+    }
+}
+.discover__img {
+    position: relative;
+    padding-right: 20%;
+    z-index: 100;
+
+    > img {
+        box-shadow: 20px 20px 30px -15px fade(black,25%);
+        width: 100%;
+    }
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        width: 80%; height: 100%;
+        z-index: -1;
+    }
+    &:before {
+        top: 10%; left: 20%;
+        border: 1px solid #f0f0f0;
+    }
+    &.alt:after {
+        top: -10%; left: -30%;
+        background-color: #f0f0f0;
+    }
+
+    @media(max-width: @screen-xs-max) {
+        padding-right: 0;
+        margin-bottom: 40px;
+
+        &:before, &:after {
+            display: none;
+        }
+    }
+}
+.discover__content {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*** Section: About ***/
+
+.section_about {
+    height: 100vh;
+    padding-top: 0;
+    background: url(http://placehold.it/1920x1282) no-repeat center center / cover;
+
+    @media(max-width: @screen-xs-max) {
+        margin-top: -100px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        #gradient > .vertical-three-colors(white; fade(white,10%); 30%; transparent);
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: -webkit-linear-gradient(top left, white 0%, white 15%, transparent 30%, transparent 100%);
+        background: -o-linear-gradient(top left, white 0%, white 15%, transparent 30%, transparent 100%);
+        background: linear-gradient(to bottom right, white 0%, white 15%, transparent 30%, transparent 100%);
+    }
+    .section__heading {
+        line-height: @line-height-base;
+    }
+}
+
+
+/*** Section: Reservation ***/
+
+.section_reservation {
+    background-color: #f0f0f0;
+}
+.reservation__info {
+    margin-bottom: 40px;
+}
+.reservation__form {
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+
+/*** Section: Menu ***/
+
+.section_menu {
+    border-bottom: 1px solid #f0f0f0;
+}
+.menu__item {
+    position: relative;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    margin-right: 40px;
+    border-bottom: 1px solid #f0f0f0;
+
+    @media(max-width: @screen-xs-max) {
+        padding-right: 0;
+    }
+}
+.menu-item__title {
+    margin-bottom: 15px;
+
+    @media(max-width: @screen-xs-max) {
+        padding-right: 40px;
+    }
+}
+.menu-item__price {
+    position: absolute;
+    top: 0; right: 0;
+    font-family: @headings-font-family;
+    font-size: (@font-size-base + 3px);
+}
+
+/* Featured */
+
+.menu__featured {
+    text-align: center;
+}
+.menu-featured__heading {
+    margin-bottom: 80px;
+    font-family: @font-family-base;
+    font-weight: 900;
+    font-size: (@font-size-base - 3px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    @media(max-width: @screen-xs-max) {
+        margin-bottom: 40px;
+    }
+}
+.menu-featured__item {
+
+    @media(max-width: @screen-xs-max) {
+        padding: 20px 0;
+    }
+}
+.menu-featured-item__img {
+    position: relative;
+    height: 0; width: 100%;
+    padding-bottom: 75%;
+    overflow: hidden;
+
+    > img {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 100%; height: auto;
+        height: auto;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+    }
+}
+.menu-featured-item__heading {
+    line-height: @line-height-base;
+    font-weight: 400;
+}
+.menu-featured-item__price {
+    font-family: @headings-font-family;
+    font-size: @font-size-large;
+    color: @text-muted;
+}
+
+
+/*** Section: Events ***/
+
+.section_events {
+    padding-bottom: 0;
+}
+.event__item {
+    position: relative;
+
+    &:not(.active) {
+
+        .event-item__bg {
+            opacity: 0;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0; right: 0; bottom: 0; left: 0;
+                #gradient > .directional(black; transparent; 45deg);
+            }
+        }
+    }
+}
+.event-item__bg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    transition: opacity .3s;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        #gradient > .directional(black; transparent; 45deg);
+    }
+}
+.event-item__content_big {
+
+    .row {
+        padding: 150px 0;
+    }
+    time {
+        display: block;
+        font-size: (@font-size-base - 3px);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: @brand-primary;
+    }
+    h3 {
+        margin-bottom: 30px;
+        line-height: @line-height-base;
+        color: white;
+    }
+    p {
+        margin-bottom: 30px;
+        color: fade(white, 70%);
+    }
+    .btn {
+        color: white;
+    }
+}
+.event-item__content_small {
+
+    @media(min-width: @screen-sm-min) {
+
+        .row {
+            display: table;
+            height: 100%;
+            padding: 40px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+
+            > [class*="col-"] {
+                display: table-cell;
+                float: none;
+                vertical-align: middle;
+            }
+        }
+    }
+    @media(max-width: @screen-xs-max) {
+        padding: 20px 0;
+
+        .text-right {
+            text-align: left;
+        }
+    }
+    time {
+
+        > span {
+            display: block;
+            font-size: 36px;
+            font-weight: 400;
+            font-family: @headings-font-family;
+        }
+    }
+    h3 {
+        font-size: @font-size-large;
+        line-height: @line-height-base;
+
+        @media(max-width: @screen-xs-max) {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+
+/*** Gallery ***/
+
+.gallery__item {
+    padding: 10px;
+
+    > a {
+        display: block;
+        position: relative;
+        
+        &:before, &:after {
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-color: fade(black, 60%);
+        }
+        &:after {
+            content: url(../img/icon_plus.svg);
+            position: absolute;
+            top: 50%; left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+
+            &:before, &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+/*** Section: Newsletter ***/
+
+.section_newsletter {
+    background-color: #f0f0f0;
+
+    @media(max-width: @screen-xs-max) {
+        text-align: center;
+    }
+}
+
+
+/*** Section: Footer ***/
+
+.footer {
+    background-color: @text-color;
+
+    .row > [class*="col-"] {
+        padding: 0 40px;
+
+        @media(max-width: @screen-xs-max) {
+            padding: 0 20px 20px;
+        }
+    }
+    .section__heading {
+        color: white;
+    }
+    @media(max-width: @screen-xs-max) {
+        padding-bottom: 80px;
+    }
+}
+.footer__heading {
+    margin-bottom: 20px;
+    font-family: @font-family-base;
+    font-size: (@font-size-base - 3px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: @brand-primary;
+}
+.footer__open {
+    margin-bottom: 15px;
+    color: @text-muted;
+}
+.footer-open__days {
+    font-size: (@font-size-base - 3px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: fade(white,70%);
+}
+.footer-open__time {
+    font-family: @headings-font-family;
+    font-size: (@font-size-base + 2px);
+}
+.footer__info {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+        margin-bottom: 10px;
+        color: @text-muted;
+
+        > .fa {
+            min-width: 30px;
+            color: fade(white,70%);
+        }
+        a {
+            color: @text-muted;
+
+            &:hover, &:focus {
+                color: fade(white,70%);
+            }
+        }
+    }
+}
+.footer__copyright {
+    position: relative;
+    margin-top: 40px;
+    color: @text-muted;
+
+    > span {
+        display: inline-block;
+        width: 50px; height: 1px;
+        margin-bottom: (@line-height-computed / 4);
+        margin-right: 15px;
+        background-color: @text-muted;
+    }
+
+    @media(max-width: @screen-xs-max) {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,37 @@
+/**
+ * Typography
+ */
+
+@headings-font-family: "Playfair Display", sans-serif;
+@font-family-base: "Lato", sans-serif;
+@font-size-base: 15px;
+
+p {
+    line-height: 1.7;
+    color: @text-muted;
+}
+
+
+/* Section heading */
+
+.section__heading {
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-weight: 400;
+
+    + p {
+        margin-top: -20px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Selection */
+
+::selection {
+    background-color: @brand-primary;
+    color: white;
+}
+::-moz-selection {
+    background-color: @brand-primary;
+    color: white;
+}

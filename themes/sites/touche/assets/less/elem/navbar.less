@@ -1,0 +1,94 @@
+/**
+ * Navbar
+ */
+
+@navbar-height: 70px;
+
+@navbar-default-bg: transparent;
+@navbar-default-border: white;
+@navbar-default-link-color: white;
+@navbar-default-link-hover-color: @brand-primary;
+@navbar-default-link-active-color: @brand-primary;
+@navbar-default-link-active-bg: transparent;
+@navbar-default-brand-hover-color: white;
+
+@navbar-inverse-bg: transparent;
+@navbar-inverse-link-color: @text-color;
+@navbar-inverse-link-hover-color: darken(@brand-primary,5%);
+@navbar-inverse-link-active-color: darken(@brand-primary,5%);
+@navbar-inverse-link-active-bg: transparent;
+@navbar-inverse-brand-hover-color: @text-color;
+
+
+/*** Navbar: Links ***/
+
+.navbar {
+    border: 0;
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background-color: fade(white,99%);
+        -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+        transition: -webkit-transform .3s, transform .3s;
+        z-index: -999;
+    }
+}
+.navbar-inverse {
+
+    &:after {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+.navbar {
+
+    .navbar-nav {
+
+        > li {
+
+            > a {
+                position: relative;
+                font-weight: 700;
+                font-size: (@font-size-base - 4px);
+                text-transform: uppercase;
+                letter-spacing: .5px;
+                transition: color .15s;
+                outline: none !important;
+            }
+        }
+    }
+}
+
+
+/*** Navbar: Brand ***/
+
+.navbar-brand {
+    position: relative;
+    font-size: @font-size-base;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: color .15s;
+}
+
+
+/*** Navbar: Collapse ***/
+
+@navbar-default-toggle-hover-bg: transparent;
+@navbar-default-toggle-icon-bar-bg: white;
+@navbar-default-toggle-border-color: transparent;
+
+@navbar-inverse-toggle-hover-bg: transparent;
+@navbar-inverse-toggle-icon-bar-bg: @text-color;
+@navbar-inverse-toggle-border-color: transparent;
+
+.navbar-toggle {
+
+    .icon-bar {
+        transition: background-color .15s;
+    }   
+}
