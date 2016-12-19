@@ -165,12 +165,26 @@ $config = [
         ],
         'view' => [
             'class' => 'app\components\web\View',
+            'siteTheme' => 'restoweb_dark',
             'theme' => [
+                'basePath' => '@app/themes/restoweb_dark',
+                'baseUrl' => '@web/themes/restoweb_dark',
+                'pathMap' => [
+                    '@app/views' => '@app/themes/restoweb_dark',
+                ],
+            ],
+            /*'theme' => [
                 'basePath' => '@app/themes/restoweb',
                 'baseUrl' => '@web/themes/restoweb',
                 'pathMap' => [
                     '@app/views' => '@app/themes/restoweb',
                 ],
+            ],*/
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'app\assets\AppDarkAsset',
+                // you can override AssetBundle configs here
             ],
         ],
         'i18n' => [

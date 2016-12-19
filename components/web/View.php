@@ -10,19 +10,22 @@ class View extends \yii\web\View{
 
     public $siteTheme;
 
+    public $themeAssets = [
+        'restoweb' => '',
+        'restoweb_dark' => 'app\assets\AppDarkAsset',
+    ];
+
     /**
      * @param $path
      * @return string
      */
     public function getThemeUrl($path){
         if($this->siteTheme){
-            $key = 'app\themes\sites\\' . $this->siteTheme . '\\ThemeAsset';
-            $assets = $this->getAssetsInfo();
+            $key = $this->getThemeAssetName();
+            $bundle = $key::register($this);
 
-            if(isset($assets[$key]['url'])){
-                $url = $assets[$key]['url'];
-                $path = $url . '/' . $path;
-                return $path;
+            if(isset($bundle->baseUrl)){
+                return $bundle->baseUrl . '/' . $path;
             }
         }
 
@@ -50,5 +53,19 @@ class View extends \yii\web\View{
         }
 
         return $paths;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    private function getThemeAssetName(){
+        if(isset($this->themeAssets[$this->siteTheme])){
+            $key = $this->themeAssets[$this->siteTheme];
+        }
+        else{
+            $key = 'app\themes\sites\\' . $this->siteTheme . '\\ThemeAsset';
+        }
+
+        return $key;
     }
 }
