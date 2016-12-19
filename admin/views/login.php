@@ -25,7 +25,7 @@ UserAsset::register($this);
     <div class="col-lg-3">
     </div>
     <div class="col-lg-6">
-        <p style="margin: 50px 0px 30px 0px;"><img src="/css/image/lowbase.png"></p>
+        <p style="margin: 50px 0px 30px 0px;"></p>
 
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',

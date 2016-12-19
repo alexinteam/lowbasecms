@@ -7,14 +7,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand name-brand" href="javascript:"><img src="<?= $this->getThemeUrl('images/logo.png'); ?>" class="logo-main" alt="Logo"></a>
+            <a class="navbar-brand name-brand" href="/"><img src="<?= $this->getThemeUrl('images/logo.png'); ?>" class="logo-main" alt="Logo"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="" class="main-link">Возможности</a></li>
                 <li><a href="cost.html">Тарифные планы</a></li>
                 <li><a href="javascript:" data-toggle="modal" data-target="#reg">Регистрация</a></li>
-                <li><a href="">Войти в кабинет</a></li>
+                <li><a href="/admin">Войти в кабинет</a></li>
             </ul>
             <div class="block-right pull-right">
                 <p class="phone-rest">+7 (495) 799-09-62</p>

@@ -20,10 +20,10 @@ use yii\helpers\Html;
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a class="name-logo" href="/admin/index'"><?php echo Yii::$app->name ?></a>
+            <a class="name-logo" href="/"><?php echo Yii::$app->name ?></a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
-            </div>
+            </div>,
         </div>
         <form class="sidebar-search  sidebar-search-up" action="page_general_search_3.html" method="POST">
             <a href="javascript:;" class="remove">
@@ -227,7 +227,7 @@ use yii\helpers\Html;
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="layouts/layout/img/avatar11.jpg" />
+                        <img alt="" class="img-circle" src="/layouts/layout/img/avatar11.jpg" />
                         <span class="username username-hide-on-mobile"><?php echo $me->first_name ?></span>
                         <i class="fa fa-angle-down"></i>
                     </a>

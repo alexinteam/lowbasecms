@@ -24,3 +24,5 @@ $asdasd = 123123;
 <link href="/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
+
+<script src="/global/plugins/jquery.min.js" type="text/javascript"></script>
