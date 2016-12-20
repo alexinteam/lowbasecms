@@ -27,6 +27,8 @@ class AppDarkAsset extends AssetBundle
     public $js = [
         'js/viewportchecker.js',
         'js/scripts.js',
+        'js/jquery.min.js',
+        'js/bootstrap.min.js'
     ];
 
     public $depends = [

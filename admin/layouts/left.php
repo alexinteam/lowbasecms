@@ -88,6 +88,7 @@ use app\admin\widgets\Menu;
                         ['label' => 'Reviews', 'icon' => 'icon-bar-chart', 'url' => ['#']],
                         ['label' => 'Events', 'icon' => 'icon-bulb', 'url' => ['#']],
                         ['label' => 'Ads', 'icon' => 'icon-briefcase', 'url' => ['#']],
+                        ['label' => 'Сообщения', 'icon' => 'glyphicon glyphicon-envelope', 'url' => ['/admin-user/user/list-messages']],
                     ],
                 ]
             ) ?>

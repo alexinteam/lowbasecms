@@ -126,6 +126,5 @@ if (Yii::$app->user->isGuest) {
         </div>
     </div>
 </div>
-
 </body>
 </html>

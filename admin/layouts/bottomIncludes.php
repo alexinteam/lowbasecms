@@ -6,7 +6,7 @@
     <script src="/global/plugins/excanvas.min.js"></script>
     <![endif]-->
     <!-- BEGIN CORE PLUGINS -->
-    <script src="/global/plugins/jquery.min.js" type="text/javascript"></script>
+    
     <script src="/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/global/plugins/js.cookie.min.js" type="text/javascript"></script>
     <script src="/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
