@@ -31,8 +31,9 @@ class ThemeAsset extends AssetBundle
 
         'plugins/smoothscroll/smoothscroll.min.js',
         'plugins/imagesloaded/imagesloaded.pkgd.min.js',
-        'assets/plugins/isotope/isotope.pkgd.min.js',
+        'plugins/isotope/isotope.pkgd.min.js',
         'plugins/lightbox/js/lightbox.min.js',
+        'js/custom.js',
     ];
 
     public $depends = [
