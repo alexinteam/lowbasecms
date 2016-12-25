@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/admins/admin.css'
     ];
     public $js = [
+        'js/jquery-form.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

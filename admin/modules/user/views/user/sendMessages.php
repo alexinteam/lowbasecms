@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<form class="form-horizontal">
+<form class="form-horizontal" type="POST" action="/admin-user/user/send-message">
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">

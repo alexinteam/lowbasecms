@@ -2,7 +2,7 @@
     use app\models\Messages;
 ?>
 
-<form class="form-inline">
+<div class="form-inline" id="send-message">
     <select class="selectpicker form-control" name="message_to">
         <?php
         foreach ($users as $user) {
@@ -13,8 +13,8 @@
     <div class="form-group" style="width: 500px;">
         <input type="message" name="message" class="form-control" placeholder="Сообщение" style="width: 500px;">
     </div>
-    <button type="submit" class="btn btn-default">Отправить сообщение</button>
-</form>
+    <button id="submitSendMessage" class="btn btn-default">Отправить сообщение</button>
+</div>
 <br>
 <br>
 
@@ -41,8 +41,15 @@
             $(this).parents(".btn-default").find('.selection').val($(this).text());
         });
 
-        $('.form-inline').submit(function() {
-            alert('send!( imlementation in progress)');
+        $('#submitSendMessage').click(function() {
+            var $csrfToken = $('meta[name="csrf-token"]').attr("content");
+            $.post({
+                url: '/admin-user/user/send-message',
+                data: {_csrf: $csrfToken},
+                success: function () {
+                    alert('send!( imlementation in progress)');
+                }
+            });
         })
     });
 </script>

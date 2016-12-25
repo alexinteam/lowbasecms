@@ -40,7 +40,15 @@ class UserController extends \lowbase\user\controllers\UserController
         ]);
     }
 
-    public function actionSendMessage() {
+//    public function beforeAction($action)
+//    {
+//        $this->enableCsrfValidation = false;
+//        return parent::beforeAction($action);
+//
+//    }
 
+    public function actionSendMessage() {
+        $asdas =1234;
+        $dsfsdf =123123;
     }
 }

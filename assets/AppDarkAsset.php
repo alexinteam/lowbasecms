@@ -19,20 +19,21 @@ class AppDarkAsset extends AssetBundle
     }
 
     public $css = [
+        'css/bootstrap.min.css',
         'css/main.css',
         'css/bg-menu.css',
         'css/index.css',
         'css/animate.css',
     ];
     public $js = [
+        'js/jquery.min.js',
+        'js/bootstrap.min.js',
         'js/viewportchecker.js',
         'js/scripts.js',
-        'js/jquery.min.js',
-        'js/bootstrap.min.js'
     ];
 
     public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\web\JqueryAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }
