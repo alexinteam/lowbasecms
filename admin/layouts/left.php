@@ -77,6 +77,7 @@ use app\admin\widgets\Menu;
                         'data-slide-speed' => '200'
                     ],
                     'items' => [
+                        ['label' => 'Сайты', 'icon' => 'fa fa-globe', 'url' => ['/admin/site/index']],
                         ['label' => 'Рабочий стол', 'icon' => 'icon-home', 'url' => ['/admin/index']],
                         ['label' => 'Документы', 'icon' => 'glyphicon glyphicon-file', 'url' => ['/admin-document/document/index']],
                         ['label' => 'Шаблоны', 'icon' => 'glyphicon glyphicon-book', 'url' => ['/admin-document/template/index']],

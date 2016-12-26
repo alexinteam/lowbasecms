@@ -8,6 +8,7 @@
 
 namespace app\admin\modules\site\controllers;
 
+use app\admin\modules\site\models\SiteSearch;
 use app\models\entities\Site;
 use Yii;
 use yii\web\Controller;
@@ -22,7 +23,15 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex() {
-        return $this->render('index');
+        $searchModel = new SiteSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+        //return $this->render('index');
     }
 
     /**

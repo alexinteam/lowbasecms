@@ -1,8 +1,23 @@
 <?php
 use yii\bootstrap\ActiveForm;
+use yii\grid\GridView;
 use yii\helpers\Html;
 
 ?>
-<h1>Здравствуйте, <?=Yii::$app->user->identity->first_name?>.</h1>
-<p>Здесь будут настройки сайта.</p>
-<p>Адрес страницы: <b>/admin-config/config/index</b></p>
+
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    'summary'=>'',
+    //'filterModel' => $searchModel,
+    'columns' => [
+        //['class' => 'yii\grid\SerialColumn'],
+        'name',
+        'domain',
+        'theme',
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'header'=> Yii::t('app','Actions'),
+            //'contentOptions'=>['style'=>'text-align: center;']
+        ],
+    ],
+]); ?>
