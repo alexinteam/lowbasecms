@@ -16,12 +16,13 @@
 
                     <!-- Heading -->
                     <h1 class="welcome__heading">
-                        Touché
+                        <?= $site->title ?>
                     </h1>
 
                     <!-- Info -->
                     <p class="welcome__info">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non illo, alias animi iusto neque, sint corrupti? Laudantium, dignissimos id excepturi facilis, facere saepe quasi placeat praesentium ipsa sapiente illo molestiae?
+                        <?= $site->description ?>
+                        <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non illo, alias animi iusto neque, sint corrupti? Laudantium, dignissimos id excepturi facilis, facere saepe quasi placeat praesentium ipsa sapiente illo molestiae?-->
                     </p>
 
                     <!-- Button -->
@@ -51,7 +52,7 @@
             <div class="col-sm-6">
 
                 <div class="welcome__address">
-                    <i class="fa fa-map-marker"></i> 1234 Altschul, New York, NY 10027-0000
+                    <i class="fa fa-map-marker"></i> <?= $site->address ?>
                 </div>
 
             </div>

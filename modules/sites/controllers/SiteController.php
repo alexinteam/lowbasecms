@@ -17,7 +17,12 @@ class SiteController extends Controller
     {
         $site = $this->findModel($siteId);
         $this->setTheme($site->theme);
-        return $this->render('index');
+
+        Yii::$app->view->params['site'] = $site;
+
+        return $this->render('index',[
+            'site' => $site
+        ]);
     }
 
     /**

@@ -17,6 +17,22 @@ class Site extends \yii\db\ActiveRecord
     use DetailsParentModelTrait;
     protected $detailClass = '\app\models\entities\SiteDetail';
 
+    // general
+    /*public $id;
+    public $name;
+    public $domain;
+    public $theme;*/
+
+    // header
+    /*public $title;
+    public $description;*/
+
+    // contacts
+    /*public $about_us;
+    public $address;
+    public $phone;
+    public $email;*/
+
     /**
      * @inheritdoc
      */
@@ -34,6 +50,12 @@ class Site extends \yii\db\ActiveRecord
             [['name', 'domain'], 'required'],
             [['name', 'domain'], 'string'],
             ['domain', 'unique'],
+
+            //[['title','description'], 'required'],
+            [['title','description'], 'string'],
+
+            //[['about_us','address','phone','email'], 'required'],
+            [['about_us','address','phone','email'], 'string'],
         ];
     }
 

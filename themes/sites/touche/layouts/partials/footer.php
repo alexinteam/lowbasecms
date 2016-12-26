@@ -1,3 +1,7 @@
+<?php
+$site = Yii::$app->view->params['site'];
+?>
+
 <!-- Footer -->
 <footer class="footer">
 
@@ -11,7 +15,7 @@
                     About Us
                 </h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti dolorum, sint corporis nostrum, possimus unde eos vitae eius quasi saepe.
+                    <?= $site->about_us ?>
                 </p>
 
             </div>
@@ -23,13 +27,16 @@
                 </h5>
                 <ul class="footer__info">
                     <li>
-                        <i class="fa fa-map-marker"></i> 1234 Altschul, New York, NY 10027-0000
+                        <i class="fa fa-map-marker"></i>
+                        <?= $site->address ?>
                     </li>
                     <li>
-                        <i class="fa fa-phone"></i> +1 987 654 3210
+                        <i class="fa fa-phone"></i>
+                        <?= $site->phone ?>
                     </li>
                     <li>
-                        <i class="fa fa-envelope-o"></i> <a href="mailto:admin@domain.com">admin@domain.com</a>
+                        <i class="fa fa-envelope-o"></i>
+                        <a href="mailto:<?= $site->email ?>"><?= $site->email ?></a>
                     </li>
                 </ul>
 

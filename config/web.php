@@ -147,6 +147,12 @@ $config = [
                 //Взаимодействия с дополнительными полями шаблонов
                 'admin/field/<action:(create|update|delete|multidelete)>' => 'admin-document/field/<action>',
 
+
+
+                'admin/site/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field)>' => 'admin-site/site/<action>',
+
+
+
                 //КЛИЕНТСКАЯ ЧАСТЬ САЙТА
                 //Взаимодействия с пользователем на сайте
                 '<action:(login|logout|signup|confirm|reset|profile|remove|online)>' => 'user/<action>',
@@ -227,6 +233,9 @@ $config = [
         ],
         'admin-config' => [
             'class' => 'app\admin\modules\config\Module',
+        ],
+        'admin-site' => [
+            'class' => 'app\admin\modules\site\Module',
         ],
 
         'sites' => [
