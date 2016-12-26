@@ -12,13 +12,12 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#block-opportunities" class="main-link">Возможности</a></li>
-                <li><a href="#block-pricing">Тарифные планы</a></li>
-                <li><a href="/signup">Регистрация</a></li>
-                <!--<li><a href="javascript:" data-toggle="modal" data-target="#reg">Регистрация</a></li>-->
-                <li><a href="/login">Войти в кабинет</a></li>
+                <li><a href="/site/tarif">Тарифные планы</a></li>
+                <li><a data-toggle="modal" data-target="#reg">Регистрация</a></li>
+                <li><a href="/admin">Войти в кабинет</a></li>
             </ul>
             <div class="block-right pull-right">
-                <p class="phone-rest">+7 (495) 799-09-62</p>
+                <p class="phone-rest"><?= $this->config[0]->phone; ?></p>
                 <a href="#block-contact" class="login" data-toggle="modal" data-target="#support">Обратная связь</a>
             </div>
         </div><!--/.nav-collapse -->

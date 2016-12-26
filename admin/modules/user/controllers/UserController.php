@@ -9,8 +9,10 @@
 namespace app\admin\modules\user\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use app\models\Messages;
 use lowbase\user\models\User;
+use yii\helpers\Json;
 
 
 class UserController extends \lowbase\user\controllers\UserController
@@ -40,15 +42,29 @@ class UserController extends \lowbase\user\controllers\UserController
         ]);
     }
 
-//    public function beforeAction($action)
-//    {
-//        $this->enableCsrfValidation = false;
-//        return parent::beforeAction($action);
-//
-//    }
-
     public function actionSendMessage() {
-        $asdas =1234;
-        $dsfsdf =123123;
+        $request = Yii::$app->request->post();
+        $message = new Messages();
+        $me = Yii::$app->user->identity;
+
+        $message->to = $request['to'];
+        $message->message_text = $request['message'];
+        $message->from = $me->id;
+        $message->status = $message::MESSAGE_UN_READ;
+        if($message->save()) {
+            return [
+                'status' => true
+            ];
+        }
+        return [
+            'status' => false,
+            'errors' => Json::encode($message->errors)
+        ];
+    }
+
+    public function actionReadAllMessages() {
+        $me = Yii::$app->user->identity;
+        Messages::updateAll(['status' => Messages::MESSAGE_READ],['`to`' => $me->id]);
+        return $this->redirect('/admin-user/user/list-messages');
     }
 }

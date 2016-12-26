@@ -1,16 +1,14 @@
 <?php
-/**
- * @package   yii2-cms
- * @author    Yuri Shekhovtsov <shekhovtsovy@yandex.ru>
- * @copyright Copyright &copy; Yuri Shekhovtsov, lowbase.ru, 2015 - 2016
- * @version   1.0.0
- */
 
 use lowbase\user\models\User;
 use yii\helpers\Html;
+use app\models\Messages;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+
+$me = Yii::$app->user->identity;
+$messages = Messages::getLatestUnreadMessages($me->getId());
 ?>
 
 
@@ -153,71 +151,98 @@ use yii\helpers\Html;
                 <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-envelope-open"></i>
-                        <span class="badge badge-default"> 4 </span>
+                        <?php
+                            if(count($messages) > 10) {
+                                echo '<span class="badge label-default"> 10+ </span>';
+                            } else {
+                                echo '<span class="badge label-default"> '.count($messages).' </span>';
+                            }
+                        ?>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="external">
                             <h3>You have
-                                <span class="bold">7 New</span> Messages</h3>
-                            <a href="app_inbox.html">view all</a>
+                                <?php
+                                    if(count($messages) > 10) {
+                                        echo '<span class="bold">10 + New</span>';
+                                    } else {
+                                        echo '<span class="bold">'.count($messages).' New</span>';
+                                    }
+                                ?>
+                                 Messages</h3>
+                            <a href="/admin-user/user/list-messages">view all</a>
                         </li>
                         <li>
                             <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                                <li>
-                                    <a href="#">
-                                                <span class="photo">
-                                                    <img src="layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
-                                                <span class="subject">
-                                                    <span class="from"> Lisa Wong </span>
-                                                    <span class="time">Just Now </span>
-                                                </span>
-                                        <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                                <span class="photo">
-                                                    <img src="layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
-                                                <span class="subject">
-                                                    <span class="from"> Richard Doe </span>
-                                                    <span class="time">16 mins </span>
-                                                </span>
-                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                                <span class="photo">
-                                                    <img src="layouts/layout3/img/avatar1.jpg" class="img-circle" alt=""> </span>
-                                                <span class="subject">
-                                                    <span class="from"> Bob Nilson </span>
-                                                    <span class="time">2 hrs </span>
-                                                </span>
-                                        <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                                <span class="photo">
-                                                    <img src="layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
-                                                <span class="subject">
-                                                    <span class="from"> Lisa Wong </span>
-                                                    <span class="time">40 mins </span>
-                                                </span>
-                                        <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                                <span class="photo">
-                                                    <img src="layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>
-                                                <span class="subject">
-                                                    <span class="from"> Richard Doe </span>
-                                                    <span class="time">46 mins </span>
-                                                </span>
-                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a>
-                                </li>
+                                <?php
+                                    foreach($messages as $message) {
+                                        echo '<li>
+                                                <a href="/admin-user/user/list-messages">
+                                                    <span class="photo">
+                                                        <img src="/layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                                            <span class="subject">
+                                                                <span class="from"> '.$message->getUserFLName($message->from).' </span>
+                                                            </span>';
+                                        echo '<span class="message">'.substr($message->message_text, 0, 100).' ... </span>
+                                                    </a>
+                                                </li>';
+                                    }
+                                ?>
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                                <span class="photo">-->
+<!--                                                    <img src="layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>-->
+<!--                                                <span class="subject">-->
+<!--                                                    <span class="from"> Lisa Wong </span>-->
+<!--                                                    <span class="time">Just Now </span>-->
+<!--                                                </span>-->
+<!--                                        <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                                <span class="photo">-->
+<!--                                                    <img src="layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>-->
+<!--                                                <span class="subject">-->
+<!--                                                    <span class="from"> Richard Doe </span>-->
+<!--                                                    <span class="time">16 mins </span>-->
+<!--                                                </span>-->
+<!--                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                                <span class="photo">-->
+<!--                                                    <img src="layouts/layout3/img/avatar1.jpg" class="img-circle" alt=""> </span>-->
+<!--                                                <span class="subject">-->
+<!--                                                    <span class="from"> Bob Nilson </span>-->
+<!--                                                    <span class="time">2 hrs </span>-->
+<!--                                                </span>-->
+<!--                                        <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                                <span class="photo">-->
+<!--                                                    <img src="layouts/layout3/img/avatar2.jpg" class="img-circle" alt=""> </span>-->
+<!--                                                <span class="subject">-->
+<!--                                                    <span class="from"> Lisa Wong </span>-->
+<!--                                                    <span class="time">40 mins </span>-->
+<!--                                                </span>-->
+<!--                                        <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                                <span class="photo">-->
+<!--                                                    <img src="layouts/layout3/img/avatar3.jpg" class="img-circle" alt=""> </span>-->
+<!--                                                <span class="subject">-->
+<!--                                                    <span class="from"> Richard Doe </span>-->
+<!--                                                    <span class="time">46 mins </span>-->
+<!--                                                </span>-->
+<!--                                        <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
                             </ul>
                         </li>
                     </ul>

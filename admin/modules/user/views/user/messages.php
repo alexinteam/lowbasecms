@@ -3,18 +3,23 @@
 ?>
 
 <div class="form-inline" id="send-message">
-    <select class="selectpicker form-control" name="message_to">
+    <select class="selectpicker form-control" name="message_to" id="message_to">
         <?php
         foreach ($users as $user) {
-            echo '<option>'.$user->first_name.' '.$user->last_name.'</option>';
+            echo '<option user_id="'.$user->id.'">'.$user->first_name.' '.$user->last_name.'</option>';
         }
         ?>
     </select>
     <div class="form-group" style="width: 500px;">
-        <input type="message" name="message" class="form-control" placeholder="Сообщение" style="width: 500px;">
+        <input type="message" name="message" class="form-control" placeholder="Сообщение"  id="message-text" style="width: 500px;">
     </div>
     <button id="submitSendMessage" class="btn btn-default">Отправить сообщение</button>
 </div>
+<br>
+<form action="/admin-user/user/read-all-messages" type="POST">
+    <button type="submit" id="readAllMessages" class="btn btn-default">Отметить все как прочитаные</button>
+</form>
+
 <br>
 <br>
 
@@ -23,7 +28,7 @@
     <?php
         foreach ($messages as $message) {
             if($message['status'] == Messages::MESSAGE_UN_READ) {
-                echo '<a href="#" class="list-group-item list-group-item-action list-group-item-danger">';
+                echo '<a href="#" class="list-group-item list-group-item-action list-group-item-danger" message_id="'.$message['message_id'].'">';
             } else {
                 echo '<a href="#" class="list-group-item list-group-item-action">';
             }
@@ -45,11 +50,33 @@
             var $csrfToken = $('meta[name="csrf-token"]').attr("content");
             $.post({
                 url: '/admin-user/user/send-message',
-                data: {_csrf: $csrfToken},
-                success: function () {
-                    alert('send!( imlementation in progress)');
+                data: {
+                    _csrf: $csrfToken,
+                    message: $('#message-text').val(),
+                    to: $('#message_to :selected').attr('user_id')
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data.status) {
+                        alert('send!');
+                    } else {
+                        alert('NOT send!');
+                    }
                 }
             });
-        })
+        });
+
+//        $('#readAllMessages').click(function() {
+//            var $csrfToken = $('meta[name="csrf-token"]').attr("content");
+//            $.post({
+//                url: '/admin-user/user/read-all-messages',
+//                data: {
+//                    _csrf: $csrfToken
+//                },
+//                success: function () {
+//                    $('.list-group-item').removeClass('list-group-item-danger');
+//                }
+//            });
+//        });
     });
 </script>

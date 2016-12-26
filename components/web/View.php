@@ -2,6 +2,8 @@
 
 namespace app\components\web;
 
+use app\models\entities\MainSiteConfig;
+
 /**
  * Class View
  * @package app\components\web
@@ -15,10 +17,20 @@ class View extends \yii\web\View{
         'restoweb_dark' => 'app\assets\AppDarkAsset',
     ];
 
+    public $config;
+
     /**
      * @param $path
      * @return string
      */
+
+
+    public function init()
+    {
+        $this->config = MainSiteConfig::find()->all();
+        parent::init();
+    }
+
     public function getThemeUrl($path){
         if($this->siteTheme){
             $key = $this->getThemeAssetName();
@@ -68,4 +80,5 @@ class View extends \yii\web\View{
 
         return $key;
     }
+
 }

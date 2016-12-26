@@ -26,5 +26,4 @@ $asdasd = 123123;
 <!-- END THEME LAYOUT STYLES -->
 
 <script src="/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="/js/plugins/jquery-form.min.js" type="text/javascript"></script>
 

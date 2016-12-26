@@ -225,6 +225,9 @@ $config = [
         'admin-document' => [
             'class' => 'app\admin\modules\document\Module',
         ],
+        'admin-config' => [
+            'class' => 'app\admin\modules\config\Module',
+        ],
 
         'sites' => [
             'class' => 'app\modules\sites\Module',

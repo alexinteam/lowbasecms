@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use lowbase\user\models\User;
 
 /**
  * This is the model class for table "lb_messages".
@@ -32,10 +33,9 @@ class Messages extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['message_id', 'message_text', 'from', 'to', 'status'], 'required'],
-            [['message_id', 'from', 'to'], 'integer'],
-            [['message_text', 'status'], 'string'],
-            [['message_id'], 'unique'],
+            [['message_text', 'from', 'to', 'status'], 'required'],
+            [['from', 'to'], 'integer'],
+            [['message_text', 'status'], 'string']
         ];
     }
 
@@ -51,5 +51,20 @@ class Messages extends \yii\db\ActiveRecord
             'to' => 'To',
             'status' => 'Status',
         ];
+    }
+
+    public static function getLatestUnreadMessages($user_id) {
+        return self::find()->where('`to` =:user_id AND `status` =:status', [
+            ':user_id' => $user_id,
+            ':status' => self::MESSAGE_UN_READ
+        ])->all();
+    }
+
+    public static function getUserFLName($user_id) {
+        $user = User::find('')->where('`id` =:user_id', [
+            ':user_id' => $user_id
+        ])->one();
+
+        return $user->last_name.' '.$user->first_name;
     }
 }

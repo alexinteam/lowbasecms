@@ -11,11 +11,11 @@
 use yii\helpers\Html;
 use lowbase\user\components\AuthChoice;
 use yii\widgets\ActiveForm;
-use lowbase\user\UserAsset;
+use app\admin\assets\LoginAsset;
 
 $this->title = 'Вход в админ панель';
 $this->params['breadcrumbs'][] = $this->title;
-UserAsset::register($this);
+LoginAsset::register($this);
 ?>
 
 <div class="site-login row" id="filter">
@@ -32,7 +32,12 @@ UserAsset::register($this);
             'fieldConfig' => [
                 'template' => "{input}\n{hint}\n{error}"
             ],
+            'options' => [
+                'class' => 'form-signin'
+            ]
         ]); ?>
+
+        <h2 class="form-signin-heading">Войти в админ панель</h2>
 
         <?= $form->field($model, 'email')->textInput([
             'maxlength' => true,
@@ -58,18 +63,12 @@ UserAsset::register($this);
         <div class="form-group">
             <?= Html::submitButton('<i class="glyphicon glyphicon-log-in"></i> Войти в админ панель', [
                 'class' => 'btn btn-lg btn-primary',
+                'id' => 'login-btn',
                 'name' => 'login-button']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
 
-        <p class="hint-block">Войти с помощью социальных сетей:</p>
-
-        <div class="text-center" style="text-align: center">
-            <?= AuthChoice::widget([
-                'baseAuthUrl' => ['/lowbase-user/auth/index'],
-            ]) ?>
-        </div>
     </div>
     <div class="col-lg-3">
     </div>

@@ -2,9 +2,9 @@
     <div class="w-main">
         <div class="row">
             <div class="col-md-4 right">
-                <p>Москва, Ленинградский проспект, 37, к.9</p>
-                <p>+7 (495) 799-09-62</p>
-                <p>restoweb@mail.ru</p>
+                <p><?= $this->config[0]->address; ?></p>
+                <p><?= $this->config[0]->phone; ?></p>
+                <p><?= $this->config[0]->contact_email; ?></p>
             </div>
             <div class="col-md-4">
                 <img src="<?= $this->getThemeUrl('images/logo-min.png'); ?>" alt="Logo">

@@ -24,6 +24,7 @@ class AppDarkAsset extends AssetBundle
         'css/bg-menu.css',
         'css/index.css',
         'css/animate.css',
+        'css/tarif.css'
     ];
     public $js = [
         'js/jquery.min.js',
