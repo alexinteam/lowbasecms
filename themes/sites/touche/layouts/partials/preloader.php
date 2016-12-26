@@ -1,5 +1,9 @@
-<!-- PRELOADER
-    ================================================== -->
+<?php
+/**
+ * @var $model app\models\entities\Site
+ */
+?>
+
 <div class="preloader">
 
     <div class="preloader__container">

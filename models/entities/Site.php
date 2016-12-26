@@ -17,6 +17,12 @@ class Site extends \yii\db\ActiveRecord
     use DetailsParentModelTrait;
     protected $detailClass = '\app\models\entities\SiteDetail';
 
+    public static $themes = [
+        'agency',
+        'creative',
+        'touche'
+    ];
+
     // general
     /*public $id;
     public $name;
@@ -79,5 +85,15 @@ class Site extends \yii\db\ActiveRecord
     public static function getIdField()
     {
         return 'site_id';
+    }
+
+    public static function getThemesForSelect(){
+        $result = [];
+
+        foreach (self::$themes as $item){
+            $result[$item] = ucfirst($item);
+        }
+
+        return $result;
     }
 }

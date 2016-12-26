@@ -1,5 +1,8 @@
-<!-- CONTENT
-================================================== -->
+<?php
+/**
+ * @var $model app\models\entities\Site
+ */
+?>
 
 <!-- Welcome -->
 <section class="section_welcome" id="section_welcome">
@@ -11,7 +14,7 @@
 
                     <!-- Title -->
                     <h3 class="welcome__title">
-                        <span>Touché / </span> cafe & restaurant
+                        <span><?= $site->title ?> / </span> cafe & restaurant
                     </h3>
 
                     <!-- Heading -->

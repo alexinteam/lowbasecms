@@ -147,11 +147,8 @@ $config = [
                 //Взаимодействия с дополнительными полями шаблонов
                 'admin/field/<action:(create|update|delete|multidelete)>' => 'admin-document/field/<action>',
 
-
-
+                // sites configuration
                 'admin/site/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field)>' => 'admin-site/site/<action>',
-
-
 
                 //КЛИЕНТСКАЯ ЧАСТЬ САЙТА
                 //Взаимодействия с пользователем на сайте

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var $model app\models\entities\Site
+ */
 $site = Yii::$app->view->params['site'];
 ?>
 

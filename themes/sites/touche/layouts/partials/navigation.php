@@ -1,3 +1,11 @@
+<?php
+/**
+ * @var $model app\models\entities\Site
+ */
+
+$site = Yii::$app->view->params['site'];
+?>
+
 <!--  NAVBAR
 ================================================== -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -11,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#section_welcome">Touché</a>
+            <a class="navbar-brand" href="#section_welcome"><?= $site->title ?></a>
         </div>
 
         <!-- Links -->
