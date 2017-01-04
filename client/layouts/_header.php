@@ -36,7 +36,7 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
                             </a>
                         </li>
                         <li>
-                            <div class="thumbnail-middle"><a href="#"><img src="css/clients/images/Tom.jpg" alt=""></a></div>
+                            <div class="thumbnail-middle"><a href="#"><img src="/css/clients/images/Tom.jpg" alt=""></a></div>
                             <p class="name-user"><?=$me->first_name?></p>
                         </li>
                     </ul>
@@ -49,13 +49,13 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
                 </div>
             </div>
         </div>
-        <img class="logo-cabinet" src="css/clients/images/logo-header.svg" alt="">
+        <img class="logo-cabinet" src="/css/clients/images/logo-header.svg" alt="">
         <ul class="nav-panel nav-cabinet">
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="news.html">Новости</a></li>
             <li class="active"><a href="rewiew-1.html">Отзывы</a></li>
             <li><a href="reserve.html">Бронирование столов</a></li>
-            <li><a href="client/site/index">Управление сайтом</a></li>
+            <li><a href="/client/site/index">Управление сайтом</a></li>
             <li><a href="design.html">Дизайн</a></li>
             <li><a href="social.html">Социальные сети</a></li>
             <li><a href="event.html">События</a></li>
