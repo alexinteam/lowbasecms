@@ -17,6 +17,8 @@ class MainSiteConfig extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public static $ID = 1;
+
     public static function tableName()
     {
         return 'lb_main_site_config';

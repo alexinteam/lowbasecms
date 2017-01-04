@@ -1,0 +1,208 @@
+.page10 {
+background-color:#d08400;
+color:#fff;
+padding:53px 0 32px
+}
+
+.page11 {
+padding:52px 0 6px
+}
+
+.page16 {
+padding:0 0 26px
+}
+
+a.for-orange {
+border:1px solid #293241
+}
+
+a.for-orange:hover {
+background-color:#293241
+}
+
+.page10 .h2-title {
+margin-bottom:10px
+}
+
+.page10 .support-text {
+margin-bottom:22px
+}
+
+.portfolio {
+-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-repeat:no-repeat;
+text-align:left;
+font-size:20px;
+font-weight:200
+}
+
+.page12 {
+background-image:url(/css/clients/images/bg-4.png)
+}
+
+.page13 {
+background-image:url(/css/clients/images/bg-5.png)
+}
+
+.page14 {
+background-image:url(/css/clients/images/bg-6.png)
+}
+
+.page15 {
+background-image:url(/css/clients/images/bg-7.png)
+}
+
+.name-rest {
+font-size:30px;
+margin-bottom:16px;
+font-weight:400
+}
+
+.name-rest span {
+text-transform:uppercase
+}
+
+a.link-rest {
+font-style:italic;
+color:#d08400;
+font-size:50%;
+border-bottom:1px solid #d08400
+}
+
+a.link-rest > span {
+font-size:200%;
+line-height:normal
+}
+
+a.link-rest:hover {
+border-bottom:none
+}
+
+.desription-rest {
+font-size:16px;
+font-style:italic;
+margin-top:30px;
+line-height:25px;
+margin-bottom:26px;
+max-width:422px
+}
+
+.gradient-black {
+color:#fff;
+background:rgba(248,80,50,0);
+background:-moz-linear-gradient(left,rgba(248,80,50,0) 0%,rgba(241,111,92,0) 0%,rgba(0,0,0,1) 100%);
+background:-webkit-gradient(left top,right top,color-stop(0%,rgba(248,80,50,0)),color-stop(0%,rgba(241,111,92,0)),color-stop(100%,rgba(0,0,0,1)));
+background:-webkit-linear-gradient(left,rgba(248,80,50,0) 0%,rgba(241,111,92,0) 0%,rgba(0,0,0,1) 100%);
+background:-o-linear-gradient(left,rgba(248,80,50,0) 0%,rgba(241,111,92,0) 0%,rgba(0,0,0,1) 100%);
+background:-ms-linear-gradient(left,rgba(248,80,50,0) 0%,rgba(241,111,92,0) 0%,rgba(0,0,0,1) 100%);
+background:linear-gradient(to right,rgba(248,80,50,0) 0%,rgba(241,111,92,0) 0%,rgba(0,0,0,1) 100%);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f85032',endColorstr='#000000',GradientType=1)
+}
+
+.gradient-white {
+background:rgba(255,255,255,1);
+background:-moz-linear-gradient(left,rgba(255,255,255,1) 0%,rgba(246,246,246,0.53) 47%,rgba(117,117,117,0) 100%);
+background:-webkit-gradient(left top,right top,color-stop(0%,rgba(255,255,255,1)),color-stop(47%,rgba(246,246,246,0.53)),color-stop(100%,rgba(117,117,117,0)));
+background:-webkit-linear-gradient(left,rgba(255,255,255,1) 0%,rgba(246,246,246,0.53) 47%,rgba(117,117,117,0) 100%);
+background:-o-linear-gradient(left,rgba(255,255,255,1) 0%,rgba(246,246,246,0.53) 47%,rgba(117,117,117,0) 100%);
+background:-ms-linear-gradient(left,rgba(255,255,255,1) 0%,rgba(246,246,246,0.53) 47%,rgba(117,117,117,0) 100%);
+background:linear-gradient(to right,rgba(255,255,255,1) 0%,rgba(246,246,246,0.53) 47%,rgba(117,117,117,0) 100%);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#757575',GradientType=1)
+}
+
+.gradient-black,.gradient-white {
+padding:50px 0 46px
+}
+
+.nav-tabs {
+border-bottom:none;
+background-color:#2e3544;
+margin:0 auto
+}
+
+.block-tabs {
+background-color:#2e3544;
+padding:6px 0 2px;
+margin-top:54px;
+margin-bottom:56px
+}
+
+.block-tabs .w-main {
+max-width:830px;
+margin:0 auto;
+padding:0
+}
+
+.nav-tabs>li>a {
+padding:10px 8px 13px;
+font-size:20px;
+color:#fff;
+font-weight:200
+}
+
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {
+color:#d08400;
+cursor:default;
+background-color:transparent;
+border:1px solid transparent;
+border-bottom-color:#d08400;
+border-bottom-width:2px
+}
+
+.nav-tabs>li>a:hover {
+border-color:transparent
+}
+
+.nav>li>a:focus,.nav>li>a:hover {
+background-color:transparent;
+color:#d08400
+}
+
+@media (max-width: 880px) {
+.nav-tabs>li {
+float:none
+}
+
+.nav-tabs>li>a {
+font-size:25px
+}
+
+.block-tabs {
+padding:6px 0
+}
+}
+
+@media (max-width: 800px) {
+.gradient-black {
+background:rgba(0,0,0,0.6)
+}
+
+.gradient-white {
+background:rgba(255,255,255,0.7)
+}
+
+.portfolio .col-md-6 {
+width:100%
+}
+
+.portfolio .col-md-offset-6 {
+margin-left:0
+}
+
+.portfolio {
+text-align:center
+}
+
+.desription-rest {
+max-width:100%
+}
+}
+
+@media (max-width: 544px) {
+.nav-tabs>li>a {
+font-size:18px
+}
+}

@@ -1,8 +1,28 @@
 <?php
 use yii\bootstrap\ActiveForm;
+use yii\grid\GridView;
 use yii\helpers\Html;
 
 ?>
-<h1>Здравствуйте, <?=Yii::$app->user->identity->first_name?>.</h1>
-<p>Здесь будут настройки сайта.</p>
-<p>Адрес страницы: <b>/admin-config/config/index</b></p>
+<?php
+    if(isset($saved) && $saved) {
+        echo '<h1>Site Config Saved!</h1>';
+    }
+?>
+
+
+<?php $form = ActiveForm::begin();
+    $form->action= yii\helpers\Url::to('update');;
+?>
+
+<?= $form->field($model, 'site_name') ?>
+<?= $form->field($model, 'phone') ?>
+<?= $form->field($model, 'address') ?>
+<?= $form->field($model, 'contact_email') ?>
+
+<div class="form-group">
+    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+</div>
+
+
+<?php ActiveForm::end(); ?>

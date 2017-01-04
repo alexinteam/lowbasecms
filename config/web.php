@@ -124,7 +124,32 @@ $config = [
                 'auth/<authclient:[\w\-]+>' => 'lowbase-user/auth/index',
                 'captcha' => 'lowbase-user/default/captcha',
                 //Поиск населенного пункта (города)
+                //Поиск населенного пункта (города)
                 'city/find' => 'lowbase-user/city/find',
+
+                // Clients
+                'client' => 'client/index',
+                //Взаимодействия с пользователем в панели админстрирования
+                'client/user/<action:(index|update|delete|view|rmv|multidelete|multiactive|multiblock)>' => 'client-user/user/<action>',
+                //Взаимодействия со странами в панели админстрирования
+                'client/country/<action:(index|create|update|delete|view|multidelete)>' => 'client-user/country/<action>',
+                //Взаимодействия с городами в панели администрирования
+                'client/city/<action:(index|create|update|delete|view|multidelete)>' => 'client-user/city/<action>',
+                //client с ролями и разделением прав доступа
+                'client/role/<action:(index|create|update|delete|view|multidelete)>' => 'client-user/auth-item/<action>',
+                //Работа с правилами контроля доступа
+                'client/rule/<action:(index|create|update|delete|view|multidelete)>' => 'client-user/auth-rule/<action>',
+                //Взаимодействия с шаблонами в панели администрирования
+                'client/template/<action:(index|create|update|delete|view|multidelete)>' => 'client-document/template/<action>',
+                //Взаимодействия с документами в панели администрирования !!! Правила для документов лучше не менять, т.к. на них завязан js скрипт компонента дерево документов
+                'admin/document/<action:(index|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field)>' => 'client-document/document/<action>',
+                //Взаимодействия с файловым менеджеромч
+                'elfinder/<action(connect|manager)>' => 'client-document/path/<action>',
+                //Взаимодействия с дополнительными полями шаблонов
+                'client/field/<action:(create|update|delete|multidelete)>' => 'client-document/field/<action>',
+                // sites configuration
+                'client/site/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field)>' => 'client-site/site/<action>',
+
 
                 //АДМИНИСТРАТИВНАЯ ЧАСТЬ САЙТА
                 'admin' => 'admin/index',
@@ -211,6 +236,9 @@ $config = [
         'admin' => [
             'class' => 'app\admin\controllers\AdminController',
         ],
+        'client' => [
+            'class' => 'app\client\controllers\ClientController',
+        ],
     ],
     'modules' => [
         'gridview' =>  [
@@ -235,9 +263,24 @@ $config = [
             'class' => 'app\admin\modules\site\Module',
         ],
 
+        'client-user' => [
+            'class' => 'app\client\modules\user\Module',
+        ],
+        'client-document' => [
+            'class' => 'app\client\modules\document\Module',
+        ],
+        'client-config' => [
+            'class' => 'app\client\modules\config\Module',
+        ],
+        'client-site' => [
+            'class' => 'app\client\modules\site\Module',
+        ],
+
+
         'sites' => [
             'class' => 'app\modules\sites\Module',
         ],
+
     ],
     'params' => $params,
 ];
