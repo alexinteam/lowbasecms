@@ -375,3 +375,7 @@ right:9px
 width:100%
 }
 }
+
+.form-horizontal {
+    padding: 0 10px;
+}
