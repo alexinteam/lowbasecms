@@ -51,14 +51,24 @@ class SiteController extends Controller
     }
 
     public function actionCreate() {
+        $siteSaved = false;
         if(Yii::$app->request->post()) {
             $model = new Site();
             $model->load(Yii::$app->request->post());
-            $model->save();
+            if($model->save()) {
+                $siteSaved = true;
+                $model = new Site();
+            }
+            return $this->render('create',['model' => $model, 'siteSaved' => $siteSaved]);
+        } else {
+            $model = new Site();
+            return $this->render('create',['model' => $model]);
         }
-        $model = new Site();
-        return $this->render('create',['model' => $model]);
+    }
 
+    public function actionDelete($id) {
+        Site::deleteAll('id =:id', [':id' =>$id]);
+        return $this->redirect('index');
     }
 
     /**

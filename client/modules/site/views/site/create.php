@@ -8,6 +8,10 @@ use app\models\entities\Site;
 
 <H1>Создание сайта</H1>
 <?php
+    if(isset($siteSaved) && $siteSaved) {
+        echo '<H1>Сайт создан</H1>';
+    }
+
     $form = ActiveForm::begin([
     'id' => 'login-form',
     'options' => ['class' => 'form-horizontal'],
