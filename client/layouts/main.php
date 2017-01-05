@@ -64,7 +64,13 @@ $this->themeAssets =[];
 
     <?= $this->render('_header'); ?>
 
-    <?= $content; ?>
+    <div class="container-2 page-content">
+        <div class="">
+            <div class="w-main left">
+                <?= $content; ?>
+            </div>
+        </div>
+    </div>
 
     <?= $this->render('_footer'); ?>
 

@@ -3,6 +3,12 @@ use app\models\Messages;
 use \yii\widgets\Menu;
 $me = Yii::$app->user->identity;
 $messages = Messages::getLatestUnreadMessages($me->getId());
+
+$siteConfigActivate = false;
+if($this->context->route == 'client-site/site/index' || $this->context->route == 'client-site/site/create') {
+    $siteConfigActivate = true;
+}
+
 ?>
 
 <header>
@@ -22,7 +28,7 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
                 <div class="panel-user">
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li>
-                            <a href="#">
+                            <a href="/client-user/user/list-messages">
                                 <div class="icon-email"></div>
                                 <?php if(count($messages)) {
                                     echo '<div class="push-email">'.count($messages).'</div>';
@@ -57,7 +63,7 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
                 ['label' => 'Новости', 'url' => ['/client']],
                 ['label' => 'Отзывы','url' => ['/client']],
                 ['label' => 'Бронирование столов', 'url' => ['/client']],
-                ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $this->context->route == ('client-site/site/index' || 'client-site/site/create')],
+                ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $siteConfigActivate],
                 ['label' => 'Дизайн', 'url' => ['/client']],
                 ['label' => 'Социальные сети', 'url' => ['/client']],
                 ['label' => 'События', 'url' => ['/client']],
@@ -79,7 +85,7 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
                             ['label' => 'Заказать отзывы','url' => ['#']]
                         ]]);
                 }
-                if($this->context->route == ('client-site/site/index' || 'client-site/site/create')) {
+                if($siteConfigActivate) {
                     echo Menu::widget([
                         'options' => ['class' => 'nav-panel nav-cabinet'],
                         'items' => [

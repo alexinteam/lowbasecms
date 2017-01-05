@@ -3,7 +3,7 @@
 ?>
 
 <form class="form-inline" action="/client-user/user/send-message" method="POST">
-    <select name="to" id="to">
+    <select class="form-control" name="to" id="to">
         <option selected="selected">Выберите пользователя</option>
         <?php
         foreach ($users as $user) {
@@ -15,6 +15,8 @@
         <input name="message" class="form-control" placeholder="Сообщение"  id="message-text" style="width: 500px;">
     </div>
     <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+    <br>
+    <br>
     <input type="submit" class="btn btn-default" value="Отправить сообщение">
 </form>
 <br>
