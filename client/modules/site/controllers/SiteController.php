@@ -13,6 +13,7 @@ use app\models\entities\Site;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use app\components\vhosts\Manager;
 
 
 class SiteController extends Controller
@@ -56,6 +57,8 @@ class SiteController extends Controller
             $model = new Site();
             $model->load(Yii::$app->request->post());
             if($model->save()) {
+                $vHostManager = new Manager();
+                $vHostManager->addVirtualHost($model->domain);
                 $siteSaved = true;
                 $model = new Site();
             }
