@@ -2,22 +2,25 @@
     use app\models\Messages;
 ?>
 
-<div class="form-inline" id="send-message">
-    <select class="selectpicker form-control" name="message_to" id="message_to">
+<form class="form-inline" action="/client-user/user/send-message" method="POST">
+    <select name="to" id="to">
+        <option selected="selected">Выберите пользователя</option>
         <?php
         foreach ($users as $user) {
-            echo '<option user_id="'.$user->id.'">'.$user->first_name.' '.$user->last_name.'</option>';
+            echo '<option user_id="'.$user->id.'" value="'.$user->id.'">'.$user->first_name.' '.$user->last_name.'</option>';
         }
         ?>
     </select>
     <div class="form-group" style="width: 500px;">
-        <input type="message" name="message" class="form-control" placeholder="Сообщение"  id="message-text" style="width: 500px;">
+        <input name="message" class="form-control" placeholder="Сообщение"  id="message-text" style="width: 500px;">
     </div>
-    <button id="submitSendMessage" class="btn btn-default">Отправить сообщение</button>
-</div>
+    <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+    <input type="submit" class="btn btn-default" value="Отправить сообщение">
+</form>
 <br>
 <form action="/client-user/user/read-all-messages" type="POST">
-    <button type="submit" id="readAllMessages" class="btn btn-default">Отметить все как прочитаные</button>
+    <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+    <input type="submit" class="btn btn-default" value="Отметить все как прочитаные">
 </form>
 
 <br>
@@ -37,46 +40,3 @@
         }
     ?>
 </div>
-
-
-<script>
-    $('document').ready(function() {
-        $(".dropdown-menu li a").click(function(){
-            $(this).parents(".btn-default").find('.selection').text($(this).text());
-            $(this).parents(".btn-default").find('.selection').val($(this).text());
-        });
-
-        $('#submitSendMessage').click(function() {
-            var $csrfToken = $('meta[name="csrf-token"]').attr("content");
-            $.post({
-                url: '/client-user/user/send-message',
-                data: {
-                    _csrf: $csrfToken,
-                    message: $('#message-text').val(),
-                    to: $('#message_to :selected').attr('user_id')
-                },
-                success: function (data) {
-                    console.log(data);
-                    if(data.status) {
-                        alert('send!');
-                    } else {
-                        alert('NOT send!');
-                    }
-                }
-            });
-        });
-
-//        $('#readAllMessages').click(function() {
-//            var $csrfToken = $('meta[name="csrf-token"]').attr("content");
-//            $.post({
-//                url: '/admin-user/user/read-all-messages',
-//                data: {
-//                    _csrf: $csrfToken
-//                },
-//                success: function () {
-//                    $('.list-group-item').removeClass('list-group-item-danger');
-//                }
-//            });
-//        });
-    });
-</script>

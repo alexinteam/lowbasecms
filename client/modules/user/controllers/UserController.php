@@ -22,9 +22,9 @@ class UserController extends \lowbase\user\controllers\UserController
     public function actionListMessages() {
         $me = Yii::$app->user->identity;
         $users = User::find()
-            ->where('`id` <> :id', [
-                ':id' => $me->id
-            ])
+//            ->where('`id` <> :id', [
+//                ':id' => $me->id
+//            ])
             ->all();
 
         $messages = Messages::find()
@@ -51,15 +51,8 @@ class UserController extends \lowbase\user\controllers\UserController
         $message->message_text = $request['message'];
         $message->from = $me->id;
         $message->status = $message::MESSAGE_UN_READ;
-        if($message->save()) {
-            return [
-                'status' => true
-            ];
-        }
-        return [
-            'status' => false,
-            'errors' => Json::encode($message->errors)
-        ];
+        $message->save();
+        return $this->redirect('/client-user/user/list-messages');
     }
 
     public function actionReadAllMessages() {

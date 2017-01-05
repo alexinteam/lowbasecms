@@ -50,6 +50,17 @@ class SiteController extends Controller
         }
     }
 
+    public function actionCreate() {
+        if(Yii::$app->request->post()) {
+            $model = new Site();
+            $model->load(Yii::$app->request->post());
+            $model->save();
+        }
+        $model = new Site();
+        return $this->render('create',['model' => $model]);
+
+    }
+
     /**
      * Finds the Site model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -1,6 +1,6 @@
 <?php
 use app\models\Messages;
-
+use \yii\widgets\Menu;
 $me = Yii::$app->user->identity;
 $messages = Messages::getLatestUnreadMessages($me->getId());
 ?>
@@ -50,27 +50,45 @@ $messages = Messages::getLatestUnreadMessages($me->getId());
             </div>
         </div>
         <img class="logo-cabinet" src="/css/clients/images/logo-header.svg" alt="">
-        <ul class="nav-panel nav-cabinet">
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="news.html">Новости</a></li>
-            <li class="active"><a href="rewiew-1.html">Отзывы</a></li>
-            <li><a href="reserve.html">Бронирование столов</a></li>
-            <li><a href="/client/site/index">Управление сайтом</a></li>
-            <li><a href="design.html">Дизайн</a></li>
-            <li><a href="social.html">Социальные сети</a></li>
-            <li><a href="event.html">События</a></li>
-            <li><a href="statistic.html">Статистика</a></li>
-        </ul>
+        <?=Menu::widget([
+            'options' => ['class' => 'nav-panel nav-cabinet'],
+            'items' => [
+                ['label' => 'Dashboard', 'url' => ['/client'], 'active' => $this->context->route == 'client/index'],
+                ['label' => 'Новости', 'url' => ['/client']],
+                ['label' => 'Отзывы','url' => ['/client']],
+                ['label' => 'Бронирование столов', 'url' => ['/client']],
+                ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $this->context->route == ('client-site/site/index' || 'client-site/site/create')],
+                ['label' => 'Дизайн', 'url' => ['/client']],
+                ['label' => 'Социальные сети', 'url' => ['/client']],
+                ['label' => 'События', 'url' => ['/client']],
+                ['label' => 'Статистика','url' => ['/client']],
+                ['label' => 'Сообщения', 'url' => ['/client-user/user/list-messages'], 'active' => $this->context->route == 'client-user/user/list-messages'],
+            ]]);
+        ?>
     </div>
     <div class="nav-sub">
         <div class="w-main">
-            <ul class="nav-panel nav-cabinet">
-                <li><a href="rewiew-1.html">Другие отзывы</a></li>
-                <li><a href="rewiew-2.html">Отзывы на сайте</a></li>
-                <li class="active"><a href="rewiew-3.html">Заказать отзывы</a></li>
-            </ul>
+            <?php
+                //submenus
+                if($this->context->route == 'client-reviews/reviews/list-reviews') {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Другие отзывы', 'url' => ['#']],
+                            ['label' => 'Отзывы на сайте', 'url' => ['#']],
+                            ['label' => 'Заказать отзывы','url' => ['#']]
+                        ]]);
+                }
+                if($this->context->route == ('client-site/site/index' || 'client-site/site/create')) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Создать сайт', 'url' => ['site/create'], 'active' => $this->context->route == 'client-site/site/create'],
+                            ['label' => 'Настройки', 'url' => ['site/index'], 'active' => $this->context->route == 'client-site/site/index']
+                        ]]);
+                }
+            ?>
             <a href="javascript:" class="pluso">+</a>
         </div>
-
     </div>
 </header>
