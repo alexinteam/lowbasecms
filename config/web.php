@@ -149,6 +149,14 @@ $config = [
                 'client/field/<action:(create|update|delete|multidelete)>' => 'client-document/field/<action>',
                 // sites configuration
                 'client/site/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field)>' => 'client-site/site/<action>',
+                // events
+                'client/events/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-events/events/<action>',
+                // news
+                'client/news/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-news/news/<action>',
+                // bookings
+                'client/bookings/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-bookings/bookings/<action>',
+                // rewiews
+                'client/rewiews/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|order|other|site)>' => 'client-rewiews/rewiews/<action>',
 
 
                 //АДМИНИСТРАТИВНАЯ ЧАСТЬ САЙТА
@@ -274,6 +282,18 @@ $config = [
         ],
         'client-site' => [
             'class' => 'app\client\modules\site\Module',
+        ],
+        'client-events' => [
+            'class' => 'app\client\modules\events\Module',
+        ],
+        'client-news' => [
+            'class' => 'app\client\modules\news\Module',
+        ],
+        'client-bookings' => [
+            'class' => 'app\client\modules\bookings\Module',
+        ],
+        'client-rewiews' => [
+            'class' => 'app\client\modules\rewiews\Module',
         ],
 
 

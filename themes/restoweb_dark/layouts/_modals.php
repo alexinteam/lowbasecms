@@ -9,20 +9,23 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Регистрация</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="content-input">
-                        <p><input class="form-input" type="text" placeholder="Введите ИНН Вашей организации"></p>
-                        <p><input class="form-input" type="text" placeholder="Введите название Вашей организации"></p>
-                        <p><input class="form-input" type="text" placeholder="Введите ФИО генерального директора"></p>
-                        <p><input class="form-input" type="tel" placeholder="Введите контактный телефон организации"></p>
-                        <p><input class="form-input" type="tel" placeholder="Введите дополнительные контакты"></p>
-                        <p><input class="form-input" type="mail" placeholder="Введите почту компании"></p>
+                <form action="/signup" method="post">
+                    <div class="modal-body">
+                        <div class="content-input">
+                            <p><input class="form-input" type="text" placeholder="Введите ИНН Вашей организации"></p>
+                            <p><input class="form-input" type="text" placeholder="Введите название Вашей организации"></p>
+                            <p><input class="form-input" type="text" placeholder="Введите ФИО генерального директора"></p>
+                            <p><input class="form-input" type="tel" placeholder="Введите контактный телефон организации"></p>
+                            <p><input class="form-input" type="tel" placeholder="Введите дополнительные контакты"></p>
+                            <p><input class="form-input" type="mail" placeholder="Введите почту компании"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <p><input class="input-submit" type="submit" value="Отправить"></p>
-                    <a href="javascript:" class="confidence"><span>Политика конфедициальности сайта</span></a>
-                </div>
+                    <div class="modal-footer">
+                        <p><input class="input-submit" type="submit" value="Отправить"></p>
+                        <a href="javascript:" class="confidence"><span>Политика конфедициальности сайта</span></a>
+                    </div>
+                    <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+                </form>
             </div>
 
         </div>

@@ -13,7 +13,7 @@ use lowbase\user\components\AuthChoice;
 use yii\widgets\ActiveForm;
 use app\client\assets\LoginAsset;
 
-$this->title = 'Вход в админ панель';
+$this->title = 'Вход в клиентскую часть';
 $this->params['breadcrumbs'][] = $this->title;
 LoginAsset::register($this);
 ?>
@@ -61,7 +61,7 @@ LoginAsset::register($this);
         </p>
 
         <div class="form-group">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-log-in"></i> Войти в админ панель', [
+            <?= Html::submitButton('<i class="glyphicon glyphicon-log-in"></i> Войти в клиентскую часть', [
                 'class' => 'btn btn-lg btn-primary',
                 'id' => 'login-btn',
                 'name' => 'login-button']) ?>

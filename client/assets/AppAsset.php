@@ -26,12 +26,13 @@ class AppAsset extends AssetBundle
         '/css/clients/cabinet.css'
     ];
     public $js = [
-        '/js/jquery.min.js',
+        //'/js/jquery.min.js',
         '/js/bootstrap.min.js',
         '/js/viewportchecker.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\web\JqueryAsset',
     ];
 }

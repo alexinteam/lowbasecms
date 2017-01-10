@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "74e7f2bddd32c481cc22f5b86b0178cf",
-    "content-hash": "7f1c96ba35ea0761929e8bc70a23e827",
+    "hash": "6e26f7ee47e7ddcaafae5f7683db2eb8",
+    "content-hash": "ca90d59b37147f13790c6afbcd7ab327",
     "packages": [
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -210,6 +210,53 @@
             ]
         },
         {
+            "name": "bower-asset/eonasdan-bootstrap-datetimepicker",
+            "version": "4.17.37",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
+                "reference": "fd8bd86dd78f789fb742798b7d49aba0a957af62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/fd8bd86dd78f789fb742798b7d49aba0a957af62",
+                "reference": "fd8bd86dd78f789fb742798b7d49aba0a957af62",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8.3",
+                "bower-asset/moment": ">=2.9.0",
+                "bower-asset/moment-timezone": ">=0.4.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "build/css/bootstrap-datetimepicker.min.css",
+                    "build/js/bootstrap-datetimepicker.min.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ],
+                "bower-asset-private": false
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "bootstrap3 datetimepicker",
+            "keywords": [
+                "bootstrap",
+                "datepicker",
+                "datetimepicker",
+                "moment",
+                "timepicker",
+                "twitter-bootstrap"
+            ]
+        },
+        {
             "name": "bower-asset/jquery",
             "version": "2.2.4",
             "source": {
@@ -310,6 +357,86 @@
                 "mask",
                 "plugins"
             ]
+        },
+        {
+            "name": "bower-asset/moment",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment.git",
+                "reference": "b8a297c1f99b3918f44dd9e3d7bd59379a876ba6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/b8a297c1f99b3918f44dd9e3d7bd59379a876ba6",
+                "reference": "b8a297c1f99b3918f44dd9e3d7bd59379a876ba6",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "moment.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "benchmarks",
+                    "bower_components",
+                    "meteor",
+                    "node_modules",
+                    "scripts",
+                    "tasks",
+                    "test",
+                    "component.json",
+                    "composer.json",
+                    "CONTRIBUTING.md",
+                    "ender.js",
+                    "Gruntfile.js",
+                    "Moment.js.nuspec",
+                    "package.js",
+                    "package.json",
+                    "ISSUE_TEMPLATE.md",
+                    "typing-tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-12-04 05:41:33"
+        },
+        {
+            "name": "bower-asset/moment-timezone",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment-timezone.git",
+                "reference": "2124976c909dd440bea4499c5fd9c8ca4da95fd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment-timezone/zipball/2124976c909dd440bea4499c5fd9c8ca4da95fd8",
+                "reference": "2124976c909dd440bea4499c5fd9c8ca4da95fd8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/moment": ">=2.6.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "builds/moment-timezone-with-data-2010-2020.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "tests",
+                    "tasks",
+                    "data/*/20*.json",
+                    "contributing.md",
+                    "Gruntfile.js",
+                    "index.js",
+                    "package.json"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Parse and display moments in any timezone.",
+            "time": "2016-12-23 18:33:58"
         },
         {
             "name": "bower-asset/punycode",
@@ -2347,6 +2474,55 @@
             "time": "2016-05-10 07:10:19"
         },
         {
+            "name": "nex/yii2-datepicker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RomeroMsk/yii2-datepicker.git",
+                "reference": "aa2286b1808f9e7b71e60322992d68b92b294eb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RomeroMsk/yii2-datepicker/zipball/aa2286b1808f9e7b71e60322992d68b92b294eb8",
+                "reference": "aa2286b1808f9e7b71e60322992d68b92b294eb8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/eonasdan-bootstrap-datetimepicker": "4.17.37",
+                "bower-asset/moment": "*",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "nex\\datepicker\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Ovchinnikov",
+                    "email": "nex.software@gmail.com",
+                    "homepage": "https://github.com/RomeroMsk"
+                }
+            ],
+            "description": "Bootstrap 3 Date/time picker widget for Yii2",
+            "homepage": "https://github.com/RomeroMsk/yii2-datepicker",
+            "keywords": [
+                "DateTimePicker",
+                "bootstrap",
+                "datepicker",
+                "extension",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-12-28 09:13:09"
+        },
+        {
             "name": "rmrevin/yii2-fontawesome",
             "version": "2.17.0",
             "source": {
@@ -2564,12 +2740,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "d9f914960a296b06a47ac0c9f3a027c6c4523f7b"
+                "reference": "7b45b6de0b8835d5b54dafbd4a3c5a0e11abc3d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/d9f914960a296b06a47ac0c9f3a027c6c4523f7b",
-                "reference": "d9f914960a296b06a47ac0c9f3a027c6c4523f7b",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/7b45b6de0b8835d5b54dafbd4a3c5a0e11abc3d6",
+                "reference": "7b45b6de0b8835d5b54dafbd4a3c5a0e11abc3d6",
                 "shasum": ""
             },
             "type": "component",
@@ -2602,7 +2778,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2016-12-07 07:02:09"
+            "time": "2017-01-04 13:58:37"
         },
         {
             "name": "yiisoft/yii2",

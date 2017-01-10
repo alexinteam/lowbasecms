@@ -2,6 +2,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use app\views\widgets\Editor;
+
 
 ?>
 <?php
@@ -17,8 +19,10 @@ use yii\helpers\Html;
 
 <?= $form->field($model, 'site_name') ?>
 <?= $form->field($model, 'phone') ?>
-<?= $form->field($model, 'address') ?>
+<?= $form->field($model, 'address')->widget(Editor::className());?>
 <?= $form->field($model, 'contact_email') ?>
+
+
 
 <div class="form-group">
     <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

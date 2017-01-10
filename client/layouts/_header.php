@@ -9,6 +9,26 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
     $siteConfigActivate = true;
 }
 
+$siteEventsActivate = false;
+if($this->context->route == 'client-events/events/create' || $this->context->route == 'client-events/events/archive') {
+    $siteEventsActivate = true;
+}
+
+$siteNewsActivate = false;
+if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive') {
+    $siteNewsActivate = true;
+}
+
+$siteBookingsActivate = false;
+if($this->context->route == 'client-bookings/bookings/index' || $this->context->route == 'client-bookings/bookings/archive') {
+    $siteBookingsActivate = true;
+}
+
+$siteRewiewsActivate = false;
+if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->route == 'client-rewiews/rewiews/other' || $this->context->route == 'client-rewiews/rewiews/site') {
+    $siteRewiewsActivate = true;
+}
+
 ?>
 
 <header>
@@ -16,7 +36,7 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
         <div class="row menu-up">
             <div class="col-md-4 col-xs-4 left">
                 <ul class="nav-panel nav-header">
-                    <li><a href="">Тарифы</a></li>
+                    <li><a href="/site/tarif">Тарифы</a></li>
                     <li class="active"><a href="">Дополнительно</a></li>
                     <li><a href="">Связь с нами</a></li>
                 </ul>
@@ -60,13 +80,13 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
             'options' => ['class' => 'nav-panel nav-cabinet'],
             'items' => [
                 ['label' => 'Dashboard', 'url' => ['/client'], 'active' => $this->context->route == 'client/index'],
-                ['label' => 'Новости', 'url' => ['/client']],
-                ['label' => 'Отзывы','url' => ['/client']],
-                ['label' => 'Бронирование столов', 'url' => ['/client']],
+                ['label' => 'Новости', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == $siteNewsActivate],
+                ['label' => 'Отзывы','url' => ['/client-rewiews/rewiews/other'], 'active' => $this->context->route == $siteRewiewsActivate],
+                ['label' => 'Бронирование столов', 'url' => ['/client-bookings/bookings/index'], 'active' => $this->context->route == $siteBookingsActivate],
                 ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $siteConfigActivate],
                 ['label' => 'Дизайн', 'url' => ['/client']],
                 ['label' => 'Социальные сети', 'url' => ['/client']],
-                ['label' => 'События', 'url' => ['/client']],
+                ['label' => 'События', 'url' => ['/client-events/events/create'], 'active' => $this->context->route == $siteEventsActivate],
                 ['label' => 'Статистика','url' => ['/client']],
                 ['label' => 'Сообщения', 'url' => ['/client-user/user/list-messages'], 'active' => $this->context->route == 'client-user/user/list-messages'],
             ]]);
@@ -89,10 +109,44 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
                     echo Menu::widget([
                         'options' => ['class' => 'nav-panel nav-cabinet'],
                         'items' => [
-                            ['label' => 'Создать сайт', 'url' => ['site/create'], 'active' => $this->context->route == 'client-site/site/create'],
-                            ['label' => 'Настройки', 'url' => ['site/index'], 'active' => $this->context->route == 'client-site/site/index']
+                            ['label' => 'Создать сайт', 'url' => ['/client-site/site/create'], 'active' => $this->context->route == 'client-site/site/create'],
+                            ['label' => 'Настройки', 'url' => ['/client-site/site/index'], 'active' => $this->context->route == 'client-site/site/index']
                         ]]);
                 }
+                if($siteEventsActivate) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Добавить событие', 'url' => ['/client-events/events/create'], 'active' => $this->context->route == 'client-events/events/create'],
+                            ['label' => 'Архив событий', 'url' => ['/client-events/events/archive'], 'active' => $this->context->route == 'client-events/events/archive']
+                        ]]);
+                }
+                if($siteNewsActivate) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Добавить новость', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == 'client-news/news/create'],
+                            ['label' => 'Архив новостей', 'url' => ['/client-news/news/archive'], 'active' => $this->context->route == 'client-news/news/archive']
+                        ]]);
+                }
+                if($siteBookingsActivate) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Активные брони', 'url' => ['/client-bookings/bookings/index'], 'active' => $this->context->route == 'client-bookings/bookings/index'],
+                            ['label' => 'Архив бронирований', 'url' => ['/client-bookings/bookings/archive'], 'active' => $this->context->route == 'client-bookings/bookings/archive']
+                        ]]);
+                }
+                if($siteRewiewsActivate) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Активные брони', 'url' => ['/client-rewiews/rewiews/other'], 'active' => $this->context->route == 'client-rewiews/rewiews/other'],
+                            ['label' => 'Архив бронирований', 'url' => ['/client-rewiews/rewiews/site'], 'active' => $this->context->route == 'client-rewiews/rewiews/site'],
+                            ['label' => 'Заказать отзывы', 'url' => ['/client-rewiews/rewiews/order'], 'active' => $this->context->route == 'client-rewiews/rewiews/order']
+                        ]]);
+                }
+
             ?>
             <a href="javascript:" class="pluso">+</a>
         </div>
