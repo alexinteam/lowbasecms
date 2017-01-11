@@ -19,6 +19,15 @@ class UserController extends \lowbase\user\controllers\UserController
 {
     public $layout = '@app/client/layouts/main.php';
 
+    public function init() {
+        if (isset(Yii::$app->user) && Yii::$app->user->can('client')) {
+            parent::init();
+        } else {
+            Yii::$app->response->redirect('/client')->send();
+            die();
+        }
+    }
+
     public function actionListMessages() {
         $me = Yii::$app->user->identity;
         $users = User::find()

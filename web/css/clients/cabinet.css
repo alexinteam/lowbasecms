@@ -126,6 +126,22 @@ a.btn-line {
     transition:.3s
 }
 
+button.btn-line {
+    font-size:20px;
+    border:1px solid #d08400;
+    padding:10px 48px;
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    color:#000;
+    font-weight:400;
+    display:table;
+    -webkit-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+    background-color: white;
+}
+
 .nav-sub {
 background-color:#293241
 }
@@ -428,6 +444,7 @@ width:100%
 }
 
 a.btn-center {margin:0 auto;}
+button.btn-center {margin:0 auto;}
 
 .row-editor {
     margin-top:30px
@@ -618,4 +635,7 @@ a.btn-center {margin:0 auto;}
 .date-news {
     font-size:15.17px;
     margin-bottom:0
+}
+#news-news_date {
+    height: 54px;
 }

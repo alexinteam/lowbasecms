@@ -9,14 +9,12 @@
 namespace app\client\modules\events\controllers;
 
 use Yii;
-use yii\web\Controller;
+use app\override\controllers\ClientController;
 
 
-class EventsController extends Controller
+class EventsController extends ClientController
 {
     public $layout = '@app/client/layouts/main.php';
-
-   
 
     public function actionCreate() {
         return $this->render('create');

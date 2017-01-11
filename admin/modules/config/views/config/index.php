@@ -14,7 +14,7 @@ use app\views\widgets\Editor;
 
 
 <?php $form = ActiveForm::begin();
-    $form->action= yii\helpers\Url::to('update');;
+    $form->action = yii\helpers\Url::to('update');
 ?>
 
 <?= $form->field($model, 'site_name') ?>

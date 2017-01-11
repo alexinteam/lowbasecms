@@ -43,38 +43,38 @@ $config = [
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
-                'vkontakte' => [
-                    // https://vk.com/editapp?act=create
-                    'class' => 'lowbase\user\components\oauth\VKontakte',
-                    'clientId' => '?',
-                    'clientSecret' => '?',
-                    'scope' => 'email'
-                ],
+//                'vkontakte' => [
+//                    // https://vk.com/editapp?act=create
+//                    'class' => 'lowbase\user\components\oauth\VKontakte',
+//                    'clientId' => '?',
+//                    'clientSecret' => '?',
+//                    'scope' => 'email'
+//                ],
 //                'google' => [
 //                    // https://console.developers.google.com/project
 //                    'class' => 'lowbase\user\components\oauth\Google',
 //                    'clientId' => '?',
 //                    'clientSecret' => '?',
 //                ],
-                'twitter' => [
-                    // https://dev.twitter.com/apps/new
-                    'class' => 'lowbase\user\components\oauth\Twitter',
-                    'consumerKey' => '?',
-                    'consumerSecret' => '?',
-                ],
-                'facebook' => [
-                    // https://developers.facebook.com/apps
-                    'class' => 'lowbase\user\components\oauth\Facebook',
-                    'clientId' => '?',
-                    'clientSecret' => '?',
-                ],
-                'github' => [
-                    // https://github.com/settings/applications/new
-                    'class' => 'lowbase\user\components\oauth\GitHub',
-                    'clientId' => '?',
-                    'clientSecret' => '?',
-                    'scope' => 'user:email, user'
-                ],
+//                'twitter' => [
+//                    // https://dev.twitter.com/apps/new
+//                    'class' => 'lowbase\user\components\oauth\Twitter',
+//                    'consumerKey' => '?',
+//                    'consumerSecret' => '?',
+//                ],
+//                'facebook' => [
+//                    // https://developers.facebook.com/apps
+//                    'class' => 'lowbase\user\components\oauth\Facebook',
+//                    'clientId' => '?',
+//                    'clientSecret' => '?',
+//                ],
+//                'github' => [
+//                    // https://github.com/settings/applications/new
+//                    'class' => 'lowbase\user\components\oauth\GitHub',
+//                    'clientId' => '?',
+//                    'clientSecret' => '?',
+//                    'scope' => 'user:email, user'
+//                ],
 //                'yandex' => [
 //                    // https://oauth.yandex.ru/client/new
 //                    'class' => 'lowbase\user\components\oauth\Yandex',
@@ -152,7 +152,7 @@ $config = [
                 // events
                 'client/events/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-events/events/<action>',
                 // news
-                'client/news/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-news/news/<action>',
+                'client/news/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive|add)>' => 'client-news/news/<action>',
                 // bookings
                 'client/bookings/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-bookings/bookings/<action>',
                 // rewiews

@@ -11,6 +11,11 @@ return [
     'viewPath' => '@lowbase/user/mail',
     'useFileTransport' => false,
     'transport' => [
-        'class' => 'Swift_MailTransport',
-    ]
+        'class' => 'Swift_SmtpTransport',
+        'host' => 'smtp.rambler.ru',
+        'username' => 'restoweb@rambler.ru',
+        'password' => 'Restoweb13579',
+        'port' => '465',
+        'encryption' => 'ssl',
+    ],
 ];

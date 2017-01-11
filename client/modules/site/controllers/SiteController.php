@@ -11,12 +11,12 @@ namespace app\client\modules\site\controllers;
 use app\admin\modules\site\models\SiteSearch;
 use app\models\entities\Site;
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use app\components\vhosts\Manager;
+use app\override\controllers\ClientController;
 
 
-class SiteController extends Controller
+class SiteController extends ClientController
 {
     public $layout = '@app/client/layouts/main.php';
 

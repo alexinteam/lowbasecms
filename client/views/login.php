@@ -37,7 +37,7 @@ LoginAsset::register($this);
             ]
         ]); ?>
 
-        <h2 class="form-signin-heading">Войти в админ панель</h2>
+        <h2 class="form-signin-heading">Войти в кабинет</h2>
 
         <?= $form->field($model, 'email')->textInput([
             'maxlength' => true,
@@ -52,7 +52,7 @@ LoginAsset::register($this);
         <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
         <p class="hint-block">
-            Если <?=Html::a('регистрировались', ['/signup'])?>
+            Если <?=Html::a('регистрировались', ['/?signup=signup'])?>
             ранее, но забыли пароль, нажмите
             <?=Html::a('восстановить пароль', ['#'], [
                 'data-toggle' => 'modal',
@@ -61,7 +61,7 @@ LoginAsset::register($this);
         </p>
 
         <div class="form-group">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-log-in"></i> Войти в клиентскую часть', [
+            <?= Html::submitButton('<i class="glyphicon glyphicon-log-in"></i> Войти в кабинет', [
                 'class' => 'btn btn-lg btn-primary',
                 'id' => 'login-btn',
                 'name' => 'login-button']) ?>

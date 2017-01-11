@@ -9,10 +9,10 @@
 namespace app\client\modules\rewiews\controllers;
 
 use Yii;
-use yii\web\Controller;
+use app\override\controllers\ClientController;
 
 
-class RewiewsController extends Controller
+class RewiewsController extends ClientController
 {
     public $layout = '@app/client/layouts/main.php';
 

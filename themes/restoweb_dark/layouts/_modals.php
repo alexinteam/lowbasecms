@@ -1,3 +1,21 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+
+use yii\helpers\Html;
+use lowbase\user\components\AuthChoice;
+use yii\captcha\Captcha;
+use yii\widgets\ActiveForm;
+use lowbase\user\UserAsset;
+use app\models\SignupForm;
+
+$this->title = Yii::t('user', 'Регистрация');
+$this->params['breadcrumbs'][] = $this->title;
+
+$model = new SignupForm();
+?>
+
 <!-- Modal -->
 <div class="modal fade" id="reg" role="dialog">
     <div class="modal-center">
@@ -9,23 +27,72 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Регистрация</h4>
                 </div>
-                <form action="/signup" method="post">
-                    <div class="modal-body">
-                        <div class="content-input">
-                            <p><input class="form-input" type="text" placeholder="Введите ИНН Вашей организации"></p>
-                            <p><input class="form-input" type="text" placeholder="Введите название Вашей организации"></p>
-                            <p><input class="form-input" type="text" placeholder="Введите ФИО генерального директора"></p>
-                            <p><input class="form-input" type="tel" placeholder="Введите контактный телефон организации"></p>
-                            <p><input class="form-input" type="tel" placeholder="Введите дополнительные контакты"></p>
-                            <p><input class="form-input" type="mail" placeholder="Введите почту компании"></p>
+
+                <?php $form = ActiveForm::begin([
+                    'id' => 'form-signup',
+                    'action' => ['user/signup'],
+                    'fieldConfig' => [
+                        'template' => "{input}\n{hint}\n{error}"
+                    ]
+                ]); ?>
+
+                <div class="modal-body">
+                    <div class="content-input">
+                        <?= $form->field($model, 'inn')->textInput([
+                            'class' => 'form-input',
+                            'placeholder' => 'Введите ИНН Вашей организации'
+                        ]);?>
+
+                        <?= $form->field($model, 'organization')->textInput([
+                            'class' => 'form-input',
+                            'placeholder' => 'Введите название Вашей организации'
+                        ]);?>
+
+                        <?= $form->field($model, 'first_name')->textInput([
+                            'class' => 'form-input',
+                            'maxlength' => true,
+                            'placeholder' => $model->getAttributeLabel('first_name')
+                        ]);?>
+
+                        <?= $form->field($model, 'last_name')->textInput([
+                            'class' => 'form-input',
+                            'maxlength' => true,
+                            'placeholder' => $model->getAttributeLabel('last_name')
+                        ]);?>
+
+                        <?= $form->field($model, 'email')->textInput([
+                            'class' => 'form-input',
+                            'maxlength' => true,
+                            'placeholder' => 'Введите почту компании'
+                        ]);?>
+
+                        <?= $form->field($model, 'password')->passwordInput([
+                            'class' => 'form-input',
+                            'maxlength' => true,
+                            'placeholder' => $model->getAttributeLabel('password')
+                        ]); ?>
+
+                        <?= $form->field($model, 'phone')->textInput([
+                            'class' => 'form-input',
+                            'placeholder' => 'Введите контактный телефон организации'
+                        ]);?>
+
+                        <?= $form->field($model, 'addtional_contact')->textInput([
+                            'class' => 'form-input',
+                            'placeholder' => 'Введите дополнительные контакты'
+                        ]);?>
+
+                        <div class="modal-footer">
+                            <?= Html::submitButton(Yii::t('user', 'Зарегистрироваться'), [
+                                'class' => 'input-submit',
+                                'name' => 'signup-button']) ?>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <p><input class="input-submit" type="submit" value="Отправить"></p>
-                        <a href="javascript:" class="confidence"><span>Политика конфедициальности сайта</span></a>
-                    </div>
-                    <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
-                </form>
+                </div>
+                <?php ActiveForm::end(); ?>
+                <div class="col-lg-6">
+                </div>
+                </div>
             </div>
 
         </div>

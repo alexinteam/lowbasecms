@@ -9,14 +9,12 @@
 namespace app\client\modules\bookings\controllers;
 
 use Yii;
-use yii\web\Controller;
+use app\override\controllers\ClientController;
 
 
-class BookingsController extends Controller
+class BookingsController extends ClientController
 {
     public $layout = '@app/client/layouts/main.php';
-
-   
 
     public function actionIndex() {
         return $this->render('index');

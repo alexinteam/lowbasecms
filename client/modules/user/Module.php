@@ -14,6 +14,8 @@ namespace app\client\modules\user;
  * Class Module
  * @package app\admin\user
  */
+
+use Yii;
 class Module extends \lowbase\user\Module
 {
     /**

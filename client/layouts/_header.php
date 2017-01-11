@@ -15,7 +15,7 @@ if($this->context->route == 'client-events/events/create' || $this->context->rou
 }
 
 $siteNewsActivate = false;
-if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive') {
+if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive' || $this->context->route == 'client-news/news/add') {
     $siteNewsActivate = true;
 }
 
@@ -39,10 +39,11 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                     <li><a href="/site/tarif">Тарифы</a></li>
                     <li class="active"><a href="">Дополнительно</a></li>
                     <li><a href="">Связь с нами</a></li>
+                    <li><a href="/logout">Выйти</a></li>
                 </ul>
             </div>
             <div class="col-md-4 col-xs-4">
-                <p class="select-text">Выберите Ваш ресторан: <a href="" class="restaurant-name">Parmezan</a></p>
+                <p class="select-text">Выберите Ваш ресторан: <a href="" class="restaurant-name"><?=$me->organization?></a></p>
             </div>
             <div class="col-md-4 col-xs-4 right">
                 <div class="panel-user">
@@ -125,7 +126,7 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                     echo Menu::widget([
                         'options' => ['class' => 'nav-panel nav-cabinet'],
                         'items' => [
-                            ['label' => 'Добавить новость', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == 'client-news/news/create'],
+                            ['label' => 'Добавить новость', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/add'],
                             ['label' => 'Архив новостей', 'url' => ['/client-news/news/archive'], 'active' => $this->context->route == 'client-news/news/archive']
                         ]]);
                 }
