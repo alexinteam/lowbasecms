@@ -176,7 +176,7 @@ class UserController extends Controller
         if ($user_id = $model->confirmEmail()) {
             // Авторизируемся при успешном подтверждении
             $authAssignment = new AuthAssignment();
-            $authAssignment->item_name = 'clientuser';
+            $authAssignment->item_name = 'client';
             $authAssignment->user_id = $user_id;
             $authAssignment->save();
             Yii::$app->user->login(User::findIdentity($user_id));
