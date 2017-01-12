@@ -35,11 +35,32 @@ class NewsController extends ClientController
     }
 
     public function actionArchive($year = null, $month = null, $limit = 10) {
+        $qry = News::find()->limit($limit);
+        if(isset($year) && isset($month)) {
+            if($month == 12) {
+                $qry->where('news_date BETWEEN :startdate AND :endDate', [
+                    ':startdate' => (string)((int)$year.'-'.(int)$month.'-01'),
+                    ':endDate' => (string)(((int)$year+1).'-01-01')
+                ]);
+            } else {
+                $qry->where('news_date BETWEEN :startdate AND :endDate', [
+                    ':startdate' => (string)((int)$year.'-'.(int)$month.'-01'),
+                    ':endDate' => (string)((int)$year.'-'.((int)$month+1).'-01')
+                ]);
+            }
+        } elseif (isset($year)) {
+            $qry->where('news_date BETWEEN :startdate AND :endDate', [
+                ':startdate' => (int)$year.'-01-01',
+                ':endDate' => (string)((int)$year+1).'-01-01'
+            ]);
+        }
+        $news = $qry->all();
 
-        $news = News::find()->limit($limit)->all();
+        $allYears = News::find()->select('distinct YEAR (news_date) as year')->orderBy('news_date',SORT_ASC)->asArray()->all();
 
         return $this->render('archive', [
-            'news' => $news
+            'news' => $news,
+            'allYears' => $allYears
         ]);
     }
 

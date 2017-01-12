@@ -9,11 +9,6 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
     $siteConfigActivate = true;
 }
 
-$siteEventsActivate = false;
-if($this->context->route == 'client-events/events/create' || $this->context->route == 'client-events/events/archive') {
-    $siteEventsActivate = true;
-}
-
 $siteNewsActivate = false;
 if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive' || $this->context->route == 'client-news/news/add') {
     $siteNewsActivate = true;
@@ -81,13 +76,12 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
             'options' => ['class' => 'nav-panel nav-cabinet'],
             'items' => [
                 ['label' => 'Dashboard', 'url' => ['/client'], 'active' => $this->context->route == 'client/index'],
-                ['label' => 'Новости', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == $siteNewsActivate],
+                ['label' => 'Новости и События', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == $siteNewsActivate],
                 ['label' => 'Отзывы','url' => ['/client-rewiews/rewiews/other'], 'active' => $this->context->route == $siteRewiewsActivate],
                 ['label' => 'Бронирование столов', 'url' => ['/client-bookings/bookings/index'], 'active' => $this->context->route == $siteBookingsActivate],
                 ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $siteConfigActivate],
                 ['label' => 'Дизайн', 'url' => ['/client']],
                 ['label' => 'Социальные сети', 'url' => ['/client']],
-                ['label' => 'События', 'url' => ['/client-events/events/create'], 'active' => $this->context->route == $siteEventsActivate],
                 ['label' => 'Статистика','url' => ['/client']],
                 ['label' => 'Сообщения', 'url' => ['/client-user/user/list-messages'], 'active' => $this->context->route == 'client-user/user/list-messages'],
             ]]);
@@ -112,14 +106,6 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                         'items' => [
                             ['label' => 'Создать сайт', 'url' => ['/client-site/site/create'], 'active' => $this->context->route == 'client-site/site/create'],
                             ['label' => 'Настройки', 'url' => ['/client-site/site/index'], 'active' => $this->context->route == 'client-site/site/index']
-                        ]]);
-                }
-                if($siteEventsActivate) {
-                    echo Menu::widget([
-                        'options' => ['class' => 'nav-panel nav-cabinet'],
-                        'items' => [
-                            ['label' => 'Добавить событие', 'url' => ['/client-events/events/create'], 'active' => $this->context->route == 'client-events/events/create'],
-                            ['label' => 'Архив событий', 'url' => ['/client-events/events/archive'], 'active' => $this->context->route == 'client-events/events/archive']
                         ]]);
                 }
                 if($siteNewsActivate) {
