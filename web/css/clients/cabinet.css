@@ -599,7 +599,7 @@ button.btn-center {margin:0 auto;}
 }
 
 .table-hover:hover .link-review,.table-hover:active .link-review {
-    background-image:url(../images/link.png);
+    background-image:url(/css/clients/images/link.png);
     background-color:#e6e4e8;
     background-position:center;
     background-repeat:no-repeat;
@@ -638,4 +638,35 @@ button.btn-center {margin:0 auto;}
 }
 #news-news_date {
     height: 54px;
+}
+
+.abs-item {
+    position:absolute;
+    top:10px
+}
+
+.close-news {
+    font-size:43px;
+    right:8px;
+    color:#000;
+    font-weight:400
+}
+
+.close-news:hover {
+    color:#315996
+}
+
+.edit-news {
+    font-size:30px;
+    width:15px;
+    height:14px;
+    background-image:url(/css/clients/images/sprite-social.png);
+    display:block;
+    right:39px;
+    background-position:15px -4px;
+    top:11px
+}
+
+.edit-news:hover {
+    background-position:15px -25px
 }
