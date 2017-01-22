@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use app\models\entities\Restoraunts;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\base\NotSupportedException;
@@ -39,7 +40,6 @@ use yii\db\ActiveRecord;
  * @property string $updated_at
  * @property string $login_at
  * @property string $inn
- * @property string $organization
  * @property string $addtional_contact
  *
  * @property AuthAssignment[] $authAssignments
@@ -124,7 +124,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['first_name', 'inn', 'organization'], 'required'],   // Имя обязательно для заполнения
+            [['first_name', 'inn'], 'required'],   // Имя обязательно для заполнения
             [['sex', 'country_id', 'city_id', 'status'], 'integer'],    // Только целочисленные значения
             [['birthday', 'login_at', 'addtional_contact'], 'safe'], // Безопасные аттрибуты (любые значения) - преобразуются автоматически
             [['first_name', 'last_name', 'email', 'phone'], 'string', 'max' => 100],    // Строки до 100 символов
@@ -487,5 +487,9 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return $users;
+    }
+
+    public function getFeaturedRestoraunt() {
+        return Restoraunts::find()->where('lb_user_id =:user_id AND lb_featured = 1', [':user_id' => Yii::$app->user->identity->id])->one();
     }
 }

@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+.editor-form__buttons {
+position:absolute;
+border-bottom:1px solid #d4d4d4;
+top:0;
+width:100%;
+left:0;
+right:0;
+padding:1px 5px 0
+}
+
+.btn-editor {
+height:38px;
+width:38px;
+border:none;
+float:left;
+background-repeat:no-repeat;
+background-position:center center;
+background-color:transparent
+}
+
+.btn-editor:focus {
+outline:none
+}
+
+.btn-editor:hover,.btn-editor:active,.btn-editor:focus {
+background-color:#f2f2f2
+}
+
+.btn-editor.bold {
+background-image:url(../images/editor/bold.svg)
+}
+
+.btn-editor.italic {
+background-image:url(../images/editor/italic.svg)
+}
+
+.btn-editor.strike {
+background-image:url(../images/editor/strike.svg)
+}
+
+.btn-editor.underlined {
+background-image:url(../images/editor/underlined.svg);
+background-size:17px
+}
+
+.btn-editor.font {
+background-image:url(../images/editor/font.svg);
+background-size:21px
+}
+
+.btn-editor.drop {
+background-image:url(../images/editor/drop.svg);
+background-size:17px
+}
+
+.btn-editor.heading {
+background-image:url(../images/editor/heading.svg)
+}
+
+.btn-editor.smiles {
+background-image:url(../images/editor/smiles.svg);
+background-size:20px
+}
+
+.btn-editor.paragraph {
+background-image:url(../images/editor/paragraph.svg);
+background-size:18px
+}
+
+.btn-editor.side-left {
+background-image:url(../images/editor/left-alignment.svg);
+background-size:18px
+}
+
+.btn-editor.side-center {
+background-image:url(../images/editor/center-alignment.svg);
+background-size:18px
+}
+
+.btn-editor.side-right {
+background-image:url(../images/editor/right-alignment.svg);
+background-size:18px
+}
+
+.btn-editor.quote {
+background-image:url(../images/editor/quote.svg)
+}
+
+.btn-editor.numbers {
+background-image:url(../images/editor/numbers.svg)
+}
+
+.btn-editor.list {
+background-image:url(../images/editor/list.svg)
+}
+
+.btn-editor.link {
+background-image:url(../images/editor/link.svg)
+}
+
+.btn-editor.images {
+background-image:url(../images/editor/images.svg);
+background-size:18px
+}
+
+.btn-editor.video {
+background-image:url(../images/editor/video.svg);
+background-size:18px
+}
+
+.btn-editor.document {
+background-image:url(../images/editor/document.svg);
+background-size:18px
+}
+
+.btn-editor.calendar {
+background-image:url(../images/editor/calendar.svg);
+background-size:18px
+}
+
+.btn-editor.resize {
+background-image:url(../images/editor/resize.svg);
+background-size:17px
+}
+
+.btn-editor.code {
+background-image:url(../images/editor/code.svg);
+background-size:21px
+}
+
+.btn-editor.undo {
+background-image:url(../images/editor/undo.svg);
+background-size:20px
+}
+
+.btn-editor.redo {
+background-image:url(../images/editor/redo.svg);
+background-size:20px
+}

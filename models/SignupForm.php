@@ -21,6 +21,7 @@ class SignupForm extends User
 {
     public $password;   // Пароль
     public $captcha;    // Капча
+    public $organization;
 
     /**
      * Правила валидации
@@ -101,6 +102,8 @@ class SignupForm extends User
 
         $restoraunts = new Restoraunts();
         $restoraunts->lb_restoraunts_name = $this->organization;
+        $restoraunts->lb_user_id = $this->id;
+        $restoraunts->lb_featured = 1;
         $restoraunts->save();
 
     }

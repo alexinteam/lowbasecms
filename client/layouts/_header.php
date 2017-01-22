@@ -1,7 +1,10 @@
 <?php
 use app\models\Messages;
 use \yii\widgets\Menu;
+use app\models\User;
 $me = Yii::$app->user->identity;
+
+
 $messages = Messages::getLatestUnreadMessages($me->getId());
 
 $siteConfigActivate = false;
@@ -24,6 +27,11 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
     $siteRewiewsActivate = true;
 }
 
+$siteSocialActivate = false;
+if($this->context->route == 'client-social/social/vk' || $this->context->route == 'client-social/social/instagram' || $this->context->route == 'client-social/social/facebook') {
+    $siteSocialActivate = true;
+}
+
 ?>
 
 <header>
@@ -38,7 +46,12 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                 </ul>
             </div>
             <div class="col-md-4 col-xs-4">
-                <p class="select-text">Выберите Ваш ресторан: <a href="" class="restaurant-name"><?=$me->organization?></a></p>
+                <?php
+                    $rest = User::getFeaturedRestoraunt();
+                    if(count($rest) == 1) {
+                        echo '<p class="select-text">Выберите Ваш ресторан: <a href="" class="restaurant-name">'.$rest->lb_restoraunts_name.'</a></p>';
+                    }
+                ?>
             </div>
             <div class="col-md-4 col-xs-4 right">
                 <div class="panel-user">
@@ -81,7 +94,7 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                 ['label' => 'Бронирование столов', 'url' => ['/client-bookings/bookings/index'], 'active' => $this->context->route == $siteBookingsActivate],
                 ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $siteConfigActivate],
                 ['label' => 'Дизайн', 'url' => ['/client']],
-                ['label' => 'Социальные сети', 'url' => ['/client']],
+                ['label' => 'Социальные сети', 'url' => ['/client-social/social/vk'], 'active' => $this->context->route == $siteSocialActivate],
                 ['label' => 'Статистика','url' => ['/client']],
                 ['label' => 'Сообщения', 'url' => ['/client-user/user/list-messages'], 'active' => $this->context->route == 'client-user/user/list-messages'],
             ]]);
@@ -131,6 +144,16 @@ if($this->context->route == 'client-rewiews/rewiews/order' || $this->context->ro
                             ['label' => 'Активные брони', 'url' => ['/client-rewiews/rewiews/other'], 'active' => $this->context->route == 'client-rewiews/rewiews/other'],
                             ['label' => 'Архив бронирований', 'url' => ['/client-rewiews/rewiews/site'], 'active' => $this->context->route == 'client-rewiews/rewiews/site'],
                             ['label' => 'Заказать отзывы', 'url' => ['/client-rewiews/rewiews/order'], 'active' => $this->context->route == 'client-rewiews/rewiews/order']
+                        ]]);
+                }
+
+                if($siteSocialActivate) {
+                    echo Menu::widget([
+                        'options' => ['class' => 'nav-panel nav-cabinet'],
+                        'items' => [
+                            ['label' => 'Вконтакте', 'url' => ['/client-social/social/vk'], 'active' => $this->context->route == 'client-social/social/vk'],
+                            ['label' => 'Facebook', 'url' => ['/client-social/social/instagram'], 'active' => $this->context->route == 'client-social/social/instagram'],
+                            ['label' => 'Instagram', 'url' => ['/client-social/social/facebook'], 'active' => $this->context->route == 'client-social/social/facebook']
                         ]]);
                 }
 

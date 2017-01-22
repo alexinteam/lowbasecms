@@ -9,6 +9,8 @@ use Yii;
  *
  * @property integer $lb_restoraunts_id
  * @property string $lb_restoraunts_name
+ * @property string $lb_user_id
+ * @property integer $lb_featured
  */
 class Restoraunts extends \yii\db\ActiveRecord
 {

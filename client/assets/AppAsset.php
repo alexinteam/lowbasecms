@@ -23,12 +23,14 @@ class AppAsset extends AssetBundle
         '/css/clients/bootstrap.min.css',
         '/css/clients/main.css',
         '/css/clients/bg-menu.css',
-        '/css/clients/cabinet.css'
+        '/css/clients/cabinet.css',
+        '/css/clients/form-editor.css'
     ];
     public $js = [
         //'/js/jquery.min.js',
         '/js/bootstrap.min.js',
         '/js/viewportchecker.js',
+        '/js/highcharts.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
