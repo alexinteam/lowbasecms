@@ -18,11 +18,25 @@ class SitesUrlRule extends UrlRule
 
     public function parseRequest($manager, $request)
     {
+        // get by site domain
         $host = $_SERVER['HTTP_HOST'];
-        $site = Site::find()->where(['domain' => $host])->one();
+        $siteByDomain = Site::find()->where(['domain' => $host])->one();
 
-        if($site){
-            return ['sites/site/index', ['siteId' => $site->id]];
+        if($siteByDomain){
+            return ['sites/site/index', ['siteId' => $siteByDomain->id]];
+        }
+
+        // get by site name
+        $pathInfo = $request->getPathInfo();
+        $parts = explode('/',$pathInfo);
+
+        if($parts[0] == 'sites' && isset($parts[1])){
+            $siteName = $parts[1];
+            $siteByName = Site::find()->where(['name' => $siteName])->one();
+
+            if($siteByName){
+                return ['sites/site/index', ['siteId' => $siteByName->id]];
+            }
         }
 
         return false;
