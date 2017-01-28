@@ -8,7 +8,7 @@ use yii\base\View;
 
 class Manager extends Component{
 
-    public $baseName = 'lowbase_';
+    public $baseName = 'restoweb_';
 
     public function addVirtualHost($domain){
         $documentRoot = Yii::getAlias('@app/web');
