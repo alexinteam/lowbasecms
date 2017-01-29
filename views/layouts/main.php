@@ -31,35 +31,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-//    NavBar::begin([
-//        'brandLabel' => 'LowBase',
-//        'brandUrl' => Yii::$app->homeUrl,
-//        'options' => [
-//            'class' => 'navbar-default navbar-fixed-top',
-//        ],
-//    ]);
-//    if (Yii::$app->user->isGuest) {
-//        $items = [
-//            ['label' => 'Войти', 'url' => ['/login']],
-//            ['label' => 'Зарегистрироваться', 'url' => ['/signup']],
-//        ];
-//    } else {
-//        $items = [
-//            ['label' => 'В личный кабинет', 'url' => ['/profile']],
-//        ];
-//        if (Yii::$app->user->can('admin')) {
-//            $items[] = ['label' => 'В админ панель', 'url' => ['/admin']];
-//        }
-//        $items[] = ['label' => 'Выйти', 'url' => ['/logout']];
-//    }
-//    echo Nav::widget([
-//        'options' => ['class' => 'navbar-nav navbar-right'],
-//        'items' => $items
-//    ]);
-//    NavBar::end();
-    ?>
-
     <div class="containermain">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

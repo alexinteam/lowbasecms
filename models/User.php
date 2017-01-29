@@ -492,4 +492,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function getFeaturedRestoraunt() {
         return Restoraunts::find()->where('lb_user_id =:user_id AND lb_featured = 1', [':user_id' => Yii::$app->user->identity->id])->one();
     }
+
+    public function getOtherRestoraunt() {
+        return Restoraunts::find()->where('lb_user_id =:user_id AND lb_featured <> 1', [':user_id' => Yii::$app->user->identity->id])->all();
+    }
 }

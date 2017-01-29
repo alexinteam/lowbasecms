@@ -30,14 +30,14 @@ class SignupForm extends User
     public function rules()
     {
         return [
-            [['first_name', 'password', 'email', 'inn', 'organization'], 'required'],   // Обязательные поля
+            [['first_name', 'password', 'email'], 'required'],   // Обязательные поля
             ['email', 'unique', 'targetClass' => self::className(),
                 'message' => Yii::t('user', 'Данный Email уже зарегистрирован.')],  // Электронная почта должна быть уникальна
             ['email', 'email'], // Электронная почта
            // ['captcha', 'captcha', 'captchaAction' => 'lowbase-user/default/captcha'], // Проверка капчи
             [['password'], 'string', 'min' => 4],   // Пароль минимум 4 символа
             [['sex', 'country_id', 'city_id', 'status'], 'integer'],    // Целочисленные значения
-            [['birthday', 'login_at', 'addtional_contact'], 'safe'], // Безопасные аттрибуты
+            [['birthday', 'login_at'], 'safe'], // Безопасные аттрибуты
             [['first_name', 'last_name', 'email', 'phone'], 'string', 'max' => 100],    // Строка (максимум 100 символов)
             [['auth_key'], 'string', 'max' => 32],  // Строка (максимум 32 символа)
             [['ip'], 'string', 'max' => 20],    // Строка (максимуму 20 символов)
@@ -81,6 +81,21 @@ class SignupForm extends User
         return false;
     }
 
+    public function beforeValidate()
+    {
+        if (!Yii::$app->request->post('inn')) {
+           return false;
+        }
+        if(!Yii::$app->request->post('addtional_contact')) {
+           return false;
+        }
+        if(!Yii::$app->request->post('organization')) {
+            return false;
+        }
+        return true;
+    }
+
+
     /**
      * Отправка письма согласно шаблону "confirmEmail"
      * после регистрации
@@ -101,9 +116,12 @@ class SignupForm extends User
             ->send();
 
         $restoraunts = new Restoraunts();
-        $restoraunts->lb_restoraunts_name = $this->organization;
+        $restoraunts->lb_restoraunts_name = Yii::$app->request->post('organization');
+        $restoraunts->lb_inn = Yii::$app->request->post('inn');
+        $restoraunts->lb_additional_contact = Yii::$app->request->post('addtional_contact');
         $restoraunts->lb_user_id = $this->id;
         $restoraunts->lb_featured = 1;
+        $restoraunts->lb_created_at = (new \DateTime())->format('Y-m-d H:i:s');
         $restoraunts->save();
 
     }

@@ -2,17 +2,17 @@
 
 use yii\db\Migration;
 
-class m170122_213852_featured_rest extends Migration
+class m170129_194932_add_created_rest extends Migration
 {
     public function up()
     {
-        $sql = 'ALTER TABLE lb_restoraunts` ADD COLUMN `lb_featured` ENUM(\'1\', \'0\') NULL DEFAULT \'0\' AFTER `lb_total_tables`;';
+        $sql = 'ALTER TABLE `lb_restoraunts` ADD COLUMN `lb_created_at` DATETIME NOT NULL AFTER `lb_featured`;';
         $this->execute($sql);
     }
 
     public function down()
     {
-        echo "m170122_213852_featured_rest cannot be reverted.\n";
+        echo "m170129_194932_add_created_rest cannot be reverted.\n";
 
         return false;
     }

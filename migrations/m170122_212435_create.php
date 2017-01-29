@@ -6,7 +6,7 @@ class m170122_212435_create extends Migration
 {
     public function up()
     {
-        $sql = 'ALTER TABLE `lowbasecms`.`lb_restoraunts` ADD COLUMN `lb_total_tables` INT NULL AFTER `lb_user_id`;';
+        $sql = 'ALTER TABLE `lb_restoraunts` ADD COLUMN `lb_total_tables` INT NULL AFTER `lb_user_id`;';
         $this->execute($sql);
     }
 

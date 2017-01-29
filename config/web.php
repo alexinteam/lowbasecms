@@ -198,6 +198,8 @@ $config = [
                 //Стартовая страница сайта
                 '/' => 'site/index',
 
+
+               'restoraunt/<action:(add)>' => 'restoraunt/<action>',
                 // Sites
 
             ],
@@ -249,7 +251,8 @@ $config = [
         ],
         'client' => [
             'class' => 'app\client\controllers\ClientController',
-        ],
+        ]
+
     ],
     'modules' => [
         'gridview' =>  [

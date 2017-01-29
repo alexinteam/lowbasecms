@@ -38,15 +38,23 @@ $model = new SignupForm();
 
                 <div class="modal-body">
                     <div class="content-input">
-                        <?= $form->field($model, 'inn')->textInput([
-                            'class' => 'form-input',
-                            'placeholder' => 'Введите ИНН Вашей организации'
-                        ]);?>
+                        <div class="form-group field-signupform-first_name required">
+                            <?= Html::textInput("inn", '', [
+                                'maxlength' => 45,
+                                'class' => 'form-input',
+                                'type' => 'text',
+                                'placeholder' => 'Введите ИНН Вашей организации'
+                            ]) ?>
+                        </div>
 
-                        <?= $form->field($model, 'organization')->textInput([
-                            'class' => 'form-input',
-                            'placeholder' => 'Введите название Вашей организации'
-                        ]);?>
+                        <div class="form-group field-signupform-first_name required">
+                            <?= Html::textInput("organization", '', [
+                                'maxlength' => 255,
+                                'class' => 'form-input',
+                                'type' => 'text',
+                                'placeholder' => 'Введите название Вашей организации'
+                            ]) ?>
+                        </div>
 
                         <?= $form->field($model, 'first_name')->textInput([
                             'class' => 'form-input',
@@ -77,10 +85,14 @@ $model = new SignupForm();
                             'placeholder' => 'Введите контактный телефон организации'
                         ]);?>
 
-                        <?= $form->field($model, 'addtional_contact')->textInput([
-                            'class' => 'form-input',
-                            'placeholder' => 'Введите дополнительные контакты'
-                        ]);?>
+                        <div class="form-group field-signupform-first_name required">
+                            <?= Html::textInput("addtional_contact", '', [
+                                'maxlength' => 255,
+                                'class' => 'form-input',
+                                'type' => 'text',
+                                'placeholder' => 'Введите дополнительные контакты'
+                            ]) ?>
+                        </div>
 
                         <div class="modal-footer">
                             <?= Html::submitButton(Yii::t('user', 'Зарегистрироваться'), [

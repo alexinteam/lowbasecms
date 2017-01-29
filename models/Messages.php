@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use lowbase\user\models\User;
+use app\models\User;
 
 /**
  * This is the model class for table "lb_messages".

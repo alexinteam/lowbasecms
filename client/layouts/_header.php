@@ -1,8 +1,10 @@
 <?php
 use app\models\Messages;
 use \yii\widgets\Menu;
-use app\models\User;
+use app\models\User as UserModel;
 $me = Yii::$app->user->identity;
+$featuredRestoraunt = UserModel::getFeaturedRestoraunt();
+$otherRestoraunts = UserModel::getOtherRestoraunt();
 
 
 $messages = Messages::getLatestUnreadMessages($me->getId());
@@ -46,12 +48,16 @@ if($this->context->route == 'client-social/social/vk' || $this->context->route =
                 </ul>
             </div>
             <div class="col-md-4 col-xs-4">
-                <?php
-                    $rest = User::getFeaturedRestoraunt();
-                    if(count($rest) == 1) {
-                        echo '<p class="select-text">Выберите Ваш ресторан: <a href="" class="restaurant-name">'.$rest->lb_restoraunts_name.'</a></p>';
-                    }
-                ?>
+                <p class="select-text">Выберите Ваш ресторан:
+                    <select id="restoraunts-switch" class="form-control select-block" aria-required="true" aria-invalid="true">
+                        <option value=""><?= $featuredRestoraunt->lb_restoraunts_name?></option>
+                        <?php
+                            foreach ($otherRestoraunts as $otherRestoraunt) {
+                                echo '<option value="'.$otherRestoraunt->lb_restoraunts_id.'">'.$otherRestoraunt->lb_restoraunts_name.'</option>';
+                            }
+                        ?>
+                    </select>
+                </p>
             </div>
             <div class="col-md-4 col-xs-4 right">
                 <div class="panel-user">

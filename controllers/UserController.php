@@ -100,15 +100,16 @@ class UserController extends Controller
             return $this->goBack(['signup']);
         }
 
-        if (method_exists($this->module, 'getCustomView')) {
-            return $this->render($this->module->getCustomView('signup', 'signup'), [
-                'model' => $model,
-            ]);
-        } else {
-            return $this->render('signup', [
-                'model' => $model,
-            ]);
-        }
+        return $this->redirect('/');
+//        if (method_exists($this->module, 'getCustomView')) {
+//            return $this->render($this->module->getCustomView('signup', 'signup'), [
+//                'model' => $model,
+//            ]);
+//        } else {
+//            return $this->render('signup', [
+//                'model' => $model,
+//            ]);
+//        }
     }
 
     /**

@@ -1225,3 +1225,38 @@ display:block
 .info-href,.info-href:hover {
 color:#FFF
 }
+
+
+
+
+
+
+
+
+button.btn-line {
+	font-size:20px;
+	border:1px solid #d08400;
+	padding:10px 48px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#000;
+	font-weight:400;
+	display:table;
+	-webkit-transition:.3s;
+	-o-transition:.3s;
+	transition:.3s;
+	background-color: white;
+}
+
+button.btn-line:hover,a.btn-line:active {
+	background-color:#d08400;
+	color:#fff;
+	-webkit-transition:.3s;
+	-o-transition:.3s;
+	transition:.3s
+}
+
+.block-editor + button.btn-line {
+	margin-bottom:20px
+}
