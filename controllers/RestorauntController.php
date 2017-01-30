@@ -54,5 +54,46 @@ class RestorauntController extends Controller
 
     }
 
+    public function actionRemove()
+    {
+        $restoraunt_id = Yii::$app->request->post('restoraunt_id');
+        if(!$restoraunt_id) {
+            return null;
+        }
+        Restoraunts::deleteAll('lb_restoraunts_id =:restoraunt_id',[
+            ':restoraunt_id' => $restoraunt_id
+        ]);
+        return true;
+
+    }
+
+    public function actionEditSocial()
+    {
+        $restoraunt_id = Yii::$app->request->post('restoraunt_id');
+        $sitename = Yii::$app->request->post('sitename');
+        $vkLink = Yii::$app->request->post('vkLink');
+        $fbLink = Yii::$app->request->post('fbLink');
+        $instaLink = Yii::$app->request->post('instaLink');
+        $kitchen = Yii::$app->request->post('kitchen');
+        $bill = Yii::$app->request->post('bill');
+        $totalTables = Yii::$app->request->post('totalTables');
+
+        if($totalTables) {
+            Restoraunts::updateAll(['lb_total_tables' => (int)$totalTables], 'lb_restoraunts_id = :restoraunt_id', [':restoraunt_id' => $restoraunt_id]);
+        }
+
+        $model = RestorauntOptions::find()->where('restoraunt_id = :restoraunt_id', [':restoraunt_id' => $restoraunt_id])->one();
+        if($model) {
+            $model->restoraunt_vk_link = $vkLink;
+            $model->restoraunt_fb_link = $fbLink;
+            $model->restoraunt_insta_link = $instaLink;
+            $model->restoraunt_kitchen = $kitchen;
+            $model->restoraunt_bill = $bill;
+
+            $model->save();
+            return true;
+        }
+        return null;
+    }
 }
 

@@ -8,11 +8,11 @@ $saved = Yii::$app->request->get('saved');
 $this->title = 'Рабочий стол';
 $me = Yii::$app->user->identity;
 $myRestoraunts = Restoraunts::find()
-    ->Select('r.*, ro.restoraunt_bill')
-    ->from(Restoraunts::tableName().' AS r')
-    ->leftJoin(RestorauntOptions::tableName().' AS ro','r.`lb_restoraunts_id` = ro.`restoraunt_id`')
-    ->where('lb_user_id = :user_id', [':user_id' => $me->getId()])
-    ->all();
+    ->Select('r.*, ro.*')
+    ->From(Restoraunts::tableName().' AS r')
+    ->LeftJoin(RestorauntOptions::tableName().' AS ro','r.`lb_restoraunts_id` = ro.`restoraunt_id`')
+    ->Where('lb_user_id = :user_id', [':user_id' => $me->id])
+    ->asArray()->all();
 
 $model = new Restoraunts();
 ?>
@@ -99,7 +99,7 @@ $model = new Restoraunts();
                             <?= $form->field($model, 'lb_total_tables')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
-                                'type' => 'numeric',
+                                'type' => 'number',
                                 'placeholder' => 'Макс. Кол-во человек в ресторане'
                             ])->label(false); ?>
                         </p>
@@ -167,24 +167,37 @@ $model = new Restoraunts();
                 {
                     ?>
                     <div class="cabinet-table">
+                        <input type="hidden" value="<?=$myRestoraunt['lb_restoraunts_id']?>" class="restoraunt-id"/>
                         <div class="cabinet-cell">
-                            <p class="name-rest"><?= $myRestoraunt->lb_restoraunts_name?></p>
-                            <p class="create-rest">дата создания: <?= (new \DateTime($myRestoraunt->lb_created_at))->format('d')?> <?= (new \DateTime($myRestoraunt->lb_created_at))->format('M')?> <?= (new \DateTime($myRestoraunt->lb_created_at))->format('Y')?> г.</p>
+                            <p class="name-rest"><?= $myRestoraunt['lb_restoraunts_name']?></p>
+                            <p class="create-rest">дата создания: <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('d')?> <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('M')?> <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('Y')?> г.</p>
                             <p class="balance-rest">Баланс счета ресторана на сервисе:<span>9 000 р.</span></p>
                         </div>
                         <div class="cabinet-cell">
-                            <p class="input-p"><input class="form-input form-post" type="text"
+                            <p class="input-p"><input class="form-input form-post sitename" type="text"
                                                       placeholder="Адрес сайта: https://designersatwork.com"></p>
-                            <p class="input-p"><input class="form-input form-post" type="text"
-                                                      placeholder="Вконтакте: <?= isset($myRestoraunt->restoraunt_vk_link) ? $myRestoraunt->restoraunt_vk_link : ''?>"></p>
-                            <p class="input-p"><input class="form-input form-post" type="text"
-                                                      placeholder="FaceBook: <?= isset($myRestoraunt->restoraunt_fb_link) ? $myRestoraunt->restoraunt_fb_link : '' ?>"></p>
-                            <p class="input-p"><input class="form-input form-post" type="text"
-                                                      placeholder="Instagramm: <?= isset($myRestoraunt->restoraunt_insta_link) ? $myRestoraunt->restoraunt_insta_link: '' ?>"></p>
+                            <p class="input-p">
+                                <input class="form-input form-post total-tables" type="number" placeholder="Макс. Кол-во человек в ресторане: " value="<?= isset($myRestoraunt['lb_total_tables']) ? $myRestoraunt['lb_total_tables']: '' ?>">
+                            </p>
+                            <p class="input-p">
+                                <input class="form-input form-post vk-link" type="text" placeholder="Вконтакте: " value="<?= isset($myRestoraunt['restoraunt_vk_link']) ? $myRestoraunt['restoraunt_vk_link'] : ''?>">
+                            </p>
+                            <p class="input-p">
+                                <input class="form-input form-post fb-link" type="text" placeholder="FaceBook: " value="<?= isset($myRestoraunt['restoraunt_fb_link']) ? $myRestoraunt['restoraunt_fb_link'] : '' ?>">
+                            </p>
+                            <p class="input-p">
+                                <input class="form-input form-post insta-link" type="text" placeholder="Instagram: " value="<?= isset($myRestoraunt['restoraunt_insta_link']) ? $myRestoraunt['restoraunt_insta_link']: '' ?>">
+                            </p>
+                            <p class="input-p">
+                                <input class="form-input form-post kitchen" type="text" placeholder="Направление кухни: " value="<?= isset($myRestoraunt['restoraunt_kitchen']) ? $myRestoraunt['restoraunt_kitchen']: '' ?>">
+                            </p>
+                            <p class="input-p">
+                                <input class="form-input form-post bill" type="number" placeholder="Средний чек в ресторане: " value="<?= isset($myRestoraunt['restoraunt_bill']) ? $myRestoraunt['restoraunt_bill']: '' ?>">
+                            </p>
                         </div>
                         <div class="cabinet-cell">
-                            <a href="#" class="btn-line btn-center">Сохранить</a>
-                            <a href="#" class="btn-line btn-center">Удалить ресторан</a>
+                            <button class="btn-line btn-center" onclick="editRest(this);">Сохранить</button>
+                            <button class="btn-line btn-center" onclick="removeRest(this);">Удалить ресторан</button>
                         </div>
                     </div>
                     <?php
@@ -195,3 +208,7 @@ $model = new Restoraunts();
         </div>
     </div>
 </div>
+
+<?php
+$this->registerJsFile('/js/clients/restoraunts.js', ['depends' => [\app\client\assets\AppAsset::className()]]);
+?>

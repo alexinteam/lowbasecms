@@ -64,3 +64,9 @@ $(function () {
         }]
     });
 });
+
+$(function removeRest($rest) {
+
+})
+
+

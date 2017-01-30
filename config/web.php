@@ -199,7 +199,7 @@ $config = [
                 '/' => 'site/index',
 
 
-               'restoraunt/<action:(add)>' => 'restoraunt/<action>',
+               'restoraunt/<action:(add|remove)>' => 'restoraunt/<action>',
                 // Sites
 
             ],
