@@ -73,7 +73,7 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-                            <input class="form-input form-post" type="text" placeholder="Введите дополнительные контакты">
+<!--                            <input class="form-input form-post" type="text" placeholder="Введите дополнительные контакты">-->
                             <?= $form->field($model, 'lb_additional_contact')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
