@@ -30,7 +30,7 @@ class RestorauntController extends Controller
         $model = new Restoraunts();
         $model->load(Yii::$app->request->post());
         $model->lb_created_at = (new \DateTime())->format('Y-m-d H:i:s');
-        $model->lb_user_id = Yii::$app->user->identity->getId();
+        $model->lb_user_id = Yii::$app->user->identity->id;
 
         if($model->validate() && $model->save()) {
             $optionsModel = new RestorauntOptions();

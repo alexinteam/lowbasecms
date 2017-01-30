@@ -21,7 +21,6 @@ use app\models\entities\RestorauntOptions;
  * @property string $lb_additional_contact
  * @property string $lb_restoraunt_email
  * @property integer $lb_total_tables
- *
  */
 class Restoraunts extends \yii\db\ActiveRecord
 {
@@ -40,7 +39,8 @@ class Restoraunts extends \yii\db\ActiveRecord
     {
         return [
             [['lb_restoraunts_name', 'lb_created_at', 'lb_inn'], 'required'],
-            [['lb_restoraunts_name','lb_additional_contact'], 'string', 'max' => 255]
+            [['lb_restoraunts_name','lb_additional_contact'], 'string', 'max' => 255],
+            [['lb_total_tables'], 'integer']
         ];
     }
 

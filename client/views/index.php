@@ -37,7 +37,6 @@ $model = new Restoraunts();
                     <div class="col-md-4 col-xs-4">
                         <h2 class="h2-30">Добавить новый ресторан</h2>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Введите ИНН Вашей организации">-->
                             <?= $form->field($model, 'lb_inn')->textInput([
                                 'maxlength' => 45,
                                 'class' => 'form-input form-post',
@@ -46,7 +45,6 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Введите название Вашей организации">-->
                             <?= $form->field($model, 'lb_restoraunts_name')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -55,7 +53,6 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Введите ФИО генерального директора">-->
                             <?= $form->field($model, 'lb_director')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -64,7 +61,6 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="tel" placeholder="Введите контактный телефон организации">-->
                             <?= $form->field($model, 'lb_phone')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -73,7 +69,6 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Введите дополнительные контакты">-->
                             <?= $form->field($model, 'lb_additional_contact')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -82,7 +77,6 @@ $model = new Restoraunts();
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="mail" placeholder="Введите почту компании">-->
                             <?= $form->field($model, 'lb_restoraunt_email')->textInput([
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -95,16 +89,14 @@ $model = new Restoraunts();
                     <div class="col-md-4 col-xs-4">
                         <h2 class="h2-30">Дополнительные данные</h2>
                         <p class="input-p">
-                            <!--                            <input class="form-input form-post" type="mail" placeholder="Введите почту компании">-->
                             <?= $form->field($model, 'lb_total_tables')->textInput([
-                                'maxlength' => 255,
+                                'maxlength' => 40,
                                 'class' => 'form-input form-post',
                                 'type' => 'number',
                                 'placeholder' => 'Макс. Кол-во человек в ресторане'
                             ])->label(false); ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="number" placeholder="Средний чек в ресторане">-->
                             <?= Html::textInput("bill", '', [
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -113,7 +105,6 @@ $model = new Restoraunts();
                             ]) ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Направления кухни ресторана">-->
                             <?= Html::textInput("kitchen", '', [
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -122,7 +113,6 @@ $model = new Restoraunts();
                             ]) ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Ссылка на группу в Вконтакте (соц сети)">-->
                             <?= Html::textInput("vk_link", '', [
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -131,7 +121,6 @@ $model = new Restoraunts();
                             ]) ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Ссылка на группу в Facebook (соц сети)">-->
                             <?= Html::textInput("fb_link", '', [
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
@@ -140,7 +129,6 @@ $model = new Restoraunts();
                             ]) ?>
                         </p>
                         <p class="input-p">
-<!--                            <input class="form-input form-post" type="text" placeholder="Ссылка на группу в Instagramm (соц сети)">-->
                             <?= Html::textInput("insta_link", '', [
                                 'maxlength' => 255,
                                 'class' => 'form-input form-post',
