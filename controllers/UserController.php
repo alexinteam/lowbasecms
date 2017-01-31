@@ -89,27 +89,29 @@ class UserController extends Controller
      */
     public function actionSignup()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        if (!\Yii::$app->request->isAjax) {
+            return false;
+        }
+
         // Уже авторизированных отправляем на домашнюю страницу
         if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
+            $data['redirect_url'] = '/';
+            return $data;
         }
 
+        $data = [];
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('signup-success', Yii::t('user', 'Ссылка с подтверждением регистрации отправлена на Email.'));
-            return $this->goBack(['signup']);
+            $data['status'] = true;
+            $data['message'] = Yii::t('user', 'Ссылка с подтверждением регистрации отправлена на Email.');
+            return $data;
         }
-
-        return $this->redirect('/');
-//        if (method_exists($this->module, 'getCustomView')) {
-//            return $this->render($this->module->getCustomView('signup', 'signup'), [
-//                'model' => $model,
-//            ]);
-//        } else {
-//            return $this->render('signup', [
-//                'model' => $model,
-//            ]);
-//        }
+        else{
+            $data['errors'] = $model->getFirstErrors();
+            return $data;
+        }
     }
 
     /**

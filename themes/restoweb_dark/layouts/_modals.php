@@ -36,6 +36,9 @@ $model = new SignupForm();
                     ]
                 ]); ?>
 
+                <div class="success-block"></div>
+                <div class="errors-block"></div>
+
                 <div class="modal-body">
                     <div class="content-input">
                         <div class="form-group field-signupform-first_name required">

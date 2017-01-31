@@ -27,14 +27,16 @@ class AppDarkAsset extends AssetBundle
         'css/tarif.css'
     ];
     public $js = [
-        'js/jquery.min.js',
+        //'js/jquery.min.js',
         'js/bootstrap.min.js',
         'js/viewportchecker.js',
+        'js/jquery-form.min.js',
         'js/scripts.js',
+        'js/signupForm.js',
     ];
 
     public $depends = [
-        //'yii\web\JqueryAsset',
+        'yii\web\JqueryAsset',
         //'yii\bootstrap\BootstrapAsset',
     ];
 }

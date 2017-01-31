@@ -1101,3 +1101,11 @@ display:block
 .info-href,.info-href:hover {
 color:#FFF
 }
+
+.success-block{
+    color: #5cb85c;
+}
+
+.errors-block{
+    color: #c9302c;
+}
