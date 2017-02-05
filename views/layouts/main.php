@@ -40,6 +40,9 @@ AppAsset::register($this);
 </div>
 
 <?php $this->endBody() ?>
+
+<?= $this->render('analyticstracking'); ?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

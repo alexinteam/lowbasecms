@@ -43,6 +43,9 @@ use yii\helpers\Html;
     <?= $this->render('partials/footer'); ?>
 
     <?php $this->endBody() ?>
+
+    <?= $this->render('//layouts/analyticstracking'); ?>
+
     </body>
 
     </html>

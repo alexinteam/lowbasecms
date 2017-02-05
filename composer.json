@@ -18,7 +18,8 @@
         "lowbase/yii2-document": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
         "2amigos/yii2-tinymce-widget": "~1.1",
-        "nex/yii2-datepicker": "*"
+        "nex/yii2-datepicker": "*",
+        "google/apiclient": "2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

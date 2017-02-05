@@ -126,5 +126,8 @@ if (Yii::$app->user->isGuest) {
         </div>
     </div>
 </div>
+
+<?= $this->render('//layouts/analyticstracking'); ?>
+
 </body>
 </html>

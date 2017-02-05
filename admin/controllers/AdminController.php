@@ -8,6 +8,7 @@
 
 namespace app\admin\controllers;
 
+use app\components\googleAnalytics\GoogleAnalyticsWrapper;
 use lowbase\user\models\forms\LoginForm;
 use lowbase\user\models\forms\PasswordResetForm;
 use Yii;
@@ -55,6 +56,18 @@ class AdminController extends Controller
 
     public function actionIndex()
     {
+        /*$cache = Yii::$app->getCache();
+        $gaStats = $cache->get('gaStats');
+
+        if ($gaStats === false) {
+            $ga = new GoogleAnalyticsWrapper();
+            $gaStats = $ga->getStats();
+            $cache->set('gaStats', $gaStats, 3600);
+        }*/
+
+        $ga = new GoogleAnalyticsWrapper();
+        $gaStats = $ga->getStats();
+
         if (Yii::$app->user->isGuest) {
             $this->layout = '@app/admin/layouts/main-login.php';
 
@@ -73,7 +86,7 @@ class AdminController extends Controller
             return $this->render('@app/admin/views/login', ['model' => $model, 'forget' => $forget]);
         } else {
             if (Yii::$app->user->can('admin')) {
-                return $this->render('@app/admin/views/index');
+                return $this->render('@app/admin/views/index',['gaStats' => $gaStats]);
             }
         }
     }

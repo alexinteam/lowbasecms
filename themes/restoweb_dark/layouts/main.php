@@ -115,5 +115,7 @@ use yii\helpers\Html;
         });
     </script>
 
+    <?= $this->render('//layouts/analyticstracking'); ?>
+
     </html>
 <?php $this->endPage() ?>
