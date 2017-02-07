@@ -53,19 +53,22 @@ use app\models\entities\MainSiteConfig;
                 </ul>
             </div>
             <div class="block-news-archive">
-                <div class="row">
+
                     <?php
                     if(count($news)) {
-                        foreach ($news as $newsItem) {
+                        for ($i=0;$i<count($news); $i++) {
+                            if(($i % 2) == 0) {
+                                echo '<div class="row">';
+                            }
                             echo '<div class="col-md-6 col-xs-6">
                                 <div class="table-news">
                                     <div class="cell-news">';
-                            echo '<div class="thumbnail-middle thumbnail-news"><a href="#"><img src="' . '/' . $newsItem->news_image . '" alt=""></a></div>';
+                            echo '<div class="thumbnail-middle thumbnail-news"><a href="#"><img src="' . '/' . $news[$i]->news_image . '" alt=""></a></div>';
                             echo '</div>';
                             echo '<div class="cell-news cell-text-news">';
-                            echo '<p class="date-news">' . date_format(date_create($newsItem->news_date), 'd.m.Y') . '</p>';
-                            echo '<h3 class="name-news"><a href="javascript:">' . $newsItem->news_title . '</a></h3>';
-                            echo '<p class="text-news">' . $newsItem->news_text . '<p>';
+                            echo '<p class="date-news">' . date_format(date_create($news[$i]->news_date), 'd.m.Y') . '</p>';
+                            echo '<h3 class="name-news"><a href="javascript:">' . $news[$i]->news_title . '</a></h3>';
+                            echo '<p class="text-news">' . $news[$i]->news_text . '<p>';
                             echo '<div class="block-abs">
                                 <p>размещение в соц. сетях:</p>
                                 <div class="social-for-news">
@@ -79,10 +82,14 @@ use app\models\entities\MainSiteConfig;
                             echo '<a href="javascript:" class="abs-item close-news">&times;</a>
                                 <a href="javascript:" class="abs-item edit-news"></a>';
                             echo '</div></div>';
+                            if(($i % 2) == 1) {
+                                echo '</div>';
+                            }
+
                         }
                     }
                     ?>
-                </div>
+
             </div>
             <a href="#" class="btn-line btn-center">Показать еще</a>
         </div>

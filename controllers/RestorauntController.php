@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Json;
 use yii\web\Controller;
 use app\models\entities\Restoraunts;
 use app\models\entities\RestorauntOptions;
@@ -63,6 +64,9 @@ class RestorauntController extends Controller
         Restoraunts::deleteAll('lb_restoraunts_id =:restoraunt_id',[
             ':restoraunt_id' => $restoraunt_id
         ]);
+        RestorauntOptions::deleteAll('restoraunt_id =:restoraunt_id',[
+            ':restoraunt_id' => $restoraunt_id
+        ]);
         return true;
 
     }
@@ -92,6 +96,35 @@ class RestorauntController extends Controller
 
             $model->save();
             return true;
+        }
+        return null;
+    }
+
+    public function actionChangeFeatured()
+    {
+        $restoraunt_id = Yii::$app->request->post('restoraunt_id');
+        $model = Restoraunts::find()->where('lb_restoraunts_id = :restoraunt_id AND lb_user_id =:userId', [
+            ':restoraunt_id' => (int)$restoraunt_id,
+            ':userId' => Yii::$app->user->identity->id
+        ])->one();
+
+        if($model) {
+            $model->setAttribute('lb_featured',1);
+            $model->update(false);
+            Restoraunts::updateAll(['lb_featured' => 0], 'lb_restoraunts_id <> :restoraunt_id AND lb_user_id =:userId', [
+                ':restoraunt_id' => $restoraunt_id,
+                ':userId' => Yii::$app->user->identity->id
+            ]);
+            $nonFeaturedRests = Restoraunts::find()->select('lb_restoraunts_name, lb_restoraunts_id')->where('lb_restoraunts_id <> :restoraunt_id AND lb_user_id =:userId', [
+                ':restoraunt_id' => $restoraunt_id,
+                ':userId' => Yii::$app->user->identity->id
+            ])->asArray()->all();
+            $featuredRestoraunt = $model->toArray();
+            return Json::encode([
+                'status' => true,
+                'allRestoraunts' => $nonFeaturedRests,
+                'featuredRestoraunt' => $featuredRestoraunt
+            ]);
         }
         return null;
     }

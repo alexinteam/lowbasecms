@@ -398,5 +398,5 @@
 </div>
 
 <?php
-    $this->registerJsFile('/js/clients/app.js', ['depends' => [\app\client\assets\AppAsset::className()]]);
+    $this->registerJsFile('/js/clients/statistics.js', ['depends' => [\app\client\assets\AppAsset::className()]]);
 ?>
