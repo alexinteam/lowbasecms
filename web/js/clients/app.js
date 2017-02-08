@@ -1,72 +1,86 @@
-$(function () {
-    Highcharts.chart('chart-line-1', {
-        xAxis: {
-            categories: ['ПОН', 'ВТР', 'СРЕ', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС']
-        },
+$(document).ready(function () {
 
-        series: [{
-            data: [170, 500, 900, 600, 200, 150, 100]
-        }]
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.up-btn').fadeIn();
+        } else {
+            $('.up-btn').fadeOut();
+        }
     });
-});
-$(function () {
-    Highcharts.chart('chart-line-2', {
-        xAxis: {
-            categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
-        },
 
-        series: [{
-            data: [29.9, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1]
-        }]
+    $('.up-btn').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 1200);
+        return false;
     });
-});
-$(function () {
-    Highcharts.chart('chart-line-3', {
-        xAxis: {
-            categories: ['ЯНВ', 'ФЕВ', 'МАР', 'АПР', 'МАЙ', 'ИЮН', 'ИЮЛ', 'АВГ', 'СЕН', 'ОКТ', 'НОЯ', 'ДЕК']
-        },
 
-        series: [{
-            data: [29.9, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4]
-        }]
-    });
-});
-$(function () {
-    Highcharts.chart('chart-line-4', {
-        xAxis: {
-            categories: ['ПОН', 'ВТР', 'СРЕ', 'ЧЕТ', 'ПЯТ', 'СУБ', 'ВОС']
-        },
 
-        series: [{
-            data: [170, 500, 900, 600, 200, 150, 100]
-        }]
-    });
-});
-$(function () {
-    Highcharts.chart('chart-line-5', {
-        xAxis: {
-            categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
-        },
-
-        series: [{
-            data: [29.9, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1]
-        }]
-    });
-});
-$(function () {
-    Highcharts.chart('chart-line-6', {
-        xAxis: {
-            categories: ['ЯНВ', 'ФЕВ', 'МАР', 'АПР', 'МАЙ', 'ИЮН', 'ИЮЛ', 'АВГ', 'СЕН', 'ОКТ', 'НОЯ', 'ДЕК']
-        },
-
-        series: [{
-            data: [29.9, 71.5, 106.4, 100, 144.0, 176.0, 100, 148.5, 216.4, 194.1, 95.6, 54.4]
-        }]
-    });
+    //
+    // $('.change_restoraut').click(function () {
+    //     $.ajax({
+    //         method: 'POST',
+    //         url: '/restoraunt/change-featured',
+    //         data: {
+    //             restoraunt_id: $(this).parents('li').attr('restoraunt_id')
+    //         }
+    //     }).done(function (data) {
+    //         var $response = JSON.parse(data);
+    //         if($response.status) {
+    //             $('#featuredRestoraunt').text($response.featuredRestoraunt.lb_restoraunts_name);
+    //             $('.dropdown-menu-restaurant').empty();
+    //             for(var $i=0; $i<$response.allRestoraunts.length; $i++) {
+    //                 var $rest = $response.allRestoraunts[$i];
+    //                 $('.dropdown-menu-restaurant').append('<li restoraunt_id="'+$rest.lb_restoraunts_id+'"><a class="change_restoraut" href="#">'+$rest.lb_restoraunts_name+'</a></li>');
+    //             }
+    //         }
+    //     })
+    // });
 });
 
-$(function removeRest($rest) {
-
-})
 
 
+jQuery(document).ready(function() {
+    jQuery('.anim-right').addClass("hidden-block").viewportChecker({
+        classToAdd: 'visible-block animated fadeInLeft', // Class to add to the elements when they are visible
+        offset: 100
+    });
+    jQuery('.anim-left').addClass("hidden-block").viewportChecker({
+        classToAdd: 'visible-block animated fadeInRight', // Class to add to the elements when they are visible
+        offset: 100
+    });
+    jQuery('.anim').addClass("hidden-block").viewportChecker({
+        classToAdd: 'visible-block animated fadeIn', // Class to add to the elements when they are visible
+        offset: 100
+    });
+
+    jQuery('.anim-third').addClass("hidden-block").viewportChecker({
+        classToAdd: 'visible-block animated fadeInLeft', // Class to add to the elements when they are visible
+        offset: 100
+    });
+});
+jQuery('.wrapper-portfolio').addClass("hidden-block").viewportChecker({
+    classToAdd: 'visible-block animated fadeInRight', // Class to add to the elements when they are visible
+    offset: 100
+});
+
+
+var changeRestoraut = function($restOption) {
+    $.ajax({
+        method: 'POST',
+        url: '/restoraunt/change-featured',
+        data: {
+            restoraunt_id: $($restOption).parents('li').attr('restoraunt_id')
+        }
+    }).done(function (data) {
+        var $response = JSON.parse(data);
+        if($response.status) {
+            $('#featuredRestoraunt').text($response.featuredRestoraunt.lb_restoraunts_name);
+            $('.dropdown-menu-restaurant').empty();
+            for(var $i=0; $i<$response.allRestoraunts.length; $i++) {
+                var $rest = $response.allRestoraunts[$i];
+                $('.dropdown-menu-restaurant').append('<li restoraunt_id="'+$rest.lb_restoraunts_id+'"><a onclick="changeRestoraut(this)" class="change_restoraut" href="#">'+$rest.lb_restoraunts_name+'</a></li>');
+            }
+        }
+    })
+};

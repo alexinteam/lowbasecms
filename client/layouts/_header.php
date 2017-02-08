@@ -48,16 +48,22 @@ if($this->context->route == 'client-social/social/vk' || $this->context->route =
                 </ul>
             </div>
             <div class="col-md-4 col-xs-4">
-                <p class="select-text">Выберите Ваш ресторан:
-                    <select id="restoraunts-switch" class="form-control select-block" aria-required="true" aria-invalid="true">
-                        <option value=""><?= $featuredRestoraunt->lb_restoraunts_name?></option>
+                <div class="btn-group">
+                    <p class="select-text">Выберите Ваш ресторан:</p>
+                    <button id="featuredRestoraunt" type="button" class="dropdown-toggle restaurant-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?= $featuredRestoraunt->lb_restoraunts_name?>
+                    </button>
                         <?php
-                            foreach ($otherRestoraunts as $otherRestoraunt) {
-                                echo '<option value="'.$otherRestoraunt->lb_restoraunts_id.'">'.$otherRestoraunt->lb_restoraunts_name.'</option>';
+                            if(count($otherRestoraunts)){
+                                echo '<ul class="dropdown-menu dropdown-menu-restaurant">';
+                                foreach ($otherRestoraunts as $otherRestoraunt) {
+                                    echo '<li restoraunt_id="'.$otherRestoraunt->lb_restoraunts_id.'"><a class="change_restoraut" onclick="changeRestoraut(this)" href="#">'.$otherRestoraunt->lb_restoraunts_name.'</a></li>';
+                                }
+                                echo '</ul>';
                             }
                         ?>
-                    </select>
-                </p>
+                </div>
+
             </div>
             <div class="col-md-4 col-xs-4 right">
                 <div class="panel-user">
