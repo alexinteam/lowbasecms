@@ -1,0 +1,390 @@
+.block-for-user {
+position:fixed;
+z-index:10;
+padding:4px 20px;
+width:100%;
+background-color:#191a1b;
+border-bottom:1px solid #ccc;
+text-align:left
+}
+
+.block-for-user>a {
+color:#fff;
+font-weight:200;
+font-size:15px;
+margin-right:25px;
+position:relative;
+padding-left:26px
+}
+
+.block-for-user>a:hover {
+color:#d08400
+}
+
+.block-for-user + .bg-menu {
+margin-top:28px
+}
+
+.block-for-user_btn span {
+background-size:cover;
+background-repeat:no-repeat;
+background-position:center center;
+position:absolute;
+left:0
+}
+
+.block-for-user_btn-home span {
+background-image:url(../images/panel-dashboard.svg);
+width:21px;
+height:20px;
+background-position:0 1px;
+top:-2px;
+left:-1px
+}
+
+.block-for-user>a.block-for-user_btn-home:hover span {
+background-position:-22px 1px
+}
+
+.block-for-user_btn-edit span {
+background-image:url(../images/panel-pencil.svg);
+width:20px;
+height:19px;
+background-position:-1px 1px;
+top:0;
+left:1px
+}
+
+.block-for-user>a.block-for-user_btn-edit:hover span {
+background-position:-23px 1px
+}
+
+.full-overlay {
+margin-left:300px
+}
+
+.full-overlay-sidebar {
+position:fixed;
+top:0;
+height:100%;
+bottom:0;
+left:0;
+width:300px;
+font-size:16px;
+padding:0 15px;
+background-color:#eee;
+z-index:10000;
+text-align:left;
+border-right:1px solid #ddd
+}
+
+.wp-full-overlay-sidebar-content {
+position:absolute;
+top:52px;
+bottom:0;
+left:0;
+right:0;
+overflow-y:auto;
+overflow-x:hidden;
+padding:0 15px
+}
+
+input.btn-line {
+font-size:15px;
+border:1px solid #d08400;
+background-color:#d08400;
+padding:4px 11px;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+color:#fff;
+font-weight:200;
+display:table;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+input.btn-line:hover,input.btn-line:active {
+background-color:transparent;
+color:#000;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+.row-controls-btns {
+position:relative;
+height:53px
+}
+
+input.btn-save {
+position:absolute;
+right:15px;
+top:10px
+}
+
+a.customize-controls-close {
+color:#444;
+font-size:40px;
+position:absolute;
+font-weight:200;
+left:0;
+padding:24px 17px 19px;
+line-height:.3;
+border-right:1px solid #d0d0d0
+}
+
+a.customize-controls-close:hover {
+color:#d08400
+}
+
+.row-editor {
+border-bottom:1px solid #ddd;
+border-top:1px solid #ddd;
+margin-bottom:15px;
+padding:15px 0 8px;
+font-weight:200;
+color:#555d66;
+background:#fff;
+position:relative
+}
+
+.row-name-rest {
+font-size:15px;
+line-height:24px
+}
+
+.row-name-rest span {
+font-size:22px;
+font-weight:200;
+line-height:30px;
+display:block;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis
+}
+
+.row-name-theme span {
+font-weight:600;
+display:block;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+color:#4a4e52
+}
+
+.change-theme {
+position:absolute;
+right:15px;
+top:10px
+}
+
+button.change-theme {
+font-size:14px;
+border:1px solid #ccc;
+background-color:#f3f3f3;
+padding:4px 11px;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+color:#444;
+font-weight:200;
+display:table;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+.change-theme:focus {
+outline:none
+}
+
+button.change-theme:hover {
+background-color:#eaeaea;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+.panel-editor {
+margin-bottom:20px;
+margin-right:-15px;
+margin-left:-15px;
+border-top:1px solid #ddd
+}
+
+.panel-editor .panel+.panel {
+margin-top:0
+}
+
+.panel-editor .panel {
+border-radius:0
+}
+
+.panel-editor .panel-default {
+border-color:transparent;
+border:none;
+border-bottom:1px solid #ddd;
+-webkit-box-shadow:none;
+box-shadow:none
+}
+
+.panel-editor a {
+padding:10px 15px;
+width:100%;
+display:block;
+font-weight:600;
+position:relative;
+color:#d08400
+}
+
+.panel-editor a:hover,.panel-editor a.collapsed:hover {
+color:#d08400
+}
+
+.panel-editor a::before,.panel-editor a:hover::before,.panel-editor a.collapsed:hover::before {
+content:"";
+position:absolute;
+left:0;
+top:0;
+bottom:0;
+width:4px;
+background-color:#d08400;
+height:100%
+}
+
+.panel-editor a.collapsed {
+color:#555d66
+}
+
+.panel-editor a.collapsed::before {
+background-color:transparent
+}
+
+.panel-editor .panel-default>.panel-heading {
+padding:0
+}
+
+.panel-editor .panel-body {
+color:#555d66
+}
+
+.panel-editor .panel-body textarea {
+resize:none;
+width:100%;
+display:block
+}
+
+.panel-editor .panel-body input,.panel-editor .panel-body textarea {
+width:100%;
+border:1px solid #ddd;
+-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.07);
+box-shadow:inset 0 1px 2px rgba(0,0,0,.07);
+-webkit-transition:50ms border-color ease-in-out;
+transition:50ms border-color ease-in-out;
+padding:3px 5px
+}
+
+.panel-editor .panel-body input:focus,.panel-editor .panel-body textarea:focus {
+outline:none;
+border-color:#d08400
+}
+
+ul.panel-editor-list {
+list-style-type:none;
+padding-left:0
+}
+
+ul.panel-editor-list li {
+margin-bottom:15px
+}
+
+.panel-editor-title {
+font-weight:600
+}
+
+.panel-editor-description {
+font-style:italic;
+color:#555d66;
+font-size:13px;
+line-height:18px
+}
+
+.load-btn {
+background-color:transparent;
+width:100%;
+text-align:left;
+padding:7px 10px;
+border:1px solid #ddd;
+-webkit-border-radius:2px;
+-moz-border-radius:2px;
+border-radius:2px;
+font-size:16px;
+font-weight:200;
+resize:none;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s;
+position:relative
+}
+
+.load-btn::after {
+content:"+";
+position:absolute;
+right:14px;
+font-size:28px;
+top:0;
+font-weight:400
+}
+
+.load-btn:focus,.load-btn:hover {
+border:1px solid #d08400;
+color:#d08400;
+outline:none;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+button.editor-btn {
+font-size:14px;
+border:1px solid #ccc;
+background-color:#f3f3f3;
+padding:4px 11px;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+color:#444;
+font-weight:200;
+display:table;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s;
+margin-top:10px
+}
+
+.editor-btn:focus {
+outline:none
+}
+
+button.editor-btn:hover {
+background-color:#eaeaea;
+-webkit-transition:.3s;
+-o-transition:.3s;
+transition:.3s
+}
+
+button.add-btn {
+background-color:rgba(208,132,0,0.48);
+border:1px solid rgba(208,132,0,0.72)
+}
+
+button.add-btn:hover {
+background-color:rgba(208,132,0,0.72);
+border:1px solid rgba(208,132,0,0.72)
+}
+
+.panel-editor li.divider {
+border-top:1px solid #ddd
+}
