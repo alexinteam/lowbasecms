@@ -31,7 +31,9 @@ class ThemeAsset extends AssetBundle
         "css/index.css",
         "css/animate.css",
         "css/slick.css",
-        "css/slick-theme.css"
+        "css/slick-theme.css",
+
+        "css/editor-website.css"
     ];
     public $js = [
         //'vendor/jquery/jquery.min.js',

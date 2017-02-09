@@ -25,6 +25,16 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionEdit($id){
+        $site = $this->findModel($id);
+        $this->setTheme($site->theme);
+        Yii::$app->view->params['site'] = $site;
+
+        return $this->render('edit',[
+            'site' => $site
+        ]);
+    }
+
     /**
      * @param $theme
      */
