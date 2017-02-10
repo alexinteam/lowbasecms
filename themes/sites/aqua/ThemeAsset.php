@@ -26,14 +26,22 @@ class ThemeAsset extends AssetBundle
         'css/agency.min.css',*/
 
         "css/bootstrap.min.css",
-        "css/main.css",
-        "css/bg-menu.css",
+
+
+        /*"css/main.css",
+        "css/bg-menu.css",*/
+
+
+        /*"css/editor-main.css",
+        "css/editor-bg-menu.css",
+        "css/editor-index.css",*/
+
         "css/index.css",
         "css/animate.css",
         "css/slick.css",
         "css/slick-theme.css",
 
-        "css/editor-website.css"
+        //"css/editor-website.css"
     ];
     public $js = [
         //'vendor/jquery/jquery.min.js',

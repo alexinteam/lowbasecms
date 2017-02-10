@@ -4,6 +4,9 @@ use app\themes\sites\aqua\ThemeAsset;
 use yii\helpers\Html;
 
 ThemeAsset::register($this);
+
+$mode = $this->params['mode'] ?: null;
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,6 +22,34 @@ ThemeAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+
+    <?php
+        if($mode == 'view'){
+            ?>
+
+            <link href="<?= $this->getThemeUrl("css/main.css"); ?>" rel="stylesheet">
+            <link href="<?= $this->getThemeUrl("css/bg-menu.css"); ?>" type="text/css" rel="stylesheet">
+            <link href="<?= $this->getThemeUrl("css/index.css"); ?>" type="text/css" rel="stylesheet">
+
+            <?php
+        }
+
+        if($mode == 'edit'){
+            ?>
+
+            <link href="<?= $this->getThemeUrl("css/editor-main.css"); ?>" rel="stylesheet">
+            <link href="<?= $this->getThemeUrl("css/editor-bg-menu.css"); ?>" type="text/css" rel="stylesheet">
+            <link href="<?= $this->getThemeUrl("css/editor-index.css"); ?>" type="text/css" rel="stylesheet">
+            <link href="<?= $this->getThemeUrl("css/editor-website.css"); ?>" rel="stylesheet">
+
+            <?php
+        }
+
+    ?>
+
+
+    <!--<link href="<?/*= $this->getThemeUrl("css/editor-website.css"); */?>" rel="stylesheet">-->
 
     <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?= $this->getThemeUrl('images/favicon/favicon-152.png'); ?>">
@@ -55,6 +86,21 @@ ThemeAsset::register($this);
 <?= $content; ?>
 
 <?php $this->endBody() ?>
+
+<?php
+    if($mode == 'edit'){
+        ?>
+
+        <script src="<?= $this->getThemeUrl("js/modules/editor.js"); ?>"></script>
+
+        <script type="text/javascript">
+            editor.init();
+        </script>
+
+    <?php
+    }
+    ?>
+
 </body>
 </html>
 <?php $this->endPage() ?>

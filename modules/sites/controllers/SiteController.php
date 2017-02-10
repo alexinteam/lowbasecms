@@ -19,6 +19,7 @@ class SiteController extends Controller
         $this->setTheme($site->theme);
 
         Yii::$app->view->params['site'] = $site;
+        Yii::$app->view->params['mode'] = 'view';
 
         return $this->render('index',[
             'site' => $site
@@ -26,9 +27,17 @@ class SiteController extends Controller
     }
 
     public function actionEdit($id){
+
+        /*$this->layoutPath = Yii::getAlias('@app/themes/sites/aqua/layouts/');
+        $this->layout = 'constructor';*/
+        $this->layout = Yii::getAlias('@app/themes/sites/aqua/layouts/constructor.php');
+
+        //"@app/views/layouts/main"
+
         $site = $this->findModel($id);
         $this->setTheme($site->theme);
         Yii::$app->view->params['site'] = $site;
+        Yii::$app->view->params['mode'] = 'edit';
 
         return $this->render('edit',[
             'site' => $site
