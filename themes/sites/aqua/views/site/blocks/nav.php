@@ -11,9 +11,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <div class="block-right pull-right">
-                <p class="adress-rest">г.Санкт-Петербург, ул. Таллинская, д.85</p>
+                <p id="view-head-address" class="adress-rest">г.Санкт-Петербург, ул. Таллинская, д.85</p>
                 <div class="block-right__div">
-                    <p class="phone-rest">+7 812 799-09-62</p>
+                    <p id="view-head-phone" class="phone-rest">+7 812 799-09-62</p>
                     <a href="javascript:" class="login" data-toggle="modal" data-target="#support">заказать звонок</a>
                 </div>
             </div>
