@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="w-main">
     <div class="row">
         <div class="col-md-6">
@@ -7,11 +16,15 @@
             <div class="row row-footer-info">
                 <div class="col-md-6">
                     <h3 class="f-25">Адрес:</h3>
-                    <p id="view-footer-address" class="info-p">129430, г.Москва, Набережная 8, стр. 33, офис 404</p>
+                    <p id="view-footer-address" class="info-p">
+                        <?= Html::encode($site->site_address); ?>
+                    </p>
                 </div>
                 <div class="col-md-6">
                     <h3 class="f-25">Телефон:</h3>
-                    <p class="info-p" id="view-footer-phone">+7 812 799-09-62</p>
+                    <p class="info-p" id="view-footer-phone">
+                        <?= Html::encode($site->site_phone); ?>
+                    </p>
                     <!--<p class="info-p">+7 495 789-98-56</p>-->
                 </div>
             </div>

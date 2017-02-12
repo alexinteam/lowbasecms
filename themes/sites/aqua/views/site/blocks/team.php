@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="page7">
     <div class="w-main anim">
         <h2 class="h2-42">Наша команда</h2>

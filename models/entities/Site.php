@@ -2,6 +2,7 @@
 
 namespace app\models\entities;
 
+use app\models\User;
 use Yii;
 use app\models\traits\details\ParentModel as DetailsParentModelTrait;
 
@@ -18,6 +19,7 @@ class Site extends \yii\db\ActiveRecord
     protected $detailClass = '\app\models\entities\SiteDetail';
 
     public static $themes = [
+        'aqua',
         'agency',
         'creative',
         'touche'
@@ -188,6 +190,11 @@ class Site extends \yii\db\ActiveRecord
         }
 
         return $result;
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
 

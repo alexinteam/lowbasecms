@@ -29,16 +29,27 @@ class SiteController extends Controller
     }
 
     public function actionEdit($id){
+        $user = Yii::$app->user;
 
-        /*$this->layoutPath = Yii::getAlias('@app/themes/sites/aqua/layouts/');
-        $this->layout = 'constructor';*/
-        $this->layout = Yii::getAlias('@app/themes/sites/aqua/layouts/constructor.php');
-
-        //"@app/views/layouts/main"
+        if ($user->isGuest) {
+            return $this->redirect('/client');
+        }
 
         $site = $this->findModel($id);
         $this->setTheme($site->theme);
 
+        /*if($site->user_id != $user->id){
+            throw new NotFoundHttpException();
+        }*/
+
+        if ($site->load(Yii::$app->request->post())) {
+            $site->clearDefaultValues();
+
+            if($site->save()){
+                return $this->redirect(['index', 'siteId' => $site->id]);
+            }
+        }
+        
         $site->populateDefaultValues();
 
         Yii::$app->view->params['site'] = $site;

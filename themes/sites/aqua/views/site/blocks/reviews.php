@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="page8">
     <div class="w-main anim">
         <h2 class="h2-42">Отзывы о нашем ресторане</h2>

@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top bg-menu">
     <div class="container">
         <div class="navbar-header">

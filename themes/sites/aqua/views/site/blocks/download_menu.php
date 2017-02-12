@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="page9">
     <div class="w-main anim">
         <p class="load-text">Скачать все меню ресторана</p>

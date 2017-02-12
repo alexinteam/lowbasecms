@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="page2">
     <div class="w-main anim">
         <h2 class="h2-42">Лучшие блюда нашего ресторана</h2>

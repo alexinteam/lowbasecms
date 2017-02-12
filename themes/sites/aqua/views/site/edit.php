@@ -6,27 +6,27 @@
 
     <div class="container-2">
 
-        <?= $this->render('blocks/banner'); ?>
+        <?= $this->render('blocks/banner', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/meals'); ?>
+        <?= $this->render('blocks/meals', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/about'); ?>
+        <?= $this->render('blocks/about', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/announce'); ?>
+        <?= $this->render('blocks/announce', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/advantages'); ?>
+        <?= $this->render('blocks/advantages', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/call'); ?>
+        <?= $this->render('blocks/call', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/team'); ?>
+        <?= $this->render('blocks/team', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/reviews'); ?>
+        <?= $this->render('blocks/reviews', ['site' => $site]); ?>
 
-        <?= $this->render('blocks/download_menu'); ?>
+        <?= $this->render('blocks/download_menu', ['site' => $site]); ?>
 
     </div>
     <footer>
-        <?= $this->render('blocks/footer'); ?>
+        <?= $this->render('blocks/footer', ['site' => $site]); ?>
     </footer>
 </div>
 

@@ -1,19 +1,46 @@
+<?php
+
+use yii\helpers\Html;
+
+/**
+ * @var $site \app\models\entities\Site
+ */
+?>
+
 <div class="page3">
     <div class="block-country">
-        <div class="table-country table-left">
-            <div class="cell-country anim-right">
-                <img class="bg-country" src="<?= $this->getThemeUrl('images/bg-01.png'); ?>" alt="Thailand">
-            </div>
-            <div class="cell-country anim-left">
-                <p>
-                    <strong id="view-about-header1">ЗАГОЛОВОК 1</strong>
-                    <span id="view-about-description1">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+        <?php for($i = 1; $i <= 4; $i++): ?>
+            <?php
+            $header = 'about_header_' . $i;
+            $headerId = 'view-about-header' . $i;
+            $aboutDescription = 'about_description_' . $i;
+            $aboutDescriptionId = 'view-about-description' . $i;
+            $img = 'images/bg-0' . $i . '.png';
+            ?>
+
+            <div class="table-country table-left">
+                <div class="cell-country anim-right">
+                    <img class="bg-country" src="<?= $this->getThemeUrl($img); ?>" alt="Thailand">
+                </div>
+                <div class="cell-country anim-left">
+                    <p>
+                        <strong id="<?= $headerId ?>">
+                            <?= Html::encode($site->$header); ?>
+                        </strong>
+                        <span id="<?= $aboutDescriptionId ?>">
+                        <?= Html::encode($site->$aboutDescription); ?>
                     </span>
-                </p>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="table-country table-right">
+        <?php endfor; ?>
+
+
+
+
+
+        <!--<div class="table-country table-right">
             <div class="cell-country anim-right">
                 <p>
                     <strong id="view-about-header2">ЗАГОЛОВОК 2</strong>
@@ -23,12 +50,12 @@
                 </p>
             </div>
             <div class="cell-country anim-left">
-                <img class="bg-country" src="<?= $this->getThemeUrl('images/bg-02.png'); ?>" alt="Thailand">
+                <img class="bg-country" src="<?/*= $this->getThemeUrl('images/bg-02.png'); */?>" alt="Thailand">
             </div>
         </div>
         <div class="table-country table-left">
             <div class="cell-country anim-right">
-                <img class="bg-country" src="<?= $this->getThemeUrl('images/bg-03.png'); ?>" alt="Thailand">
+                <img class="bg-country" src="<?/*= $this->getThemeUrl('images/bg-03.png'); */?>" alt="Thailand">
             </div>
             <div class="cell-country anim-left">
                 <p>
@@ -49,8 +76,8 @@
                 </p>
             </div>
             <div class="cell-country anim-left">
-                <img class="bg-country" src="<?= $this->getThemeUrl('images/bg-04.png'); ?>" alt="Thailand">
+                <img class="bg-country" src="<?/*= $this->getThemeUrl('images/bg-04.png'); */?>" alt="Thailand">
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
