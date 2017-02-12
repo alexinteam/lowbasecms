@@ -6,17 +6,17 @@
 
     <div class="container-2">
 
-        <?= $this->render('blocks/welcome'); ?>
+        <?= $this->render('blocks/banner'); ?>
 
         <?= $this->render('blocks/meals'); ?>
 
-        <?= $this->render('blocks/description'); ?>
+        <?= $this->render('blocks/about'); ?>
 
-        <?= $this->render('blocks/feature_1'); ?>
+        <?= $this->render('blocks/announce'); ?>
 
-        <?= $this->render('blocks/why_us'); ?>
+        <?= $this->render('blocks/advantages'); ?>
 
-        <?= $this->render('blocks/feature_2'); ?>
+        <?= $this->render('blocks/call'); ?>
 
         <?= $this->render('blocks/team'); ?>
 
@@ -26,7 +26,7 @@
 
     </div>
     <footer>
-        <?= $this->render('blocks/contact'); ?>
+        <?= $this->render('blocks/footer'); ?>
     </footer>
 </div>
 

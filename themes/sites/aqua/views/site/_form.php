@@ -282,7 +282,7 @@
                     </div>
                 </div>
 
-                <!-- feature 2-->
+                <!-- call -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" class="collapsed">
@@ -292,12 +292,12 @@
                         <div class="panel-body">
                             <ul class="panel-editor-list">
                                 <li>
-                                    <label class="panel-editor-title" for="editor-feature2-header">Заголовок призыв</label>
-                                    <input id="editor-feature2-header" type="text" value="Живая музыка по пятницам!">
+                                    <label class="panel-editor-title" for="editor-call-header">Заголовок призыв</label>
+                                    <input id="editor-call-header" type="text" value="Живая музыка по пятницам!">
                                 </li>
                                 <li>
-                                    <label class="panel-editor-title" for="editor-feature2-description">Описание</label>
-                                    <textarea id="editor-feature2-description" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                    <label class="panel-editor-title" for="editor-call-description">Описание</label>
+                                    <textarea id="editor-call-description" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
                                 </li>
                             </ul>
                         </div>
