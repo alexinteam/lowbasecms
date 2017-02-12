@@ -94,7 +94,9 @@ $mode = $this->params['mode'] ?: null;
         <script src="<?= $this->getThemeUrl("js/modules/editor.js"); ?>"></script>
 
         <script type="text/javascript">
-            editor.init();
+            $(document).ready(function(){
+                editor.init();
+            });
         </script>
 
     <?php
