@@ -1,12 +1,22 @@
-<form id="customize-controls" class="full-overlay-sidebar">
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+?>
+
+<?php
+$form = ActiveForm::begin([
+    'id' => 'customize-controls',
+    'options' => ['class' => 'full-overlay-sidebar'],
+]) ?>
+
     <div class="row row-controls-btns">
         <div class="col-md-12 col-xs-12">
             <input type="submit" class="btn-line btn-save" value="Сохранить">
             <a href="index-for-user.html" class="customize-controls-close">&times;</a>
         </div>
     </div>
-
-
 
     <div class="wp-full-overlay-sidebar-content">
 
@@ -27,7 +37,6 @@
                     <button type="button" class="button change-theme" tabindex="0">Сменить</button>
                 </div>
             </div>
-
 
             <div class="panel-group panel-editor" id="accordion">
 
@@ -94,12 +103,11 @@
                         <div class="panel-body">
                             <ul class="panel-editor-list">
                                 <li>
-                                    <label class="panel-editor-title" for="editor-banner-greeting">Приветствие</label>
-                                    <input id="editor-banner-greeting" type="text" value="Добро пожаловать в Ресторан!">
+                                    <?= $form->field($site, 'banner_greeting')->textInput(['id' => 'editor-banner-greeting']) ?>
+
                                 </li>
                                 <li>
-                                    <label class="panel-editor-title" for="editor-banner-description">Описание</label>
-                                    <textarea id="editor-banner-description" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                    <?= $form->field($site, 'banner_description')->textarea(['id' => 'editor-banner-description', 'rows' => 5]) ?>
                                 </li>
                              </ul>
                         </div>
@@ -115,69 +123,27 @@
                     <div id="collapse4" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="panel-editor-list">
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-header1">Заголовок</label>
-                                    <input id="editor-about-header1" type="text" value="ЗАГОЛОВОК 1">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-description1">Описание</label>
-                                    <textarea id="editor-about-description1" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить фото</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-header2">Заголовок</label>
-                                    <input id="editor-about-header2" type="text" value="ЗАГОЛОВОК 2">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-description2">Описание</label>
-                                    <textarea id="editor-about-description2" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить фото</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-header3">Заголовок</label>
-                                    <input id="editor-about-header3" type="text" value="ЗАГОЛОВОК 3">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-description3">Описание</label>
-                                    <textarea id="editor-about-description3" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить фото</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-header4">Заголовок</label>
-                                    <input id="editor-about-header4" type="text" value="ЗАГОЛОВОК 4">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-about-description4">Описание</label>
-                                    <textarea id="editor-about-description4" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить фото</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <button type="button" class="button editor-btn add-btn" tabindex="0">Добавить новую строку</button>
-                                </li>
+                                <?php
+                                for($i=1; $i <= 5; $i++){
+                                    ?>
+
+                                    <li>
+                                        <?= $form->field($site, 'about_header_' . $i)->textInput(['id' => 'editor-about-header' . $i]) ?>
+                                    </li>
+                                    <li>
+                                        <?= $form->field($site, 'about_description_' . $i)->textarea(['id' => 'editor-about-description' . $i, 'rows' => 5]) ?>
+                                    </li>
+                                    <li>
+                                        <button class="load-btn">Загрузить фото</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <?php
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -193,12 +159,10 @@
                         <div class="panel-body">
                             <ul class="panel-editor-list">
                                 <li>
-                                    <label class="panel-editor-title" for="editor-announce-header">Заголовок афиши</label>
-                                    <input id="editor-announce-header" type="text" value="Живая музыка по пятницам!">
+                                    <?= $form->field($site, 'announce_header')->textInput(['id' => 'editor-announce-header']) ?>
                                 </li>
                                 <li>
-                                    <label class="panel-editor-title" for="editor-announce-description">Описание</label>
-                                    <textarea id="editor-announce-description" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                    <?= $form->field($site, 'announce_description')->textarea(['id' => 'editor-announce-description', 'rows' => 5]) ?>
                                 </li>
                             </ul>
                         </div>
@@ -214,69 +178,27 @@
                     <div id="collapse6" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="panel-editor-list">
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-header1">Заголовок</label>
-                                    <input id="editor-advantages-header1" type="text" value="Более 200 коктейлей">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-description1">Описание</label>
-                                    <textarea id="editor-advantages-description1" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить иконку</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-header2">Заголовок</label>
-                                    <input id="editor-advantages-header1" type="text" value="Более 200 коктейлей">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-description2">Описание</label>
-                                    <textarea id="editor-advantages-description2" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить иконку</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-header3">Заголовок</label>
-                                    <input id="editor-advantages-header3" type="text" value="Более 100 бургеров">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-description3">Описание</label>
-                                    <textarea id="editor-advantages-description3" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить иконку</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-header4">Заголовок</label>
-                                    <input id="editor-advantages-header4" type="text" value="Более 100 бургеров">
-                                </li>
-                                <li>
-                                    <label class="panel-editor-title" for="editor-advantages-description4">Описание</label>
-                                    <textarea id="editor-advantages-description4" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
-                                </li>
-                                <li>
-                                    <button class="load-btn">Загрузить иконку</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <button type="button" class="button editor-btn add-btn" tabindex="0">Добавить новую строку</button>
-                                </li>
+                                <?php
+                                for($i=1; $i <= 5; $i++){
+                                    ?>
+
+                                    <li>
+                                        <?= $form->field($site, 'advantage_header_' . $i)->textInput(['id' => 'editor-advantage-header'. $i]) ?>
+                                    </li>
+                                    <li>
+                                        <?= $form->field($site, 'advantage_description_' . $i)->textarea(['id' => 'editor-advantage-description'. $i, 'rows' => 5]) ?>
+                                    </li>
+                                    <li>
+                                        <button class="load-btn">Загрузить иконку</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <?php
+
+                                } ?>
                             </ul>
                         </div>
                     </div>
@@ -292,12 +214,10 @@
                         <div class="panel-body">
                             <ul class="panel-editor-list">
                                 <li>
-                                    <label class="panel-editor-title" for="editor-call-header">Заголовок призыв</label>
-                                    <input id="editor-call-header" type="text" value="Живая музыка по пятницам!">
+                                    <?= $form->field($site, 'call_header')->textInput(['id' => 'editor-call-header']) ?>
                                 </li>
                                 <li>
-                                    <label class="panel-editor-title" for="editor-call-description">Описание</label>
-                                    <textarea id="editor-call-description" rows="5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                    <?= $form->field($site, 'call_description')->textarea(['id' => 'editor-call-description', 'rows' => 5]) ?>
                                 </li>
                             </ul>
                         </div>
@@ -333,12 +253,11 @@
                         <div class="panel-body">
                             <ul class="panel-editor-list">
                                 <li>
-                                    <label class="panel-editor-title" for="editor-footer-address">Адрес</label>
-                                    <input id="editor-footer-address" type="text" value="">
+                                    <?= $form->field($site, 'site_address')->textInput(['id' => 'editor-footer-address']) ?>
                                 </li>
                                 <li>
-                                    <label class="panel-editor-title" for="editor-footer-phone">Телефон</label>
-                                    <input id="editor-footer-phone" type="text" value="">
+                                    <?= $form->field($site, 'site_phone')->textInput(['id' => 'editor-footer-phone']) ?>
+
                                     <button type="button" class="button editor-btn" tabindex="0">Добавить номер</button>
                                 </li>
                             </ul>
@@ -349,4 +268,5 @@
         </div>
     </div>
 
-</form>
+<!--</form>-->
+<?php ActiveForm::end() ?>

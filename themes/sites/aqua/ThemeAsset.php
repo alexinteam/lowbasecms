@@ -50,7 +50,7 @@ class ThemeAsset extends AssetBundle
         'js/contact_me.js',
         'js/agency.min.js',*/
 
-        "js/jquery.min.js",
+        //"js/jquery.min.js",
         "js/bootstrap.min.js",
         "js/viewportchecker.js",
         "js/slick.min.js",

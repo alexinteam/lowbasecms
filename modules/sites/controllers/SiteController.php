@@ -18,6 +18,8 @@ class SiteController extends Controller
         $site = $this->findModel($siteId);
         $this->setTheme($site->theme);
 
+        $site->populateDefaultValues();
+
         Yii::$app->view->params['site'] = $site;
         Yii::$app->view->params['mode'] = 'view';
 
@@ -36,6 +38,9 @@ class SiteController extends Controller
 
         $site = $this->findModel($id);
         $this->setTheme($site->theme);
+
+        $site->populateDefaultValues();
+
         Yii::$app->view->params['site'] = $site;
         Yii::$app->view->params['mode'] = 'edit';
 

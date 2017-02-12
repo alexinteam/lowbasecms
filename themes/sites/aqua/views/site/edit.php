@@ -1,6 +1,6 @@
 <div class="full-overlay">
 
-    <?= $this->render('_form'); ?>
+    <?= $this->render('_form', ['site' => $site]); ?>
 
     <?= $this->render('blocks/nav'); ?>
 
