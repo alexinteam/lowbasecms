@@ -152,7 +152,7 @@ $config = [
                 // events
                 'client/events/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-events/events/<action>',
                 // news
-                'client/news/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive|add)>' => 'client-news/news/<action>',
+                'client/news/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive|add|save)>' => 'client-news/news/<action>',
                 // bookings
                 'client/bookings/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|archive)>' => 'client-bookings/bookings/<action>',
                 // rewiews

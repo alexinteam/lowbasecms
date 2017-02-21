@@ -7,6 +7,7 @@ var removeRest = function($rest) {
         }
     }).done(function () {
         $($rest).parents('.cabinet-table').remove();
+        location.reload();
     })
 };
 
@@ -26,7 +27,7 @@ var editRest = function($rest) {
 
         }
     }).done(function () {
-       //
+        location.reload();
     })
 };
 

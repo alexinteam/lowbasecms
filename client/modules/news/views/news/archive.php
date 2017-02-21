@@ -79,8 +79,8 @@ use app\models\entities\MainSiteConfig;
                                 </div>
                             </div>';
                             echo '</div>';
-                            echo '<a href="javascript:" class="abs-item close-news">&times;</a>
-                                <a href="javascript:" class="abs-item edit-news"></a>';
+                            echo '<a href="javascript:" class="abs-item close-news">&times;</a>';
+                            echo '<a href="/client/news/edit?id='.$news[$i]->news_id.'" class="abs-item edit-news"></a>';
                             echo '</div></div>';
                             if(($i % 2) == 1) {
                                 echo '</div>';

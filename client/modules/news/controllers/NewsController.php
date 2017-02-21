@@ -14,6 +14,7 @@ use app\models\news\News;
 use yii\web\UploadedFile;
 use app\models\UploadForm;
 use app\override\controllers\ClientController;
+use app\models\User;
 
 
 class NewsController extends ClientController
@@ -70,6 +71,8 @@ class NewsController extends ClientController
         $lastNews = News::find()
             ->orderBy('news_id DESC')
             ->one();
+        $featuredRestoraunt = User::getFeaturedRestoraunt();
+        $modelNews->restoraunt_id = $featuredRestoraunt->lb_restoraunts_id;
         if(isset($lastNews->news_id)) {
             $newsDirId = $lastNews->news_id + 1;
         } else {
@@ -85,22 +88,81 @@ class NewsController extends ClientController
                 mkdir('../web/'.$pathToDir.$newsDirId, 0777, true);
             }
 
-            if ($model->upload('../web/'.$pathToDir.$newsDirId.'/') && $modelNews->load(Yii::$app->request->post())) {
+            $modelNews->load(Yii::$app->request->post());
+            if ($model->upload('../web/'.$pathToDir.$newsDirId.'/')) {
                 $modelNews->news_image = $pathToDir.$newsDirId.'/'.$model->imageFile->baseName . '.' . $model->imageFile->extension;
-                $modelNews->save();
-                $dbCategories = NewsCategory::find()->all();
-                $categories =[];
-                foreach ($dbCategories as $category) {
-                    $categories[$category->category_id] = $category->category_name;
-                }
-                return $this->render('create',[
-                    'model' => new News(),
-                    'categories' => $categories,
-                    'saved' => true
-                ]);
             }
+            $modelNews->save();
+            $dbCategories = NewsCategory::find()->all();
+            $categories =[];
+            foreach ($dbCategories as $category) {
+                $categories[$category->category_id] = $category->category_name;
+            }
+            return $this->render('create',[
+                'model' => new News(),
+                'categories' => $categories,
+                'saved' => true
+            ]);
         } else {
             return $this->redirect('/client/news/create');
+        }
+    }
+
+    public function actionEdit($id) {
+        $model = News::find()->where('news_id =:news_id', [
+            ':news_id' => $id
+        ])->one();
+        $dbCategories = NewsCategory::find()->all();
+        $categories =[];
+        foreach ($dbCategories as $category) {
+            $categories[$category->category_id] = $category->category_name;
+        }
+        return $this->render('edit',[
+            'categories' => $categories,
+            'model' => $model
+        ]);
+    }
+
+    public function actionSave() {
+        $model = new UploadForm();
+        $modelNews = new News();
+        $lastNews = News::find()
+            ->orderBy('news_id DESC')
+            ->one();
+        $featuredRestoraunt = User::getFeaturedRestoraunt();
+        $modelNews->restoraunt_id = $featuredRestoraunt->lb_restoraunts_id;
+        if(isset($lastNews->news_id)) {
+            $newsDirId = $lastNews->news_id + 1;
+        } else {
+            $newsDirId = 1;
+        }
+
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($modelNews, 'news_image');
+
+            $pathToDir = 'uploads/news/';
+            if (!file_exists('../web/'.$pathToDir.$newsDirId)) {
+                mkdir('../web/'.$pathToDir.$newsDirId, 0777, true);
+            }
+
+            $modelNews->load(Yii::$app->request->post());
+            if ($model->upload('../web/'.$pathToDir.$newsDirId.'/')) {
+                $modelNews->news_image = $pathToDir.$newsDirId.'/'.$model->imageFile->baseName . '.' . $model->imageFile->extension;
+            }
+            $modelNews->save();
+            $dbCategories = NewsCategory::find()->all();
+            $categories =[];
+            foreach ($dbCategories as $category) {
+                $categories[$category->category_id] = $category->category_name;
+            }
+            return $this->render('edit',[
+                'model' => $modelNews,
+                'categories' => $categories,
+                'saved' => true
+            ]);
+        } else {
+            return $this->redirect('/client/news/archive');
         }
     }
 }

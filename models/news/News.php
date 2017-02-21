@@ -13,6 +13,7 @@ use Yii;
  * @property string $news_date
  * @property string $news_image
  * @property string $news_text
+ * @property integer $restoraunt_id
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -30,8 +31,8 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['news_title', 'news_category_id', 'news_date'], 'required'],
-            [['news_category_id'], 'integer'],
+            [['news_title', 'news_category_id', 'news_date', 'restoraunt_id'], 'required'],
+            [['news_category_id', 'restoraunt_id'], 'integer'],
             [['news_date'], 'safe'],
             [['news_text'], 'string'],
             [['news_title', 'news_image'], 'string', 'max' => 255],
@@ -50,6 +51,7 @@ class News extends \yii\db\ActiveRecord
             'news_date' => 'News Date',
             'news_image' => 'News Image',
             'news_text' => 'News Text',
+            'restoraunt_id' => 'Restoraunt'
         ];
     }
 }

@@ -15,7 +15,7 @@ if($this->context->route == 'client-site/site/index' || $this->context->route ==
 }
 
 $siteNewsActivate = false;
-if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive' || $this->context->route == 'client-news/news/add') {
+if($this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/archive' || $this->context->route == 'client-news/news/add' || $this->context->route == 'client-news/news/edit') {
     $siteNewsActivate = true;
 }
 
@@ -137,7 +137,11 @@ if($this->context->route == 'client-social/social/vk' || $this->context->route =
                     echo Menu::widget([
                         'options' => ['class' => 'nav-panel nav-cabinet'],
                         'items' => [
-                            ['label' => 'Добавить новость', 'url' => ['/client-news/news/create'], 'active' => $this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/add'],
+                            [
+                                'label' => 'Добавить новость',
+                                'url' => ['/client-news/news/create'],
+                                'active' => $this->context->route == 'client-news/news/create' || $this->context->route == 'client-news/news/add' || $this->context->route == 'client-news/news/edit'
+                            ],
                             ['label' => 'Архив новостей', 'url' => ['/client-news/news/archive'], 'active' => $this->context->route == 'client-news/news/archive']
                         ]]);
                 }

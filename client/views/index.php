@@ -157,7 +157,12 @@ $model = new Restoraunts();
                     <div class="cabinet-table">
                         <input type="hidden" value="<?=$myRestoraunt['lb_restoraunts_id']?>" class="restoraunt-id"/>
                         <div class="cabinet-cell">
-                            <p class="name-rest"><?= $myRestoraunt['lb_restoraunts_name']?></p>
+                            <p class="name-rest">
+                                <?= $myRestoraunt['lb_restoraunts_name']?>
+                                <?php if($myRestoraunt['lb_featured'] == 1) {
+                                  echo ' (Активный)';
+                                }?>
+                            </p>
                             <p class="create-rest">дата создания: <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('d')?> <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('M')?> <?= (new \DateTime($myRestoraunt['lb_created_at']))->format('Y')?> г.</p>
                             <p class="balance-rest">Баланс счета ресторана на сервисе:<span>9 000 р.</span></p>
                         </div>

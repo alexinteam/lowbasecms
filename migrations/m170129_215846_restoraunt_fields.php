@@ -6,7 +6,7 @@ class m170129_215846_restoraunt_fields extends Migration
 {
     public function up()
     {
-        $sql = 'CREATE TABLE `lowbasecms`.`lb_restoraunt_options` (
+        $sql = 'CREATE TABLE `lb_restoraunt_options` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `restoraunt_id` INT NOT NULL,
   `restoraunt_bill` VARCHAR(45) NULL,

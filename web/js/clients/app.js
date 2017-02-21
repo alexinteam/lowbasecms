@@ -81,6 +81,7 @@ var changeRestoraut = function($restOption) {
                 var $rest = $response.allRestoraunts[$i];
                 $('.dropdown-menu-restaurant').append('<li restoraunt_id="'+$rest.lb_restoraunts_id+'"><a onclick="changeRestoraut(this)" class="change_restoraut" href="#">'+$rest.lb_restoraunts_name+'</a></li>');
             }
+            location.reload();
         }
     })
 };
