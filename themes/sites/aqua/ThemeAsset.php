@@ -36,6 +36,8 @@ class ThemeAsset extends AssetBundle
         "css/editor-bg-menu.css",
         "css/editor-index.css",*/
 
+        //"vendors/uploadifive/uploadifive.css",
+
         "css/index.css",
         "css/animate.css",
         "css/slick.css",
@@ -51,6 +53,8 @@ class ThemeAsset extends AssetBundle
         'js/agency.min.js',*/
 
         //"js/jquery.min.js",
+        //"vendors/uploadifive/jquery.uploadifive.min.js",
+
         "js/bootstrap.min.js",
         "js/viewportchecker.js",
         "js/slick.min.js",

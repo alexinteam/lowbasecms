@@ -60,7 +60,8 @@ $form = ActiveForm::begin([
                                 <li>
                                     <label class="panel-editor-title">Иконка сайта</label>
                                     <p class="panel-editor-description">Иконка сайта используется в браузере и на экранах мобильных устройств. Иконка должна быть квадратной, не менее 512 пикселей по ширине и высоте.</p>
-                                    <button class="load-btn">Загрузить иконку</button>
+
+                                    <button type="button" class="load-btn editor-upload">Загрузить иконку</button>
                                 </li>
                             </ul>
                         </div>
@@ -78,7 +79,8 @@ $form = ActiveForm::begin([
                             <ul class="panel-editor-list">
                                 <li>
                                     <label class="panel-editor-title">Логотип</label>
-                                    <button class="load-btn">Загрузить логотип</button>
+
+                                    <button type="button" class="load-btn editor-upload">Загрузить логотип</button>
                                 </li>
                                 <li>
                                     <label class="panel-editor-title" for="editor-head-address">Адрес</label>
@@ -134,7 +136,7 @@ $form = ActiveForm::begin([
                                         <?= $form->field($site, 'about_description_' . $i)->textarea(['id' => 'editor-about-description' . $i, 'rows' => 5]) ?>
                                     </li>
                                     <li>
-                                        <button class="load-btn">Загрузить фото</button>
+                                        <button type="button" class="load-btn editor-upload">Загрузить фото</button>
                                     </li>
 
                                     <!--<li>
@@ -191,7 +193,7 @@ $form = ActiveForm::begin([
                                         <?= $form->field($site, 'advantage_description_' . $i)->textarea(['id' => 'editor-advantage-description'. $i, 'rows' => 5]) ?>
                                     </li>
                                     <li>
-                                        <button class="load-btn">Загрузить иконку</button>
+                                        <button type="button" class="load-btn editor-upload">Загрузить иконку</button>
                                     </li>
 
                                     <!--<li>
@@ -240,7 +242,7 @@ $form = ActiveForm::begin([
                                 <li>
                                     <label class="panel-editor-title">Меню ресторана</label>
                                     <p class="panel-editor-description">На сайте представлена возможность скачивания меню для всех пользователей. Загрузите свое меню в формате .pdf или .doc</p>
-                                    <button class="load-btn">Загрузить меню</button>
+                                    <button type="button" class="load-btn editor-upload">Загрузить меню</button>
                                 </li>
                             </ul>
                         </div>

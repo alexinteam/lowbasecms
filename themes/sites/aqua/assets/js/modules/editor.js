@@ -2,7 +2,7 @@
  * Created by antonshell on 10.02.2017.
  */
 
-var editor = (function() {
+var editor = (function(jq172) {
 
     var editorPrefix = 'editor-';
     var viewPrefix = 'view-';
@@ -13,6 +13,7 @@ var editor = (function() {
         siteId = id;
         initInputs();
         populateLsData();
+        initUploads();
     };
 
     var initInputs = function(){
@@ -25,6 +26,28 @@ var editor = (function() {
         }).keyup(function() {
             updateView($(this));
         });
+    };
+
+    var initUploads = function () {
+        $(".editor-upload").each(function () {
+            var formData = {
+                'site_id' : siteId
+            };
+
+            jq172(this).uploadifive({
+                'buttonText': 'Update before photo',
+                'queueID': 'file-before-queue',
+                'removeCompleted': true,
+                'uploadScript': '/sites/site/upload',
+                'formData': formData,
+                'multi': false,
+                'width': '100%',
+                'onUploadComplete' : function (file, data) {
+                    console.log(data);
+                },
+                'fileTypeExts' : '*.gif; *.jpg; *.png; *.jpeg'
+            });
+        })
     };
 
     /**
@@ -124,4 +147,4 @@ var editor = (function() {
     return {
         init: init,
     };
-})();
+})(jq172);

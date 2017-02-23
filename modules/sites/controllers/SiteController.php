@@ -5,11 +5,32 @@ namespace app\modules\sites\controllers;
 use app\models\entities\Site;
 use app\modules\sites\models\ContactForm;
 use Yii;
+use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'upload' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    public function init(){
+        parent::init();
+
+        Yii::$app->request->enableCsrfValidation = false;
+    }
+
     /**
      * @param $siteId
      * @return string
@@ -79,6 +100,42 @@ class SiteController extends Controller
             'site' => $site,
             'contactForm' => $contactForm,
         ]);
+    }
+
+    public function actionUpload(){
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $siteId = Yii::$app->request->post('site_id');
+
+        if (!$siteId) {
+            throw new BadRequestHttpException('Missing required parameter site_id');
+        }
+
+        try{
+            $file = UploadedFile::getInstanceByName('Filedata');
+
+            $path = Yii::getAlias('@webroot/uploads/sites/' . $siteId);
+            if(!is_dir($path)){
+                mkdir($path);
+            }
+
+            $url = Yii::getAlias('@web/uploads/sites/' . $siteId);
+
+            $ext = $file->getExtension();
+            $filename = md5(time()) . '.' . $ext;
+
+            $file->saveAs($path . '/' . $filename);
+
+            return [
+                'success' => true,
+                'url' => $url . '/' . $filename
+            ];
+        }
+        catch (\Exception $e){
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
     }
 
     /**

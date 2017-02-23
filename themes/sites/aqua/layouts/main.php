@@ -39,6 +39,8 @@ $siteId = $this->params['site_id'] ?: null;
         if($mode == 'edit'){
             ?>
 
+            <link href="<?= $this->getThemeUrl("vendors/uploadifive/uploadifive.css"); ?>" rel="stylesheet">
+
             <link href="<?= $this->getThemeUrl("css/editor-main.css"); ?>" rel="stylesheet">
             <link href="<?= $this->getThemeUrl("css/editor-bg-menu.css"); ?>" type="text/css" rel="stylesheet">
             <link href="<?= $this->getThemeUrl("css/editor-index.css"); ?>" type="text/css" rel="stylesheet">
@@ -91,6 +93,12 @@ $siteId = $this->params['site_id'] ?: null;
 <?php
     if($mode == 'edit'){
         ?>
+
+        <script src="<?= $this->getThemeUrl("vendors/uploadifive/jquery.min.js"); ?>"></script>
+        <script type="text/javascript">
+            var jq172 = $.noConflict(true);
+        </script>
+        <script src="<?= $this->getThemeUrl("vendors/uploadifive/jquery.uploadifive.min.js"); ?>"></script>
 
         <script src="<?= $this->getThemeUrl("js/modules/editor.js"); ?>"></script>
 
