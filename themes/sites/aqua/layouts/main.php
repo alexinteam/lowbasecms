@@ -6,6 +6,7 @@ use yii\helpers\Html;
 ThemeAsset::register($this);
 
 $mode = $this->params['mode'] ?: null;
+$siteId = $this->params['site_id'] ?: null;
 
 ?>
 <?php $this->beginPage() ?>
@@ -95,7 +96,8 @@ $mode = $this->params['mode'] ?: null;
 
         <script type="text/javascript">
             $(document).ready(function(){
-                editor.init();
+                var siteId = <?= $siteId ?>;
+                editor.init(siteId);
             });
         </script>
 

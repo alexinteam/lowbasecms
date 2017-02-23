@@ -6,8 +6,11 @@ var editor = (function() {
 
     var editorPrefix = 'editor-';
     var viewPrefix = 'view-';
+    var siteId;
 
-    var init = function () {
+
+    var init = function (id) {
+        siteId = id;
         initInputs();
         populateLsData();
     };
@@ -60,6 +63,10 @@ var editor = (function() {
      * @param val
      */
     var setLsItem = function (key, val) {
+        // add site id to local storage item
+        var prefix = getLsPrefix();
+        key = prefix + key;
+
         localStorage.setItem(key, val);
     };
 
@@ -68,6 +75,10 @@ var editor = (function() {
      * @param key
      */
     var getLsItem = function (key) {
+        // remove site id from local storage item
+        var prefix = getLsPrefix();
+        key = prefix + key;
+
         return localStorage.getItem(key);
     };
 
@@ -77,14 +88,22 @@ var editor = (function() {
      */
     var getLsCollection = function () {
         var collection = [];
+        // remove site id from local storage item
+
+        var prefix = getLsPrefix();
 
         for (var key in localStorage){
             if(localStorage.hasOwnProperty(key) && key.indexOf(editorPrefix) !== -1){
-                collection[key] = localStorage[key];
+                var collectionKey = key.replace(prefix,'');
+                collection[collectionKey] = localStorage[key];
             }
         }
 
         return collection;
+    };
+
+    var getLsPrefix = function () {
+        return 'site' + siteId + '_';
     };
 
     var populateLsData = function () {

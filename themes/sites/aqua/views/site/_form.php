@@ -136,9 +136,11 @@ $form = ActiveForm::begin([
                                     <li>
                                         <button class="load-btn">Загрузить фото</button>
                                     </li>
-                                    <li>
+
+                                    <!--<li>
                                         <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                    </li>
+                                    </li>-->
+
                                     <li role="separator" class="divider"></li>
 
                                     <?php
@@ -191,9 +193,11 @@ $form = ActiveForm::begin([
                                     <li>
                                         <button class="load-btn">Загрузить иконку</button>
                                     </li>
-                                    <li>
+
+                                    <!--<li>
                                         <button type="button" class="button editor-btn" tabindex="0">Удалить всю строку</button>
-                                    </li>
+                                    </li>-->
+
                                     <li role="separator" class="divider"></li>
 
                                     <?php

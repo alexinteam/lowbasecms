@@ -30,3 +30,5 @@ phpunit.phar
 /config/web_local.php
 
 Restoweb-bbaa9421a985.json
+
+/web/uploads

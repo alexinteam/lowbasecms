@@ -22,6 +22,7 @@ class SiteController extends Controller
         $site->populateDefaultValues();
 
         Yii::$app->view->params['site'] = $site;
+        Yii::$app->view->params['site_id'] = $site->id;
         Yii::$app->view->params['mode'] = 'view';
 
         $contactForm = new ContactForm();
@@ -71,6 +72,7 @@ class SiteController extends Controller
         $site->populateDefaultValues();
 
         Yii::$app->view->params['site'] = $site;
+        Yii::$app->view->params['site_id'] = $site->id;
         Yii::$app->view->params['mode'] = 'edit';
 
         return $this->render('edit',[
