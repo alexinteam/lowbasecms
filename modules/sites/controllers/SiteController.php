@@ -3,6 +3,7 @@
 namespace app\modules\sites\controllers;
 
 use app\models\entities\Site;
+use app\modules\sites\models\ContactForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -23,8 +24,23 @@ class SiteController extends Controller
         Yii::$app->view->params['site'] = $site;
         Yii::$app->view->params['mode'] = 'view';
 
+        $contactForm = new ContactForm();
+
+        if ($contactForm->load(Yii::$app->request->post())) {
+            $site->clearDefaultValues();
+
+            if($contactForm->validate()){
+                //@TODO save contact form
+
+                //Yii::$app->session->addFlash('contact_form_success','Form Successfully Sent');
+
+                return 'Form saved';
+            }
+        }
+
         return $this->render('index',[
-            'site' => $site
+            'site' => $site,
+            'contactForm' => $contactForm,
         ]);
     }
 
@@ -37,6 +53,8 @@ class SiteController extends Controller
 
         $site = $this->findModel($id);
         $this->setTheme($site->theme);
+
+        $contactForm = new ContactForm();
 
         /*if($site->user_id != $user->id){
             throw new NotFoundHttpException();
@@ -56,7 +74,8 @@ class SiteController extends Controller
         Yii::$app->view->params['mode'] = 'edit';
 
         return $this->render('edit',[
-            'site' => $site
+            'site' => $site,
+            'contactForm' => $contactForm,
         ]);
     }
 

@@ -26,7 +26,7 @@
 
     </div>
     <footer>
-        <?= $this->render('blocks/footer', ['site' => $site]); ?>
+        <?= $this->render('blocks/footer', ['site' => $site, 'contactForm' => $contactForm]); ?>
     </footer>
 </div>
 

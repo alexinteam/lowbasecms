@@ -29,18 +29,8 @@ use yii\helpers\Html;
                 </div>
             </div>
             <h4 class="f-20 form-h4">Форма обратной связи:</h4>
-            <form id="ajax-contact-form" action="">
-                <div class="row row-form">
-                    <div class="col-md-6">
-                        <input class="form-area" type="email" name="email" value="" placeholder="Email">
-                    </div>
-                    <div class="col-md-6">
-                        <input class="form-area" type="text" text="" name="name" value="" placeholder="Имя">
-                    </div>
-                </div>
-                <textarea class="form-area" name="message" cols="40" rows="3" placeholder="Текст сообщения"></textarea>
-                <input type="submit" name="submit" class="send-post" value="Отправить заявку">
-            </form>
+
+            <?= $this->render('_contact_form', ['site' => $site, 'contactForm' => $contactForm]); ?>
         </div>
     </div>
 </div>
