@@ -17,6 +17,16 @@ use yii\helpers\Html;
         [
             'class' => 'yii\grid\ActionColumn',
             'header'=> Yii::t('app','Actions'),
+            'template' => '{view} {update} {configure} {delete}',
+
+            'buttons' => [
+                'configure' => function ($url,$model) {
+                    $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-cog"]);
+                    return Html::a($icon, ['/sites/site/edit', 'id' => $model->id]);
+                }
+            ],
+
+
             //'contentOptions'=>['style'=>'text-align: center;']
         ],
     ],

@@ -59,8 +59,11 @@ class SiteController extends ClientController
             if($model->save()) {
                 $vHostManager = new Manager();
                 $vHostManager->addVirtualHost($model->domain);
-                $siteSaved = true;
-                $model = new Site();
+
+                return $this->redirect(['/sites/site/edit', 'id' => $model->getId()]);
+
+                //$siteSaved = true;
+                //$model = new Site();
             }
             return $this->render('create',['model' => $model, 'siteSaved' => $siteSaved]);
         } else {

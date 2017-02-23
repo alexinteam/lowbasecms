@@ -189,6 +189,9 @@ $model = new Restoraunts();
                             </p>
                         </div>
                         <div class="cabinet-cell">
+                            <a href="#">
+                                <button class="btn-line btn-center">Конструктор сайта</button>
+                            </a>
                             <button class="btn-line btn-center" onclick="editRest(this);">Сохранить</button>
                             <button class="btn-line btn-center" onclick="removeRest(this);">Удалить ресторан</button>
                         </div>
