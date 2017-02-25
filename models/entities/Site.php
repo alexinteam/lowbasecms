@@ -109,15 +109,19 @@ class Site extends \yii\db\ActiveRecord
             // about
             'about_header_1' => "ЗАГОЛОВОК 1",
             'about_description_1' => $lrIpSum,
+            'about_photo_1' => '/static/bg-01.png',
 
             'about_header_2' => "ЗАГОЛОВОК 2",
             'about_description_2' => $lrIpSum,
+            'about_photo_2' => '/static/bg-02.png',
 
             'about_header_3' => "ЗАГОЛОВОК 3",
             'about_description_3' => $lrIpSum,
+            'about_photo_3' => '/static/bg-03.png',
 
             'about_header_4' => "ЗАГОЛОВОК 4",
             'about_description_4' => $lrIpSum,
+            'about_photo_4' => '/static/bg-04.png',
 
             // announce
             'announce_header' => 'Живая музыка по пятницам!',
@@ -126,19 +130,25 @@ class Site extends \yii\db\ActiveRecord
             // advantages
             'advantage_header_1' => 'Более 200 коктейлей',
             'advantage_description_1' => $lrIpSum,
+            'advantage_icon_1' => '/static/icon-1.png',
 
             'advantage_header_2' => 'Более 200 бургеров',
             'advantage_description_2' => $lrIpSum,
+            'advantage_icon_2' => '/static/icon-2.png',
 
             'advantage_header_3' => 'Более 200 коктейлей',
             'advantage_description_3' => $lrIpSum,
+            'advantage_icon_3' => '/static/icon-1.png',
 
             'advantage_header_4' => 'Более 200 бургеров',
             'advantage_description_4' => $lrIpSum,
+            'advantage_icon_4' => '/static/icon-2.png',
 
             // call
             'call_header' => 'Живая музыка по пятницам!',
             'call_description' => $lrIpSum,
+
+            'menu_file' => '/static/Demo_Menu.xlsx',
 
             // site
             //'site_address' => '129430, г.Москва, Набережная 8, стр. 33, офис 404',

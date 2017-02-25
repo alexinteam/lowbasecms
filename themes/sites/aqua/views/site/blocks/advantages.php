@@ -14,6 +14,8 @@ use yii\helpers\Html;
 
             <div class="col-md-6">
 
+                <!--upload-advantage-icon---><?/*= $i */?>
+
                 <?php for($i = 1; $i <= 4; $i++): ?>
                     <?php
                     $header = 'advantage_header_' . $i;
@@ -21,10 +23,13 @@ use yii\helpers\Html;
                     $aboutDescription = 'advantage_description_' . $i;
                     $aboutDescriptionId = 'view-advantage-description' . $i;
                     $blockId = 'block-dl-' . $i;
+                    $imgField = 'advantage_icon_' . $i;
+                    $imgId = 'upload-advantage-icon-' . $i;
                     ?>
 
                     <dl class="block-dl <?= $blockId; ?>">
                         <dt id="<?= $headerId ?>">
+                            <img id="<?= $imgId ?>" src="<?= $site->$imgField ?>">
                             <?= Html::encode($site->$header); ?>
                         </dt>
                         <dd id="<?= $aboutDescriptionId ?>">

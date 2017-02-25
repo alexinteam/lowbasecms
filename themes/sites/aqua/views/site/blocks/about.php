@@ -16,12 +16,14 @@ use yii\helpers\Html;
             $headerId = 'view-about-header' . $i;
             $aboutDescription = 'about_description_' . $i;
             $aboutDescriptionId = 'view-about-description' . $i;
-            $img = 'images/bg-0' . $i . '.png';
+            //$img = 'images/bg-0' . $i . '.png';
+            $imgField = 'about_photo_' . $i;
+            $imgId = 'upload-about-photo-' . $i;
             ?>
 
             <div class="table-country table-left">
                 <div class="cell-country anim-right">
-                    <img class="bg-country" src="<?= $this->getThemeUrl($img); ?>" alt="Thailand">
+                    <img id="<?= $imgId ?>" class="bg-country" src="<?= $site->$imgField ?>" alt="Thailand">
                 </div>
                 <div class="cell-country anim-left">
                     <p>

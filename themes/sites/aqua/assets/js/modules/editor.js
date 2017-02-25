@@ -34,20 +34,56 @@ var editor = (function(jq172) {
                 'site_id' : siteId
             };
 
+            //var buttonText = $(this).html();
+            //var buttonText = $(this).val();
+
+            var inputElement = $(this);
+
+            var buttonText = inputElement.data('label');
+
+            var targetId = inputElement.data('target');
+
             jq172(this).uploadifive({
-                'buttonText': 'Update before photo',
+                //'buttonText': 'Update before photo',
+                'buttonText': buttonText,
+                'buttonClass': 'load-btn load-btn-gen',
                 'queueID': 'file-before-queue',
                 'removeCompleted': true,
                 'uploadScript': '/sites/site/upload',
                 'formData': formData,
+                'height': 38,
                 'multi': false,
                 'width': '100%',
                 'onUploadComplete' : function (file, data) {
-                    console.log(data);
+                    data = JSON.parse(data);
+
+
+
+                    var targetElement = $('#' + targetId);
+                    var tag = targetElement.prop("tagName");
+
+                    inputElement.val(data.url);
+
+                    var inputId = inputElement.attr('id');
+                    setLsItem(inputId,data.url);
+
+                    if(tag == "A"){
+                        targetElement.attr('href',data.url);
+                    }
+
+                    if(tag == "IMG"){
+                        targetElement.attr('src',data.url);
+                    }
+
+
+
+
                 },
                 'fileTypeExts' : '*.gif; *.jpg; *.png; *.jpeg'
             });
-        })
+        });
+
+        $(".uploadifive-button").attr('style', '').removeClass("uploadifive-button");
     };
 
     /**
@@ -130,6 +166,7 @@ var editor = (function(jq172) {
     };
 
     var populateLsData = function () {
+
         var collection = getLsCollection();
 
         for (var key in collection){
@@ -139,7 +176,26 @@ var editor = (function(jq172) {
                 var content = collection[key];
 
                 $('#' + inputId).val(content);
-                $('#' + viewId).html(content);
+                var targetId = $('#' + inputId).data('target');
+                //$('#' + viewId).html(content);
+
+
+                if($('#' + inputId).hasClass('editor-upload')){
+
+                    var targetElement = $('#' + targetId);
+                    var tag = targetElement.prop("tagName");
+
+                    if(tag == "A"){
+                        targetElement.attr('href',content);
+                    }
+
+                    if(tag == "IMG"){
+                        targetElement.attr('src',content);
+                    }
+                }
+                else{
+                    $('#' + viewId).html(content);
+                }
             }
         }
     };

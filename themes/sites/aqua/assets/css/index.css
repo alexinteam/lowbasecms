@@ -494,7 +494,7 @@ margin-bottom:12px
 margin-right:15px
 }
 
-.block-dl-1 dt::before {
+/*.block-dl-1 dt::before {
 content:url(../images/icon-1.png)
 }
 
@@ -508,7 +508,7 @@ content:url(../images/icon-2.png)
 
 .block-dl-4 dt::before {
 content:url(../images/icon-2.png)
-}
+}*/
 
 .block-dl dd {
 font-size:16px;

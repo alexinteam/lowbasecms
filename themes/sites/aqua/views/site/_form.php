@@ -61,7 +61,12 @@ $form = ActiveForm::begin([
                                     <label class="panel-editor-title">Иконка сайта</label>
                                     <p class="panel-editor-description">Иконка сайта используется в браузере и на экранах мобильных устройств. Иконка должна быть квадратной, не менее 512 пикселей по ширине и высоте.</p>
 
-                                    <button type="button" class="load-btn editor-upload">Загрузить иконку</button>
+                                    <!--<button type="button" class="load-btn">Загрузить иконку</button>-->
+
+                                    <!--<button type="button" class="load-btn editor-upload">Загрузить иконку</button>-->
+
+                                    <!--<button type="button" class="load-btn editor-upload">Загрузить иконку</button>-->
+                                    <input type="text" name="file_icon" class="load-btn editor-upload" data-label="Загрузить иконку">
                                 </li>
                             </ul>
                         </div>
@@ -80,7 +85,8 @@ $form = ActiveForm::begin([
                                 <li>
                                     <label class="panel-editor-title">Логотип</label>
 
-                                    <button type="button" class="load-btn editor-upload">Загрузить логотип</button>
+                                    <!--<button type="button" class="load-btn editor-upload">Загрузить логотип</button>-->
+                                    <input type="text" name="file_icon" class="load-btn editor-upload" data-label="Загрузить логотип">
                                 </li>
                                 <li>
                                     <label class="panel-editor-title" for="editor-head-address">Адрес</label>
@@ -136,7 +142,9 @@ $form = ActiveForm::begin([
                                         <?= $form->field($site, 'about_description_' . $i)->textarea(['id' => 'editor-about-description' . $i, 'rows' => 5]) ?>
                                     </li>
                                     <li>
-                                        <button type="button" class="load-btn editor-upload">Загрузить фото</button>
+                                        <?php $iconField = 'about_photo_' . $i ?>
+                                        <!--<button type="button" class="load-btn editor-upload">Загрузить фото</button>-->
+                                        <input id="editor-<?= $iconField ?>" type="text" name="Site[<?= $iconField; ?>]" class="load-btn editor-upload" data-target="upload-about-photo-<?= $i ?>" data-label="Загрузить фото" value="<?= $site->$iconField; ?>">
                                     </li>
 
                                     <!--<li>
@@ -193,7 +201,10 @@ $form = ActiveForm::begin([
                                         <?= $form->field($site, 'advantage_description_' . $i)->textarea(['id' => 'editor-advantage-description'. $i, 'rows' => 5]) ?>
                                     </li>
                                     <li>
-                                        <button type="button" class="load-btn editor-upload">Загрузить иконку</button>
+                                        <?php $iconField = 'advantage_icon_' . $i ?>
+
+                                        <!--<button type="button" class="load-btn editor-upload">Загрузить иконку</button>-->
+                                        <input id="editor-<?= $iconField ?>" type="text" name="Site[<?= $iconField; ?>]" class="load-btn editor-upload" data-target="upload-advantage-icon-<?= $i ?>" data-label="Загрузить иконку" value="<?= $site->$iconField; ?>">
                                     </li>
 
                                     <!--<li>
@@ -242,7 +253,9 @@ $form = ActiveForm::begin([
                                 <li>
                                     <label class="panel-editor-title">Меню ресторана</label>
                                     <p class="panel-editor-description">На сайте представлена возможность скачивания меню для всех пользователей. Загрузите свое меню в формате .pdf или .doc</p>
-                                    <button type="button" class="load-btn editor-upload">Загрузить меню</button>
+
+                                    <!--<button type="button" class="load-btn editor-upload">Загрузить меню</button>-->
+                                    <input id="editor-menu-file" type="text" name="Site[menu_file]" class="load-btn editor-upload" data-target="upload-menu-file" data-label="Загрузить меню" value="<?= $site->menu_file; ?>">
                                 </li>
                             </ul>
                         </div>
