@@ -23,14 +23,8 @@ class NewsController extends ClientController
 
     public function actionCreate() {
         $model = new News();
-        $dbCategories = NewsCategory::find()->all();
-        $categories =[];
-        foreach ($dbCategories as $category) {
-            $categories[$category->category_id] = $category->category_name;
-        }
-
         return $this->render('create',[
-            'categories' => $categories,
+            'categories' => $this->getAllCategories(),
             'model' => $model
         ]);
     }
@@ -93,14 +87,9 @@ class NewsController extends ClientController
                 $modelNews->news_image = $pathToDir.$newsDirId.'/'.$model->imageFile->baseName . '.' . $model->imageFile->extension;
             }
             $modelNews->save();
-            $dbCategories = NewsCategory::find()->all();
-            $categories =[];
-            foreach ($dbCategories as $category) {
-                $categories[$category->category_id] = $category->category_name;
-            }
             return $this->render('create',[
                 'model' => new News(),
-                'categories' => $categories,
+                'categories' => $this->getAllCategories(),
                 'saved' => true
             ]);
         } else {
@@ -112,15 +101,18 @@ class NewsController extends ClientController
         $model = News::find()->where('news_id =:news_id', [
             ':news_id' => $id
         ])->one();
-        $dbCategories = NewsCategory::find()->all();
-        $categories =[];
-        foreach ($dbCategories as $category) {
-            $categories[$category->category_id] = $category->category_name;
-        }
         return $this->render('edit',[
-            'categories' => $categories,
+            'categories' => $this->getAllCategories(),
             'model' => $model
         ]);
+    }
+
+    public function actionDelete($id) {
+        $model = News::find()->where('news_id =:news_id', [
+            ':news_id' => $id
+        ])->one();
+        $model->delete();
+        return $this->redirect('archive');
     }
 
     public function actionSave() {
@@ -151,18 +143,22 @@ class NewsController extends ClientController
                 $modelNews->news_image = $pathToDir.$newsDirId.'/'.$model->imageFile->baseName . '.' . $model->imageFile->extension;
             }
             $modelNews->save();
-            $dbCategories = NewsCategory::find()->all();
-            $categories =[];
-            foreach ($dbCategories as $category) {
-                $categories[$category->category_id] = $category->category_name;
-            }
             return $this->render('edit',[
                 'model' => $modelNews,
-                'categories' => $categories,
+                'categories' => $this->getAllCategories(),
                 'saved' => true
             ]);
         } else {
             return $this->redirect('/client/news/archive');
         }
+    }
+
+    private function getAllCategories() {
+        $dbCategories = NewsCategory::find()->all();
+        $categories =[];
+        foreach ($dbCategories as $category) {
+            $categories[$category->category_id] = $category->category_name;
+        }
+        return $dbCategories;
     }
 }

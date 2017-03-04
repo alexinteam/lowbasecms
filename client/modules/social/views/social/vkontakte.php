@@ -1,3 +1,60 @@
+<?php
+use app\client\modules\social\models\Vk;
+use \yii\helpers\Json;
+$vk = new VK('5898723', 'slz7D7MAoq75zlxFCgXT', '8ac69792548768831c86109bb5399715c2f8ddd8ff672249f1e1977a2fd146089087e4bf25f09efb47005');
+
+$users = $vk->api('wall.post', [
+    'owner_id'   => '-141403043',
+    'message' => 'first_name,last_name']);
+
+$statsWeek = $vk->api('stats.get', [
+    'group_id'   => '141403043',
+    'date_from' => date("Y-m-d", strtotime("this week monday")),
+    'date_to' => date("Y-m-d")
+    ]);
+
+$statsMonth = $vk->api('stats.get', [
+    'group_id'   => '141403043',
+    'date_from' => date("Y-m-d", strtotime("first day of this month")),
+    'date_to' => date("Y-m-d")
+]);
+
+$statsYear = $vk->api('stats.get', [
+    'group_id'   => '141403043',
+    'date_from' => date("Y-m-d", strtotime("first day of january")),
+    'date_to' => date("Y-m-d")
+]);
+
+$totalWeekNews = [];
+foreach ($statsWeek['response'] as $statWeek) {
+    array_push($totalWeekNews, $statWeek['views']);
+}
+$totalWeekNewsJson = Json::encode($totalWeekNews);
+
+$totalMonthNews = [];
+foreach ($statsMonth['response'] as $statMonth) {
+    array_push($totalMonthNews, $statMonth['views']);
+}
+$totalMonthNewsJson = Json::encode($totalMonthNews);
+
+$totalYearNews = [];
+foreach ($statsYear['response'] as $statYear) {
+    array_push($totalYearNews, $statYear['views']);
+}
+$totalYearNewsJson = Json::encode($totalYearNews);
+
+$totalCities = [];
+foreach ($statsYear['response'] as $statYear) {
+    foreach ($statYear['cities'] as $city) {
+        if(array_key_exists($city['name'], $totalCities)) {
+            $totalCities[$city['name']] = $totalCities[$city['name']] + $city['visitors'];
+        } else {
+            $totalCities[$city['name']] = $city['visitors'];
+        }
+    }
+}
+
+?>
 <div class="container-2 page-content">
     <div class="">
         <div class="w-main left">
@@ -95,42 +152,11 @@
                     <div role="tabpanel" class="tab-pane active" id="stat-man">
                         <div class="chart-block">
                             <ul class="chart chart-bg">
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
+                                <?php
+                                    foreach ($statsYear['response'] as $statYear) {
+                                        echo '<li><span style="height:100%"></span></li>';
+                                    }
+                                ?>
                             </ul>
                             <ul class="chart">
                                 <li>
@@ -145,30 +171,30 @@
                                 <li>
                                     <span style="height:25%" title="апрель"></span>
                                 </li>
-                                <li>
-                                    <span style="height:55%" title="май"></span>
-                                </li>
-                                <li>
-                                    <span style="height:78%" title="июнь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:87%" title="июль"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%" title="август"></span>
-                                </li>
-                                <li>
-                                    <span style="height:85%" title="сентябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:68%" title="октябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:50%" title="ноябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:80%" title="декабрь"></span>
-                                </li>
+<!--                                <li>-->
+<!--                                    <span style="height:55%" title="май"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:78%" title="июнь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:87%" title="июль"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%" title="август"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:85%" title="сентябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:68%" title="октябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:50%" title="ноябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:80%" title="декабрь"></span>-->
+<!--                                </li>-->
                             </ul>
                         </div>
                     </div>
@@ -254,112 +280,51 @@
                     </div>
                 </div>
             </div>
-            <div class="block-stat">
-                <h2 class="h2-30 h2-inline">Статистика переходов на сайт:</h2>
-                <ul class="nav nav-tabs nav-stat nav-charts" role="tablist">
-                    <li role="presentation" class="active"><a href="#stat-week-1" aria-controls="stat-week-1" role="tab" data-toggle="tab">Неделю</a></li>
-                    <li role="presentation"><a href="#stat-month-1" aria-controls="stat-month-1" role="tab" data-toggle="tab">Месяц</a></li>
-                    <li role="presentation"><a href="#stat-year-1" aria-controls="stat-year-1" role="tab" data-toggle="tab">Год</a></li>
-                </ul>
-                <div class="tab-content tab-charts">
-                    <div role="tabpanel" class="tab-pane active" id="stat-week-1">
-                        <div id="chart-line-4" class="chart-line"></div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="stat-month-1">
-                        <div id="chart-line-5" class="chart-line"></div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="stat-year-1">
-                        <div id="chart-line-6" class="chart-line"></div>
-                    </div>
-                </div>
-                <div class="block-info-user">
-                    <div class="block-info-user__div"><p>Прямые ссылки: <span>84</span></p></div>
-                    <div class="block-info-user__div"><p>Через другие паблики Вконтакте: <span>900</span></p></div>
-                    <div class="block-info-user__div"><p>По запросу Google: <span>80</span></p></div>
-                    <div class="block-info-user__div"><p>По запросу Яндекс: <span>50</span></p></div>
-                    <div class="block-info-user__div"><p>Через новости Вконтакте: <span>20</span></p></div>
-                    <div class="block-info-user__div"><p>По репостам пользователей: <span>70</span></p></div>
-                </div>
-            </div>
+<!--            <div class="block-stat">-->
+<!--                <h2 class="h2-30 h2-inline">Статистика переходов на сайт:</h2>-->
+<!--                <ul class="nav nav-tabs nav-stat nav-charts" role="tablist">-->
+<!--                    <li role="presentation" class="active"><a href="#stat-week-1" aria-controls="stat-week-1" role="tab" data-toggle="tab">Неделю</a></li>-->
+<!--                    <li role="presentation"><a href="#stat-month-1" aria-controls="stat-month-1" role="tab" data-toggle="tab">Месяц</a></li>-->
+<!--                    <li role="presentation"><a href="#stat-year-1" aria-controls="stat-year-1" role="tab" data-toggle="tab">Год</a></li>-->
+<!--                </ul>-->
+<!--                <div class="tab-content tab-charts">-->
+<!--                    <div role="tabpanel" class="tab-pane active" id="stat-week-1">-->
+<!--                        <div id="chart-line-4" class="chart-line"></div>-->
+<!--                    </div>-->
+<!--                    <div role="tabpanel" class="tab-pane" id="stat-month-1">-->
+<!--                        <div id="chart-line-5" class="chart-line"></div>-->
+<!--                    </div>-->
+<!--                    <div role="tabpanel" class="tab-pane" id="stat-year-1">-->
+<!--                        <div id="chart-line-6" class="chart-line"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="block-info-user">-->
+<!--                    <div class="block-info-user__div"><p>Прямые ссылки: <span>84</span></p></div>-->
+<!--                    <div class="block-info-user__div"><p>Через другие паблики Вконтакте: <span>900</span></p></div>-->
+<!--                    <div class="block-info-user__div"><p>По запросу Google: <span>80</span></p></div>-->
+<!--                    <div class="block-info-user__div"><p>По запросу Яндекс: <span>50</span></p></div>-->
+<!--                    <div class="block-info-user__div"><p>Через новости Вконтакте: <span>20</span></p></div>-->
+<!--                    <div class="block-info-user__div"><p>По репостам пользователей: <span>70</span></p></div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="block-stat">
                 <h2 class="h2-30">Топ городов посетителей</h2>
                 <p class="description-after">Каждое расширение административных прав выполняется только для отдельного процесса, что предотвращает использование другими процессами маркера доступа без выдачи предупреждения пользователю. В результате наделенные административными полномочиями пользователи получают более детальный контроль над тем, что устанавливают приложения.</p>
                 <div class="chart-block chart-city">
                     <ul class="chart chart-bg">
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
-                        <li>
-                            <span style="height:100%"></span>
-                        </li>
+                        <?php
+                            foreach ($totalCities as $city => $visitors) {
+                                echo '<li><span style="height:100%"></span></li>';
+                            }
+                        ?>
                     </ul>
                     <ul class="chart">
-                        <li>
-                            <span style="height:15%" title="Москва" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:70%" title="Спб" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:50%" title="Саранск" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:25%" title="Адлер" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:55%" title="Сочи" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:78%" title="Астана" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:87%" title="Саратов" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:100%" title="Озерск" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:85%" title="Грозный" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:68%" title="Бишкек" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:50%" title="Киев" data-title="2000 чел."></span>
-                        </li>
-                        <li>
-                            <span style="height:80%" title="Орел" data-title="2000 чел."></span>
-                        </li>
+                        <?php
+                        foreach ($totalCities as $city => $visitors) {
+                            echo '<li><span style="height:'.($visitors/max($totalCities)*100).'%" title="'.$city.'" data-title="'.$visitors.' чел."></span></li>';
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
@@ -398,5 +363,13 @@
 </div>
 
 <?php
-    $this->registerJsFile('/js/clients/statistics.js', ['depends' => [\app\client\assets\AppAsset::className()]]);
+
+$js = <<< JS
+    var totalWeekNews = $totalWeekNewsJson;
+    var totalMonthNews = $totalMonthNewsJson;
+    var totalYearNews = $totalYearNewsJson;
+JS;
+
+$this->registerJs($js, yii\web\View::POS_HEAD);
+$this->registerJsFile('/js/clients/statistics.js', ['depends' => [\app\client\assets\AppAsset::className()]]);
 ?>

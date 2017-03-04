@@ -244,6 +244,7 @@ $config = [
         'vhostsManager' => [
             'class' => 'app\components\vhosts\Manager',
         ],
+
     ],
     'controllerMap' => [
         'admin' => [
