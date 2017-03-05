@@ -1,15 +1,19 @@
 <?php
 use app\client\modules\social\models\Vk;
 use \yii\helpers\Json;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
 $vk = new VK('5898723', 'slz7D7MAoq75zlxFCgXT', '8ac69792548768831c86109bb5399715c2f8ddd8ff672249f1e1977a2fd146089087e4bf25f09efb47005');
 
-$users = $vk->api('wall.post', [
-    'owner_id'   => '-141403043',
-    'message' => 'first_name,last_name']);
+//$users = $vk->api('wall.post', [
+//    'owner_id'   => '-141403043',
+//    'message' => 'first_name,last_name']);
 
+$thisMonday =  strtotime('next Monday -1 week', strtotime('this sunday'));
 $statsWeek = $vk->api('stats.get', [
     'group_id'   => '141403043',
-    'date_from' => date("Y-m-d", strtotime("this week monday")),
+    'date_from' => date("Y-m-d", $thisMonday),
     'date_to' => date("Y-m-d")
     ]);
 
@@ -64,22 +68,34 @@ foreach ($statsYear['response'] as $statYear) {
                 <h2 class="h2-30">Добавить новый пост</h2>
                 <p class="description-after">Каждое расширение административных прав выполняется только для отдельного процесса, что предотвращает использование другими процессами маркера доступа без выдачи предупреждения пользователю. В результате наделенные административными полномочиями пользователи получают более детальный контроль над тем, что устанавливают приложения.</p>
                 <div class="row row-editor">
+                    <?php $form = ActiveForm::begin();
+                        $form->action= yii\helpers\Url::to('addvk');
+                    ?>
                     <div class="col-md-4 col-xs-4">
-                        <p class="input-p"><input class="form-input form-post" type="tel" placeholder="Введите заголовок поста"></p>
+                        <?= $form->field($model, 'post_title')->textInput([
+                            'maxlength' => 255,
+                            'class' => 'form-input',
+                            'type' => 'tel',
+                            'placeholder' => 'Введите заголовок поста'
+                        ])->label(false); ?>
+<!--                        <p class="input-p"><input class="form-input form-post" type="tel" placeholder="Введите заголовок поста"></p>-->
                     </div>
+<!--                    <div class="col-md-4 col-xs-4">-->
+<!--                        <div class="select-style">-->
+<!--                            <select class="form-control select-block">-->
+<!--                                <option disabled="" selected="">Выберите категорию поста</option>-->
+<!--                                <option value="1">Категория</option>-->
+<!--                                <option value="2">Категория</option>-->
+<!--                                <option value="3">Категория</option>-->
+<!--                                <option value="4">Категория</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="col-md-4 col-xs-4">
-                        <div class="select-style">
-                            <select class="form-control select-block">
-                                <option disabled="" selected="">Выберите категорию поста</option>
-                                <option value="1">Категория</option>
-                                <option value="2">Категория</option>
-                                <option value="3">Категория</option>
-                                <option value="4">Категория</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <button class="load-photo">Фотография новости</button>
+                        <?= $form->field($model, 'post_image')->fileInput([
+                            'class' => 'load-photo',
+                        ])->label(false); ?>
+<!--                        <button class="load-photo">Фотография новости</button>-->
                     </div>
                 </div>
 <!--                <div class="editor-form">-->
@@ -112,7 +128,9 @@ foreach ($statsYear['response'] as $statYear) {
 <!--                    <textarea rows="3" class="editor-form__textarea"></textarea>-->
 <!--                </div>-->
             </div>
-            <a href="#" class="btn-line btn-center">Опубликовать</a>
+            <?= Html::submitButton('Опубликовать', ['class' => 'btn-line btn-center']) ?>
+            <?php ActiveForm::end(); ?>
+<!--            <a href="#" class="btn-line btn-center">Опубликовать</a>-->
             <div class="block-stat">
                 <h2 class="h2-30 h2-inline">Посетители и просмотры за</h2>
                 <ul class="nav nav-tabs nav-stat nav-charts" role="tablist">
@@ -148,137 +166,113 @@ foreach ($statsYear['response'] as $statYear) {
                     <li role="presentation"><a href="#stat-woman" aria-controls="stat-woman" role="tab" data-toggle="tab">Женщины</a></li>
                 </ul>
                 <p class="description-after">Каждое расширение административных прав выполняется только для отдельного процесса, что предотвращает использование другими процессами маркера доступа без выдачи предупреждения пользователю. В результате наделенные административными полномочиями пользователи получают более детальный контроль над тем, что устанавливают приложения.</p>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="stat-man">
-                        <div class="chart-block">
-                            <ul class="chart chart-bg">
-                                <?php
-                                    foreach ($statsYear['response'] as $statYear) {
-                                        echo '<li><span style="height:100%"></span></li>';
-                                    }
-                                ?>
-                            </ul>
-                            <ul class="chart">
-                                <li>
-                                    <span style="height:15%" title="январь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:70%" title="февраль"></span>
-                                </li>
-                                <li>
-                                    <span style="height:50%" title="март"></span>
-                                </li>
-                                <li>
-                                    <span style="height:25%" title="апрель"></span>
-                                </li>
+<!--                <div class="tab-content">-->
+<!--                    <div role="tabpanel" class="tab-pane active" id="stat-man">-->
+<!--                        <div class="chart-block">-->
+<!--                            <ul class="chart chart-bg">-->
+<!--                                --><?php
+//                                    foreach ($statsYear['response'] as $statYear) {
+//                                        echo '<li><span style="height:100%"></span></li>';
+//                                    }
+//                                ?>
+<!--                            </ul>-->
+<!--                            <ul class="chart">-->
 <!--                                <li>-->
-<!--                                    <span style="height:55%" title="май"></span>-->
+<!--                                    <span style="height:15%" title="январь"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:78%" title="июнь"></span>-->
+<!--                                    <span style="height:70%" title="февраль"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:87%" title="июль"></span>-->
+<!--                                    <span style="height:50%" title="март"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:100%" title="август"></span>-->
+<!--                                    <span style="height:25%" title="апрель"></span>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div role="tabpanel" class="tab-pane" id="stat-woman">-->
+<!--                        <div class="chart-block">-->
+<!--                            <ul class="chart chart-bg">-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:85%" title="сентябрь"></span>-->
+<!--                                    <span style="height:100%"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:68%" title="октябрь"></span>-->
+<!--                                    <span style="height:100%"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:50%" title="ноябрь"></span>-->
+<!--                                    <span style="height:100%"></span>-->
 <!--                                </li>-->
 <!--                                <li>-->
-<!--                                    <span style="height:80%" title="декабрь"></span>-->
+<!--                                    <span style="height:100%"></span>-->
 <!--                                </li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="stat-woman">
-                        <div class="chart-block">
-                            <ul class="chart chart-bg">
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                                <li>
-                                    <span style="height:100%"></span>
-                                </li>
-                            </ul>
-                            <ul class="chart">
-                                <li>
-                                    <span style="height:10%" title="январь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:60%" title="февраль"></span>
-                                </li>
-                                <li>
-                                    <span style="height:60%" title="март"></span>
-                                </li>
-                                <li>
-                                    <span style="height:15%" title="апрель"></span>
-                                </li>
-                                <li>
-                                    <span style="height:50%" title="май"></span>
-                                </li>
-                                <li>
-                                    <span style="height:90%" title="июнь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:47%" title="июль"></span>
-                                </li>
-                                <li>
-                                    <span style="height:95%" title="август"></span>
-                                </li>
-                                <li>
-                                    <span style="height:45%" title="сентябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:47%" title="октябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:65%" title="ноябрь"></span>
-                                </li>
-                                <li>
-                                    <span style="height:70%" title="декабрь"></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:100%"></span>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                            <ul class="chart">-->
+<!--                                <li>-->
+<!--                                    <span style="height:10%" title="январь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:60%" title="февраль"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:60%" title="март"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:15%" title="апрель"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:50%" title="май"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:90%" title="июнь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:47%" title="июль"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:95%" title="август"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:45%" title="сентябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:47%" title="октябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:65%" title="ноябрь"></span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <span style="height:70%" title="декабрь"></span>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
 <!--            <div class="block-stat">-->
 <!--                <h2 class="h2-30 h2-inline">Статистика переходов на сайт:</h2>-->

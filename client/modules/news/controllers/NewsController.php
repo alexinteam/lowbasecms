@@ -159,6 +159,6 @@ class NewsController extends ClientController
         foreach ($dbCategories as $category) {
             $categories[$category->category_id] = $category->category_name;
         }
-        return $dbCategories;
+        return $categories;
     }
 }
