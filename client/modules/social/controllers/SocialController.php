@@ -37,6 +37,7 @@ class SocialController extends ClientController
     }
 
     public function actionAddvk() {
+        $gid = '141403043';
         $model = new UploadForm();
         $modelVk = new Vkmodel();
         $featuredRestoraunt = User::getFeaturedRestoraunt();
@@ -64,13 +65,14 @@ class SocialController extends ClientController
             }
             $modelVk->save();
 
+            # Получаем ссылку для загрузки изображений
             $vk = new VKapi('5898723', 'slz7D7MAoq75zlxFCgXT', '8ac69792548768831c86109bb5399715c2f8ddd8ff672249f1e1977a2fd146089087e4bf25f09efb47005');
             $uploadResponse = $vk->api('photos.getWallUploadServer', [
-                'group_id'   => '-141403043'
+                'group_id'   => $gid
             ]);
 
+            # Загружаем изображение на url
             $curl = curl_init();
-
             curl_setopt_array($curl,[
                 CURLOPT_URL => $uploadResponse['response']['upload_url'],
                 CURLOPT_RETURNTRANSFER => true,
@@ -84,12 +86,19 @@ class SocialController extends ClientController
                 ],
             ]);
             $response = json_decode(curl_exec($curl));
-            $responsePhoto = json_decode(stripslashes($response->photo));
             curl_close($curl);
 
-            $result = $vk->api('wall.post', [
-                'owner_id'   => '-141403043',
-                'attachments' => 'photo'.$response->server.'_'.$responsePhoto[0]->photo,
+            # Сохраняем фото на сервере и получаем id
+            $saveResult = $vk->api('photos.saveWallPhoto', [
+                'group_id'   => $gid,
+                'hash' => $response->hash,
+                'photo' => $response->photo,
+                'server' => $response->server
+            ]);
+            # id нужно прикрепить в attachments метода wall.post
+            $vk->api('wall.post', [
+                'owner_id'   => '-'.$gid,
+                'attachments' => $saveResult['response'][0]['id'],
                 'message' => $modelVk->post_title.(rand(1,100))
             ]);
 
