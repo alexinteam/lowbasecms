@@ -22,14 +22,39 @@ class SocialController extends ClientController
     public $layout = '@app/client/layouts/main.php';
 
     public function actionVk() {
-        $model = new Vkmodel();
-        return $this->render('vkontakte',[
-            'model' =>$model
-        ]);
+
+        if(!empty($_GET['code'])) {
+
+            $vk_grand_url = "https://api.vk.com/oauth/access_token?client_id=" . Yii::$app->params['vkAppId'] . "&client_secret=" . Yii::$app->params['vkSecret'] . "&code=" . $_GET['code'] . "&redirect_uri=".Yii::$app->params['host']."/client/social/vk";
+
+            $curl = curl_init();
+            curl_setopt_array($curl,[
+                CURLOPT_URL => $vk_grand_url,
+                CURLOPT_RETURNTRANSFER => true,
+            ]);
+            $response = json_decode(curl_exec($curl));
+            curl_close($curl);
+            $vk_access_token = $response->access_token;
+            $vk_uid =  $response->user_id;
+
+            $model = new Vkmodel();
+            return $this->render('vkontakte',[
+                'model' => $model,
+                'vk_access_token' => $vk_access_token
+            ]);
+
+        } else {
+            $this->redirect('/client/social/getvkcode');
+        }
     }
 
     public function actionFacebook() {
         return $this->render('facebook');
+    }
+
+
+    public function actionGetvkcode() {
+        return $this->redirect('https://oauth.vk.com/authorize?client_id='.Yii::$app->params['vkAppId'].'&scope=stats&redirect_uri='.Yii::$app->params['host'].'/client/social/vk&response_type=code');
     }
 
     public function actionInstagram() {

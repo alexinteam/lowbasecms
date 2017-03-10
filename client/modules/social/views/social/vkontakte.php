@@ -4,11 +4,7 @@ use \yii\helpers\Json;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$vk = new VK('5898723', 'slz7D7MAoq75zlxFCgXT', '8ac69792548768831c86109bb5399715c2f8ddd8ff672249f1e1977a2fd146089087e4bf25f09efb47005');
-
-//$users = $vk->api('wall.post', [
-//    'owner_id'   => '-141403043',
-//    'message' => 'first_name,last_name']);
+$vk = new VK(Yii::$app->params['vkAppId'], Yii::$app->params['vkSecret'], $vk_access_token);
 
 $thisMonday =  strtotime('next Monday -1 week', strtotime('this sunday'));
 $statsWeek = $vk->api('stats.get', [
