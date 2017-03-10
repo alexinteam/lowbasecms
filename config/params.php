@@ -6,7 +6,7 @@ $params = [
     //в конфигурации приложения и используются унаследованные модули или просто
     // модели и контроллеры от yii2-user.
     'captchaAction' => 'lowbase/user/captcha',
-    'host' => 'staging.restoweb.psltd.org',
+    'host' => 'http://staging.restoweb.psltd.org',
     'vkAppId' => '5898723',
     'vkSecret' => 'slz7D7MAoq75zlxFCgXT'
 ];

@@ -22,7 +22,6 @@ class SocialController extends ClientController
     public $layout = '@app/client/layouts/main.php';
 
     public function actionVk() {
-
         if(!empty($_GET['code'])) {
 
             $vk_grand_url = "https://api.vk.com/oauth/access_token?client_id=" . Yii::$app->params['vkAppId'] . "&client_secret=" . Yii::$app->params['vkSecret'] . "&code=" . $_GET['code'] . "&redirect_uri=".Yii::$app->params['host']."/client/social/vk";
@@ -51,7 +50,6 @@ class SocialController extends ClientController
     public function actionFacebook() {
         return $this->render('facebook');
     }
-
 
     public function actionGetvkcode() {
         return $this->redirect('https://oauth.vk.com/authorize?client_id='.Yii::$app->params['vkAppId'].'&scope=stats&redirect_uri='.Yii::$app->params['host'].'/client/social/vk&response_type=code');
