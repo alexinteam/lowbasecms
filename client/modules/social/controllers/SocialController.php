@@ -22,28 +22,14 @@ class SocialController extends ClientController
     public $layout = '@app/client/layouts/main.php';
 
     public function actionVk() {
-        if(!empty($_GET['code'])) {
-
-            $vk_grand_url = "https://api.vk.com/oauth/access_token?client_id=" . Yii::$app->params['vkAppId'] . "&client_secret=" . Yii::$app->params['vkSecret'] . "&code=" . $_GET['code'] . "&redirect_uri=".Yii::$app->params['host']."/client/social/vk";
-
-            $curl = curl_init();
-            curl_setopt_array($curl,[
-                CURLOPT_URL => $vk_grand_url,
-                CURLOPT_RETURNTRANSFER => true,
-            ]);
-            $response = json_decode(curl_exec($curl));
-            curl_close($curl);
-            $vk_access_token = $response->access_token;
-            $vk_uid =  $response->user_id;
-
+        if(!Yii::$app->params['vkToken']) {
+            $this->redirect('/client/social/getvktoken');
+        } else {
             $model = new Vkmodel();
             return $this->render('vkontakte',[
                 'model' => $model,
-                'vk_access_token' => $vk_access_token
+                'vk_access_token' => Yii::$app->params['vkToken']
             ]);
-
-        } else {
-            $this->redirect('/client/social/getvkcode');
         }
     }
 
@@ -51,8 +37,9 @@ class SocialController extends ClientController
         return $this->render('facebook');
     }
 
-    public function actionGetvkcode() {
-        return $this->redirect('https://oauth.vk.com/authorize?client_id='.Yii::$app->params['vkAppId'].'&scope=stats&redirect_uri='.Yii::$app->params['host'].'/client/social/vk&response_type=code');
+    public function actionGetvktoken() {
+        $scope='offline,messages,pages,stats,groups,photos,ads,wall';
+        return $this->redirect('https://oauth.vk.com/authorize?client_id='.Yii::$app->params['vkAppId'].'&scope='.$scope.'&redirect_uri=https://oauth.vk.com/blank.html&response_type=token&v=5.37');
     }
 
     public function actionInstagram() {
@@ -74,7 +61,7 @@ class SocialController extends ClientController
             $vkDirId = 1;
         }
 
-        if (Yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost && Yii::$app->params['vkToken']) {
             $model->imageFile = UploadedFile::getInstance($modelVk, 'post_image');
 
             $pathToDir = 'uploads/social/vk/';
@@ -89,7 +76,7 @@ class SocialController extends ClientController
             $modelVk->save();
 
             # Получаем ссылку для загрузки изображений
-            $vk = new VKapi('5898723', 'slz7D7MAoq75zlxFCgXT', '8ac69792548768831c86109bb5399715c2f8ddd8ff672249f1e1977a2fd146089087e4bf25f09efb47005');
+            $vk = new VKapi(Yii::$app->params['vkAppId'], Yii::$app->params['vkSecret'], Yii::$app->params['vkToken']);
             $uploadResponse = $vk->api('photos.getWallUploadServer', [
                 'group_id'   => $gid
             ]);
@@ -125,18 +112,13 @@ class SocialController extends ClientController
                 'message' => $modelVk->post_title.(rand(1,100))
             ]);
 
-
             return $this->render('vkontakte',[
                 'model' => new Vkmodel(),
+                'vk_access_token' => Yii::$app->params['vkToken'],
                 'saved' => true
             ]);
         } else {
             return $this->redirect('/client/social/vk');
         }
-
-
-
-
     }
-
 }
