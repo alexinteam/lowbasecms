@@ -2,10 +2,6 @@
 
 $site = isset($this->params['site']) ? $this->params['site'] : null;
 
-?>
-
-<?php
-
 if(isset($site->ga_account)){ ?>
     <!-- Google Analytics -->
     <script>
@@ -18,5 +14,5 @@ if(isset($site->ga_account)){ ?>
         ga('create', '<?= $site->ga_account; ?>', 'auto');
     </script>
     <!-- End Google Analytics -->
-<?php } ?>
+<?php }
 

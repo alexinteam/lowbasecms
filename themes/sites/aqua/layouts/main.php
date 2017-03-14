@@ -108,9 +108,12 @@ $siteId = $this->params['site_id'] ?: null;
                 editor.init(siteId);
             });
         </script>
-
     <?php
     }
+    else{
+        echo $this->render('//layouts/analyticstracking');
+    }
+
     ?>
 
 </body>
