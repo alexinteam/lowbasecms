@@ -159,6 +159,8 @@ $config = [
                 'client/rewiews/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|order|other|site)>' => 'client-rewiews/rewiews/<action>',
                 // social
                 'client/social/<action:(vk|facebook|instagram)>' => 'client-social/social/<action>',
+                //statics
+                'client/statistics/<action:(index)>' => 'client-statistics/statistics/<action>',
 
 
 
@@ -304,6 +306,12 @@ $config = [
         'client-social' => [
             'class' => 'app\client\modules\social\Module',
         ],
+        'client-statistics' => [
+            'class' => 'app\client\modules\statistics\Module',
+        ],
+
+
+
 
 
         'sites' => [
