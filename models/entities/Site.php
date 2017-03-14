@@ -63,7 +63,7 @@ class Site extends \yii\db\ActiveRecord
             [['title','description'], 'string'],
 
             //[['about_us','address','phone','email'], 'required'],
-            [['about_us','address','phone','email'], 'string'],
+            [['about_us','address','phone','email', 'ga_account'], 'string'],
         ];
     }
 
@@ -86,6 +86,8 @@ class Site extends \yii\db\ActiveRecord
 
             'site_address' => 'Адрес',
             'site_phone' => 'Телефон',
+
+            'ga_account' => 'Google Analytics ID',
         ];
 
         for($i=1; $i <= 5; $i++){

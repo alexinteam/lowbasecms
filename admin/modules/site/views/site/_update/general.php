@@ -17,4 +17,6 @@ use dosamigos\tinymce\TinyMce;
 
 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+<?= $form->field($model, 'ga_account')->textInput(['maxlength' => true]) ?>
+
 <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
