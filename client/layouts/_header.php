@@ -105,9 +105,9 @@ if($this->context->route == 'client-social/social/vk' || $this->context->route =
                 ['label' => 'Отзывы','url' => ['/client-rewiews/rewiews/other'], 'active' => $this->context->route == $siteRewiewsActivate],
                 ['label' => 'Бронирование столов', 'url' => ['/client-bookings/bookings/index'], 'active' => $this->context->route == $siteBookingsActivate],
                 ['label' => 'Управление сайтом', 'url' => ['/client/site/index'], 'active' => $siteConfigActivate],
-                ['label' => 'Дизайн', 'url' => ['/client']],
+//                ['label' => 'Дизайн', 'url' => ['/client']],
                 ['label' => 'Социальные сети', 'url' => ['/client-social/social/vk'], 'active' => $this->context->route == $siteSocialActivate],
-                ['label' => 'Статистика','url' => ['/client']],
+//                ['label' => 'Статистика','url' => ['/client']],
                 ['label' => 'Сообщения', 'url' => ['/client-user/user/list-messages'], 'active' => $this->context->route == 'client-user/user/list-messages'],
             ]]);
         ?>

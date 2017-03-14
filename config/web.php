@@ -159,9 +159,11 @@ $config = [
                 'client/rewiews/<action:(index|edit|create|update|delete|view|multidelete|multiactive|multiblock|move|change|field|order|other|site)>' => 'client-rewiews/rewiews/<action>',
                 // social
                 'client/social/<action:(vk|facebook|instagram)>' => 'client-social/social/<action>',
+                
                 //statics
                 'client/statistics/<action:(index)>' => 'client-statistics/statistics/<action>',
 
+                'client/social/<action:(vk|facebook|instagram|addvk|getvkcode|getvktoken)>' => 'client-social/social/<action>',
 
 
                 //АДМИНИСТРАТИВНАЯ ЧАСТЬ САЙТА
@@ -246,6 +248,7 @@ $config = [
         'vhostsManager' => [
             'class' => 'app\components\vhosts\Manager',
         ],
+
     ],
     'controllerMap' => [
         'admin' => [

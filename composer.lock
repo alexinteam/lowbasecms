@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c84bc02a1a1372792cff03982d46698",
-    "content-hash": "9690adc24a8fa406f6b226844996017a",
+    "hash": "3e7d1c706282d3403cdcc1e14030bc46",
+    "content-hash": "94d854c3c967eee97c6ea571d8c6a34d",
     "packages": [
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -398,8 +398,7 @@
             },
             "license": [
                 "MIT"
-            ],
-            "time": "2016-12-04 05:41:33"
+            ]
         },
         {
             "name": "bower-asset/moment-timezone",
@@ -435,8 +434,7 @@
             "license": [
                 "MIT"
             ],
-            "description": "Parse and display moments in any timezone.",
-            "time": "2016-12-23 18:33:58"
+            "description": "Parse and display moments in any timezone."
         },
         {
             "name": "bower-asset/punycode",
@@ -1206,6 +1204,134 @@
                 "image processing"
             ],
             "time": "2015-09-19 16:54:05"
+        },
+        {
+            "name": "jumper423/yii2-behaviors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jumper423/yii2-behaviors.git",
+                "reference": "b9ae16cbdf509bae4feb2605a52aa7da0361a637"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jumper423/yii2-behaviors/zipball/b9ae16cbdf509bae4feb2605a52aa7da0361a637",
+                "reference": "b9ae16cbdf509bae4feb2605a52aa7da0361a637",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "jumper423\\behaviors\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License 2.0"
+            ],
+            "description": "Behaviors.",
+            "homepage": "https://github.com/jumper423/yii2-behaviors",
+            "keywords": [
+                "behaviors",
+                "yii2"
+            ],
+            "time": "2016-03-19 16:51:46"
+        },
+        {
+            "name": "jumper423/yii2-captcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jumper423/yii2-captcha.git",
+                "reference": "4216cc1485567722e2b712e8c75c96e3f960e9f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jumper423/yii2-captcha/zipball/4216cc1485567722e2b712e8c75c96e3f960e9f8",
+                "reference": "4216cc1485567722e2b712e8c75c96e3f960e9f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "jumper423\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License 2.0"
+            ],
+            "description": "Распознавание капч для всех популярных сервисов rucaptcha.com, 2captcha.com, pixodrom.com, captcha24.com, socialink.ru, anti-captcha.com",
+            "homepage": "http://infoblog1.ru/learn/cms/yii/raspoznavanie-kapch-na-yii2",
+            "keywords": [
+                "2captcha",
+                "2captcha.com",
+                "anti-captcha",
+                "anti-captcha.com",
+                "captcha",
+                "captcha24",
+                "captcha24.com",
+                "pixodrom",
+                "pixodrom.com",
+                "recognition",
+                "rucaptcha",
+                "rucaptcha.com",
+                "socialink",
+                "socialink.ru",
+                "yii2"
+            ],
+            "time": "2016-10-14 22:54:46"
+        },
+        {
+            "name": "jumper423/yii2-vk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jumper423/yii2-vk.git",
+                "reference": "b18ce30ae0b375e8ae25841acbb0f70043f9376c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jumper423/yii2-vk/zipball/b18ce30ae0b375e8ae25841acbb0f70043f9376c",
+                "reference": "b18ce30ae0b375e8ae25841acbb0f70043f9376c",
+                "shasum": ""
+            },
+            "require": {
+                "jumper423/yii2-behaviors": "*",
+                "jumper423/yii2-captcha": "*",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-authclient": "~2.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "jumper423\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License 2.0"
+            ],
+            "description": "Расширенная работа с API VK",
+            "homepage": "http://infoblog1.ru/learn/cms/yii/rabota-s-api-vk-v-yii2",
+            "keywords": [
+                "api",
+                "vk",
+                "vkontakte",
+                "yii2",
+                "апи",
+                "вконтакте"
+            ],
+            "time": "2017-02-20 10:56:22"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
