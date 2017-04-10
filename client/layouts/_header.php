@@ -174,7 +174,7 @@ if($this->context->route == 'client-social/social/vk' || $this->context->route =
                 }
 
             ?>
-            <a href="javascript:" class="pluso">+</a>
+<!--            <a href="javascript:" class="pluso">+</a>-->
         </div>
     </div>
 </header>
